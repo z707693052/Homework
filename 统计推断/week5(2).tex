@@ -1,0 +1,102 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\linespread{1.8}
+\begin{document}
+\title{}
+\author{基科32 曾柯又 2013012266}
+\date{}
+\maketitle
+\paragraph{5.31}
+\(
+P(|\bar{X} - \mu| \geq \epsilon) \leq \frac{E|\bar{X} - \mu|^2}{\epsilon^2} \\
+\text{而 }E(\bar{X} - \mu)^2 = \frac{\sigma^2}{n}\\
+P(|\bar{X} - \mu| \leq \epsilon) \geq 1 - \frac{\sigma^2}{n\epsilon^2} = 0.9 \; \Rightarrow\\
+\epsilon = \frac{3}{\sqrt{10}} \Rightarrow P(|\bar{X} - \mu| \leq 0.9487) \geq 0.9 \\
+\text{另一方面 } \frac{\sqrt{n}(\bar{X} - \mu)}{\sigma} \text{ 近似服从} n(0,1)
+\text{因此可以知道} P(|\frac{\sqrt{n}(\bar{X} - \mu)}{\sigma}| \leq 1.645) \approx 0.9 \Rightarrow
+P(|\bar{X}-\mu| \leq 0.4935) \approx 0.9\\
+\)
+比较由Chebychev Inequality和CLT得到的结果，CLT给出的范围小了一倍。虽然Chebychev Inequality得出的是很严格的结果，但是不等式其作的近似是很粗糙的。
+\paragraph{5.32}
+	(a)对$Y_i$，先不妨设$\epsilon \leq 2\sqrt{a}$
+\begin{flalign*}
+\begin{split}
+P(|Y_i - \sqrt{a}| \geq \epsilon) & = P(\sqrt{X_i} \ge \epsilon + \sqrt{a}) + P(\sqrt{X_i} \leq \sqrt{a} - \epsilon)\\
+& = P(X_i \ge \epsilon^2 + a + 2\epsilon\sqrt{a}) + P(X_i \leq \epsilon^2 + a -2\sqrt{a}\epsilon)\\
+& = P(X_i - a \ge \epsilon(2\sqrt{a} + \epsilon)) + P(X_i - a \leq \epsilon(2\sqrt{a} - \epsilon))\\
+& \leq P(X_i - a \geq \epsilon(2\sqrt{a} - \epsilon)) + P(X_i - a \leq \epsilon(2\sqrt{a} - \epsilon))\\
+& = P(|X_i - a| \geq \epsilon(2\sqrt{a} - \epsilon))
+\end{split}&
+\end{flalign*}
+可得\(\lim\limits_{i\to\infty}P(|Y_i - \sqrt{a}| \geq \epsilon) = 0\),即$Y_i$收敛到$\sqrt{a}$\\
+对$Y_i'$，先不妨设$\epsilon \leq 1$
+\begin{flalign*}
+\begin{split}
+P(|Y_i' - 1|\ge\epsilon) & = P(|\frac{a}{X_i} - 1|\ge \epsilon)\\
+& = P(a - X_i \ge \epsilon X_i) + P(-a + X_i \ge \epsilon X_i)\\
+& = P((1+\epsilon)(X_i - a) \leq -\epsilon a) + P((1 - \epsilon)(X_i - a) \ge \epsilon a)\\
+& \leq P(X_i \leq \frac{-\epsilon a }{1 + \epsilon}) + P(X_i - a \ge \frac{\epsilon a }{1 + \epsilon})\\
+& = P(|X_i - a| \ge \frac{\epsilon a}{1 + \epsilon})
+\end{split}&
+\end{flalign*}
+故\( \lim\limits_{i \to\infty}P(|Y_i' - 1|\ge\epsilon) = 0\) ,即$Y_i'$收敛到$1$\\
+(b) 需要先证明$S_n^2 \overset{\mathcal{P}}{\rightarrow} \sigma^2$\\
+而这个需要先证明$VarS_n^2 \to 0$\\
+由前面的习题可以知道$VarS_n^2 = \frac{1}{n}(\theta_4 - \frac{n -3}{n-1}\theta_2^2)$,因此当随即取样样本的的四阶矩存在时，有	$\lim\limits_{n\to\infty}S_n^2 = 0$,此时，由书中Example5.5.3可知$S_n^2 \overset{\mathcal{P}}{\rightarrow} \sigma^2$，由(a),$S_n = \sqrt{S_n^2}$依概率收敛到$\sigma$,$\frac{\sigma}{S_n}$依概率收敛到1。
+\paragraph{5.3.3}
+\(\forall c \; \lim\limits_{n\to\infty}P(Y_n \ge c) = 1 \Rightarrow \lim\limits_{n \to \infty}P(Y_n \leq c) = 0\\
+\text{而 }\lim\limits_{M \to -\infty}P(X \leq M) = 0,\text{因此}\forall \epsilon ,\;\exists M_\epsilon \text{ ，使得 }P(X\leq M_\epsilon) < \epsilon\\
+\text{可得}\forall c,\;\forall \epsilon\\
+P(X_n + Y_n < c) \leq P(X_n < M_\epsilon) + P(Y_n < c - M_\epsilon)\\
+\lim\limits_{n \to \infty}P(X_n + Y_n < c) < \lim\limits_{n \to \infty}P(X_n < M_\epsilon) \leq \epsilon\\
+\)
+由$\epsilon$的任意性，可得$\lim\limits_{n\to\infty}P(X_n+Y_n < c) = 0$
+\paragraph{5.3.6}
+(a)\(
+EY = E(E(Y|N))\\
+E(Y|N) = \int_{0}^{\infty}xf_{Y|N}(y,n)\mathrm{d}x = 2n ,\\
+EY = E2N = 2\theta\\
+VarY = E(Var(Y|N)) + Var(E(Y|N)) \\
+Var(E(Y|N)) = Var(2N) = 4Var(N) = 4\theta\\
+Var(Y|N) = 4n ,\; E(Var(Y|N)) =4EN = 4\theta \Rightarrow\\
+VarY = 8\theta\\
+\)
+(b)在$N = n$,的条件下，$Y_n = \sum_{i =1}^{n}X_i$,其中$X_1,\dots X_i $为服从$\chi^2_2$的$iid$，
+而\(F_Y(y) = \sum_{n = 1}^{\infty}F_{Y_n}(y)P(N = n),\; \text{当} \theta \to \infty \text{时}\\
+F_Y(y) = \lim\limits_{n \to \infty}F_{Y_n}(y)\\
+\)
+而由中心极限定理$n\to \infty$时，$\displaystyle \frac{\sqrt{n}(\bar{X}_n - \mu)}{\sigma} = \frac{Y_n - EY_n}{\sqrt{VarY_n}}$服从标准正态分布，从而可知$\theta \to \infty$ 时， $\displaystyle \frac{Y - EY}{\sqrt{VarY}}$，依分布收敛于标准正态分布。
+\paragraph{5.39}
+(a)
+$\displaystyle
+\forall \epsilon > 0 ,\; \exists \delta,\; \text{使得}:\; |h(x_n) - h(x)| < \epsilon ,\text{ 当 }|x_n - x| < \delta\text{ 时}\\
+\text{即 }P(|h(X_n) - h(X)| < \epsilon \,\big|\,|X_n - X| < \delta) = 0
+$
+\begin{flalign*}
+\begin{split}
+P(&|h(X_n) - h(x)| < \epsilon)\\
+& = P(|h(X_n) - h(x)| < \epsilon , |X_n - X| < \delta) + P(|h(X_n) - h(x)| < \epsilon , |X_n - X| \geq \delta) \\
+& \leq P(|h(X_n) - h(x)| < \epsilon \big| |X_n - X| < \delta) + P(|X_n - X| \geq \delta)\\
+& < P(|X_n - X| \geq \delta)
+\end{split}
+\end{flalign*}
+由此可得：
+$\lim\limits_{n \to \infty}P(|h(X_n) - h(x)| < \epsilon) = 0$\\
+(b)记\(n_k = \frac{k(k + 1)}{2} + 1\) ,则\(X_{n_k} = s + I_{[0 , \frac{1}{k + 1}]}(s)\) ,当\(k \to \infty\) 时,\(X_{n_k} \to s\) a.s
+\paragraph{5.40}
+(a)\\
+$\displaystyle
+P(X \leq t - \epsilon) = P(X \leq t - \epsilon,|X_n - X|<\epsilon) + P(X \leq t - \epsilon,|X_n - X| \geq \epsilon)$
+而$X \leq t - \epsilon,|X_n - X|<\epsilon \Rightarrow X \leq t -\epsilon, X_n - X \leq \epsilon \Rightarrow X_n \leq t$\\
+故$P(X \leq t - \epsilon,|X_n - X|<\epsilon) \leq P(X_n \leq t)$\\
+可得$P(X \leq t - \epsilon) \leq P(X_n \leq t) + P(|X_n - X| \geq \epsilon)$\\
+(b)由于在推导上面不等式时并未对$X_n,X$作任何要求，因此在上式中，交换$X_n ,X$的位置，并作代换$t \to t + \epsilon$不等式依然成立，即有：
+$P(X_n \leq t) \leq P(X \leq t + \epsilon) + P(|X_n - X| \geq \epsilon)$\\
+(c)由前两问可得\\
+{\small
+$P(X \leq t - \epsilon) -  P(|X_n - X| \geq \epsilon)\leq P(X_n \leq t) \leq P(X \leq t + \epsilon) + P(|X_n - X| \geq \epsilon)$\\}
+取极限可得:\\
+$P(X \leq t - \epsilon) \leq \lim\limits_{n\to\infty}P(X_n \leq t) \leq P(X \leq t + \epsilon) $\\
+而由$\epsilon$的任意性可得$P(X \leq t) \leq \lim\limits_{n\to\infty}P(X_n \leq t) \leq P(X \leq t) $\\
+即$\lim\limits_{n\to\infty}P(X_n \leq t) = P(X \leq t) \Rightarrow X_n \overset{\mathcal{D}}{\rightarrow} X$
+\end{document}

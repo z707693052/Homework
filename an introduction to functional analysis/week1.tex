@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\begin{document}
+\begin{proof}
+First suppose that E is complete.let $\{x_n\}$ be a series which is absolutely convergent. Note $$A_n = \sum_{k=1}^{n}\|x_n\|_E \;,\; A = \sum_{k=1}^{\infty}\|x_n\| = \lim\limits_{k \to \infty}A_n$$
+we have $$\forall \epsilon > 0 ,\exists N \;,\;s.t \quad A - A_n < \epsilon $$
+and $$\forall m > n > N \quad \|S_m - S_n\|_E \leq \sum_{k = n+1}^{m}\|x_k\|_E \leq A - A_n < \epsilon$$
+so $S_n$ is a Cauchy series in E,so $\sum_{k=1}^{\infty}x_n$ is convergent in E.
+
+Now suppose that every absolutely convergent series converges in E.\\
+let $\{x_n\}$ be a Cauchy series. then for any fixed $\epsilon > 0$, we can find a subsequence $\{x_{n_k}\}$ such that 
+$$\|x_{n_k} - x_{n_{k+1}}\| \leq \frac{\epsilon}{2^k} $$ 
+then we can construct a sequence $y_k$:
+$$ y_1 = x_{n_1}$$
+$$y_k = x_{n_k} - x_{n_{k-1}} $$
+It's easy to show that $\{y_k\}$ is absolutely convergent:
+$$\sum_{k=1}^{\infty}\|y_k\| = x_{n_1} + \sum_{k=2}^{\infty}\|x_{n_k} - x_{n_{k-1}}\| \leq x_{n_1} + \sum_{k=1}^{\infty}\frac{\epsilon}{2^k} = x_{n_1} + \frac{\epsilon}{2}$$
+so, $y_k$ itself is convergent.we have:
+$$\sum_{k=1}^{\infty}y_k = \lim\limits_{k \to \infty}x_{n_k} \quad \text{is convergent}$$
+let $x = \lim\limits_{k \to \infty}x_{n_k}$.then $$\forall \epsilon > 0 \exists K,N \;,\; s.t\; \forall k > K,\|x - x_{n_k}\|_E < \frac{\epsilon}{2} \; and \; \forall m,n>N,\|x_m - x_n\| < \frac{\epsilon}{2}$$
+so $$\forall n > max\{M,n_K\} \|x_n - x\|_E < \|x_n - x_{n_k}\| + \|x_{n_k} - x\|_E < \epsilon$$
+so $\{x_n\}$ is convergent.
+\end{proof}
+\end{document}

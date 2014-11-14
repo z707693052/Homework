@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\linespread{1.8}
+\begin{document}
+\begin{proof}
+1. if $\|f\|_{L^p(\Omega)} $ or $\|g\|_{L^p{'}(\Omega)} $ = 0
+
+ If $\|f\|_{L^p(\Omega)} $ or $\|g\|_{L^p{'}(\Omega)} $ = 0. Then $f$ or $g$ = 0 a.e on $\Omega$ and $|fg| = 0$ a.e on $\Omega$ so $\|fg\|_{L^1(\Omega)} = 0.$
+ 
+ 2.if $\|f\|_{L^p(\Omega)} $ or $\|g\|_{L^p{'}(\Omega)} = \infty $ 
+ 
+ Then it's easy to show that both sides of H\"older inequality is $\infty$
+ 
+ 3.if $\|f\|_{L^p(\Omega)} $ and $\|g\|_{L^p{
+'}(\Omega)} \, in \, (0,\infty) $ and both $p$ and $p' \in (1,\infty) $
+ 
+Let $F(x) = \frac{f(x)}{\|f\|_{L^p(\Omega)}}$  and $G(x) = \frac{g(x)}{\|g\|_{L^p{'}(\Omega)}}$
+ we have $$\|F\|_{L^p(\Omega)} = 1 \; and\; \|G\|_{L^p{'}(\Omega)} = 1$$
+ use the inequality $$|FG| \leq \frac{|F|^p}{p} + \frac{|G|^{p'}}{p'}  ,$$
+ we got 
+ \begin{equation*}
+ \begin{split}
+\int_{\Omega}|FG|\mathrm{d}\mu &\leq \int_{\Omega}\frac{|F|^p}{p}\mathrm{d}\mu + \int_{\Omega}\frac{|G|^{p'}}{p'}\mathrm{d}\mu \\
+& = \frac{\|F\|_{L^p(\Omega)}}{p}+\frac{\|G\|_{L^p{'}(\Omega)}}{p'}\\
+& = \frac{1}{p} + \frac{1}{p'}\\
+& = 1
+\end{split}
+ \end{equation*}
+ Then we obtained the H\"older inequality:$$\|fg\|_{L^1(\Omega)} \leq \|f\|_{L^p(\Omega)} \|g\|_{L^p{'}(\Omega)}$$
+ 
+ 4. if $p = \infty,p' = 1 \;or\; p = 1,p, = \infty.$
+ 
+ Let's suppose that $p = \infty,p' = 1 $, then $|f(x)g(x)| \leq \|f\|_{L^{\infty}(\Omega)}|g(x)| \quad a.e \; in \; \Omega$ 
+ so we have 
+ $$\int_{\Omega}|fg|\mathrm{d}\mu \leq \|f\|_{L^{\infty}(\Omega)}\int_{\Omega}|g|\mathrm{d}\mu$$
+ which is H\"older inequality:
+ $$\|fg\|_{L^1(\Omega)} \leq \|f\|_{L^{\infty}(\Omega)} \|g\|_{L^1(\Omega)}$$
+\end{proof}
+\end{document}

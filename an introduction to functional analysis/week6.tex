@@ -1,0 +1,25 @@
+\documentclass[14pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\linespread{1.5}
+\begin{document}
+\paragraph{1}
+For the first question, it's sufficient to prove that the Lebesgue integral is liner.\\
+  \indent For two function$f_1 , f_2$which is Lebesgue integrable,there exist two sequence of simple function $f_{1n},f_{2n}$ , such that $$\lim\limits_{n \to \infty}\int_{\Omega}(f_{1n} + f_{2n})\mathrm{d}\mu = \int_{\Omega}(f_{1} + f_{2})\mathrm{d}\mu$$
+  \indent It's easy to show that the integrate is liner for simple function,so the integrate is liner for any Lebesgue integral function.
+\paragraph{2}
+first prove that $\|A_g\| \leq \|g\|_{L^{p'}}$\\
+$\displaystyle
+\forall f \in L^p(\Omega) \\
+ |A_gf| = |\int_{\Omega}fg\mathrm{d}\mu| \leq \int_{\Omega}|fg|\mathrm{d}\mu = \|fg\|_{L^1}
+$
+using the Holder inequality , we can get \\
+$|A_gf| \leq \|f\|_{L^p}\|g\|_{L^{p'}} \Rightarrow $\\
+$\displaystyle \|A_g\| = sup\frac{|A_gf|}{\|f\|_{L^p}} \leq \|g\|_{L^{p'}}
+$\\
+then prove that $\|A_g\| \ge \|g\|_{L^{p'}}$\\
+using the lemma given in the question,there exist a function $f_g$ , such that\\
+$\displaystyle A_g(f_g) = \|f_g\|_{L^p}\|g\|_{L^{p'}}\Rightarrow\\
+\|A_g\| = sup\frac{A_gf}{\|f\|_{L^p}} \ge \frac{|A_gf_g|}{\|f_g\|_{L^p}} = \|g\|_{L^{p'}}
+$
+so we have: $$\|A_g\| = \|g\|_{L^{p'}}$$
+\end{document}

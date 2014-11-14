@@ -1,0 +1,138 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\linespread{1.9}
+\CTEXsetup[indent={0pt}]{subparagraph}
+\newcommand{\normal}[2]{\frac{1}{\sqrt{2\pi}#2}e^{-(x - #1)^2/(2#2^2)}}
+\newcommand{\norm}[1]{\frac{1}{\sqrt{2\pi}#1}e^{-x^2/(2#1^2)}}
+\newcommand{\norms}[0]{\frac{1}{\sqrt{2\pi}}e^{-x^2/2}}
+\newcommand{\dconverge}[0]{\overset{\mathcal{D}}{\to}}
+\newcommand{\pconverge}[0]{\overset{\mathcal{P}}{\to}}
+\title{\vspace{-5ex}}
+\author{基科32 曾柯又 2013012266}
+\date{\vspace{-5ex}}
+\begin{document}
+\maketitle
+\paragraph{5.44}
+\subparagraph{(a)}$\displaystyle
+\mu = EX_i = p \; \sigma^2 = VarX_i = p(1 - p) \\
+\therefore \;\frac{\sqrt{n}(Y_n - p)}{\sqrt{p(1 - p)}} \dconverge n(0,1)\\
+\Rightarrow \; \sqrt{n}(Y_n -p) \dconverge n(0,p(1 - p))
+$
+\subparagraph{(b)}
+$
+\displaystyle
+\text{令 }g(x) = x(1 - x) \text{  当 } p \neq \frac{1}{2}\text{ 时 }g'(x) \neq 0\\
+\sqrt{n}(g(Y_n) - g(p)) \dconverge g'(p)n(0,p(1 - p))\\
+\text{即 }\sqrt{n}(g(Y_n) - g(p)) \dconverge n(0 , (1 - 2p)^2p(1 - p))
+$
+\subparagraph{(c)}
+$
+\displaystyle
+Y_n(1 - Y_n) = (\frac{1}{2})^2 - (Y_n - \frac{1}{2})^2\\
+4n[\frac{1}{4} - Y_n(1 - Y_n)] = (2\sqrt{n}(Y_n - \frac{1}{2}))^2\\
+\text{由CMT}\\
+2\sqrt{n}(Y_n - \frac{1}{2}) \dconverge X \;\Rightarrow \; (2\sqrt{n}(Y_n - \frac{1}{2}))^2 \dconverge X^2\\
+X \sim n(0,1) ,\; X^2 \sim \chi_1^2\\
+\Rightarrow n[Y_n(1 - Y_n) - \frac{1}{4}] \to -\frac{1}{4}\chi_1^2
+$
+\paragraph{5.50}
+$
+\displaystyle
+X_1 = cos(2\pi U_1)\sqrt{-2\mathrm{log}U_2} \quad X_2 = sin(2\pi U_1)\sqrt{-2\mathrm{log}U_2}\\
+\Rightarrow U_2 = e^{-\frac{1}{2}(X_1^2 + X_2^2)} \quad U_1 = \frac{1}{2\pi}\arctan(\frac{X_2}{X_1})\\
+f_{X_1,X_2}(x_1,x_2) = f_{U_1,U_2}(u_1,u_2)\Big|\frac{\partial(U_1 , U_2)}{\partial(X_1 , X_2)}\Big|\\
+= \begin{vmatrix}
+\frac{1}{2\pi}\frac{-x_2}{x_1^2 + x_2^2} & \frac{1}{2\pi}\frac{x_1}{x_1^2 + x_2^2}\\
+-x_1e^{-\frac{1}{2}(x_1^2 + x_2^2)} & -x_2e^{-\frac{1}{2}(x_1^2 + x_2^2)} 
+\end{vmatrix}= \frac{1}{2\pi}e^{-\frac{1}{2}(x_1^2 + x_2^2)}\\
+$
+即$X_1 , \;X_2$ 是独立的$n(0,1)$变量。
+\paragraph{5.52}
+\subparagraph{(a)}
+一种方法仿照书中的\\
+令$\displaystyle Y = i \text{  当  } U \in (\sum_{k = 0}^{i - 1}{8 \choose k}(\frac{2}{3})^k(\frac{1}{3})^{8 - k},\sum_{k = 0}^{i}{8 \choose k}(\frac{2}{3})^k(\frac{1}{3})^{8 - k}) \; i = 0 ,\cdots 8\\
+\text{其中 }U \sim \mathrm{uniform}(0,1)\\
+$
+还可以通过产生8个 0,1 分布，求和得到二项分布,即设:\\
+$
+f(U) = \left\{\begin{array}{lr}
+1 & 0 \leq U < \frac{2}{3}\\
+0 & \frac{2}{3} \leq U < 1
+\end{array}
+\right.$\\
+再令 $Y = \sum_{i = 1}^{8}f(U_i)$ 则 \\
+$Y \sim B(8,\frac{2}{3})$
+\subparagraph{(b)}
+$\displaystyle
+P(X = x) = \frac{{M \choose x}{N -M \choose K - x}}{{N \choose K}} \quad N = 10,\,M = 8,\, K =4\\
+P(X = 2) = \frac{2}{15} ,\; P(X = 3) = \frac{8}{15},\; P(X = 4) = \frac{1}{3}\\
+Y = \left\{\begin{array}{lr}
+2 & 0 \leq U < \frac{4}{30}\\
+3 & \frac{2}{15} \leq U < \frac{2}{3}\\
+4 & \frac{2}{3} \leq U \leq 1
+\end{array}
+\right.
+$
+\subparagraph{(c)}
+设
+$\displaystyle
+f(U) = \left\{\begin{array}{lr}
+1 & 0 \leq U < \frac{1}{3}\\
+0 & \frac{1}{3} \leq U < 1
+\end{array}
+\right.$\\
+令$
+X = f(U)
+ \quad U$为$(0,1)$均匀分布随机变量\\
+ 不断生成$X$,直到有$5$次$X = 1$,记下此时生成的$X$的次数$n$,令$Y = n$,则$Y$满足负二项分布。
+\paragraph{5.57}
+\subparagraph{(a)}
+$\displaystyle
+EY_1 = EX_1 + EX_2 =\lambda_1 + \lambda_3\\
+EY_2 = EX_2 + EX_3 = \lambda_2 + \lambda_3\\
+EY_1Y_2 = E(X_1 + X_3)(X_2 + X_3) = \lambda_1\lambda_2 + \lambda_1\lambda_3 + \lambda_2\lambda_3 + EX_3^2\\
+\text{而 }EX_3^2 = \sum_{x = 1}^{\infty}x^2\frac{e^{-\lambda_3}\lambda_3^x}{x!} = \lambda_3(1 + \lambda_3)\\
+\therefore \; Cov(Y_1 , Y_2) = E((Y_1 - EY_1)(Y_2 - EY_2)) = EY_1Y_2 - EY_1E_Y2 = \lambda_3
+$
+\subparagraph{(b)}
+$\displaystyle
+P(Z_1 = 1) = P(X_1 = 0,X_3 = 0) = e^{-(\lambda_1 + \lambda_3)} = p_1\\
+P(Z_2 = 1) = e^{-(\lambda_1 + \lambda_3)} = p_2\\
+\text{即 }Z_i \sim \mathrm{Bernouli}(p_i)\\
+VarZ_i = p_i(1 - p_i)\\
+P(Z_1 = 1 , Z_2 = 1) = P(X_1,X_2,X_3 = 0) = e^{-(\lambda_1 + \lambda_2 + \lambda_3)}\\
+Cov(Z_1,Z_2) = EZ_1Z_2 -EZ_1EZ_2 \\
+= e^{-(\lambda_1 + \lambda_2 + \lambda_3)} - e^{-(\lambda_1 + \lambda_3)}e^{-(\lambda_2 + \lambda_3)} = p_1p_2(e^{\lambda_3} - 1)\\
+\Rightarrow Corr(Z_1,Z_2) = \frac{p_1p_2(e^{\lambda_3} - 1)}{p_1(1 - p_1)p_2(1 - p_2)}
+$
+\subparagraph{(c)}
+$\displaystyle
+e^{-\lambda_1} \leq 1 \\
+\Rightarrow p_1e^{\lambda_3} \leq 1 \\
+\Rightarrow p_1(e^{\lambda_3} - 1) \leq 1 - p_1 \\
+\Rightarrow \frac{p_1(e^{\lambda_3} - 1 )}{\sqrt{1 - p_1}}\leq \sqrt{1 - p_1} \\
+\Rightarrow Corr(Z_1,Z_2) \leq \sqrt{\frac{p_2(1 - p_1)}{p_1(1 - p_2)}}\\
+\text{同理 }e^{-\lambda_2} \leq 1 \Rightarrow \; \frac{p_2(e^{\lambda_3}- 1)}{\sqrt{1 - p_2}} \leq \sqrt{1 - p_2}\\
+\Rightarrow Corr(Z_1,Z_2) = \sqrt{\frac{p_1(1 - p_2)}{p_2(1 - p_1)}}\\
+\Rightarrow  Corr(Z_1,Z_2) = min{\sqrt{\frac{p_2(1 - p_1)}{p_1(1 - p_2)}},\sqrt{\frac{p_1(1 - p_2)}{p_2(1 - p_1)}}}
+$
+\paragraph{5.60}
+\subparagraph{(a)}
+$\displaystyle
+\because \; a \leq w \leq b
+$
+\begin{flalign*}
+\begin{split}
+P(W = w) & = P(X \leq w , Y < f(X))\\
+& \int_{a}^{w}\int_{0}^{f(x)}\mathrm{d}x\mathrm{d}yf_{X,Y}(x,y)\\
+& = \frac{1}{c(a - b)}\int_{a}^{w}f(x)\mathrm{d}x\\
+\end{split}&
+\end{flalign*}
+\subparagraph{(b)}
+仿照书中的办法,按下面步骤生成随机变量：
+\begin{enumerate}
+\item 生成分别服从 $\mathrm{uniform}(a,b)\quad\mathrm{uniform}(0,c)$的独立随机变量$(X,Y)$ 。
+\item 如果$Y < f(X)$，则$W = X$,否则重新进行第一步。
+\end{enumerate}
+则$W$的分布满足$f(x)$。
+\end{document}

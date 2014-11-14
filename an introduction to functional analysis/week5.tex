@@ -1,0 +1,35 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\linespread{1.8}
+\begin{document}
+\paragraph{1}
+\begin{flalign*}
+\begin{split}
+<u_N,v> & = \sum_{k=1}^{N}<\mathcal{L}(e_k)e_k,v>\\
+& = \sum_{k=1}^{N}\mathcal{L}(e_k)<e_k,v>\\
+& = \mathcal{L}(\sum_{k=1}^{N}<e_k,v>e_k)\\
+& = \mathcal{L}(v)
+\end{split}&
+\end{flalign*}
+\paragraph{2}
+it's obvious that $u_N \in V_N$\\
+so $\mathcal{L}(u_N) = \|u_N\|^2$\\
+and $\displaystyle \mathcal{L}(u_N) = <\mathcal{L},u_N> \leq \|\mathcal{L}\|\|u_N\|$\\
+ $\Rightarrow \|u_N\| \leq \|\mathcal{L}\|$
+\paragraph{3}
+$\displaystyle \because \|u_N\|^2 = \sum_{k=1}^{N}\mathcal{L}^2(e_k) \leq \|\mathcal{L}\|^2\\
+\text{so we have } \sum_{k=1}^{\infty}|\mathcal{L}(e_k)|^2 \leq \|\mathcal{L}\|^2\\
+\text{using the lemma in week5 PDF we can know that there exist }u= \sum_{k=1}^{\infty}\mathcal{L}(e_k)e_k\\
+\text{which prove the convergence of }\sum_{k=1}^{\infty}\mathcal{L}(e_k)e_k\\
+\because u = \sum_{k=1}^{\infty}<u,e_k>e_k\\
+\|u - u\| = |\mathcal{L}(e_k) - <u,e_k>|^2 = 0\\
+\therefore <u,e_k> = \mathcal{L}(e_k) \; \forall k = 1 \dots \\
+\therefore \forall v \in \mathcal{H} v = \sum_{k=1}^{\infty}<v,e_k>e_k\\
+\mathcal{L}(v) = \mathcal{L}(\sum_{k=1}^{\infty}<v,e_k>e_k) = \sum_{k=1}^{\infty}<v,e_k>\mathcal{L}(e_k)\\
+ = <v,\sum_{k =1}^{\infty}\mathcal{L}(e_k)e_k> = <u,v>\\
+ \text{then prove the uniqueness of }u \; \text{if we have a}u^* \;s.t\; \forall v \\
+ <u^*,v> = \mathcal{L}(v)\\ 
+ \text{then}<u^*,v> = \mathcal{L}(e_k) \; \forall k \geq 0\\
+ u^* = \sum_{k=1}^{\infty}<u^*,e_k>e_k = \sum_{k=1}^{\infty}\mathcal{L}(e_k)e_k = u\\
+$
+\end{document}

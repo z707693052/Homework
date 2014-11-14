@@ -1,0 +1,47 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\linespread{1.8}
+\begin{document}
+\title{}
+\author{基科32 曾柯又 2013012266}
+\date{}
+\maketitle
+	\paragraph{5.11}
+	$VarS = E(S - \bar{S})^2 \geq 0$\\
+	而$VarS = ES^2 - (ES)^2 \Rightarrow ES \leq \sqrt{ES^2} = \sigma$\\
+	若$ES^2 > 0$此时假设$ES = \sigma$\\
+	记$\mathcal{A} =\{X| f(X) > 0 \}\\$
+	则$VarS = 0 \text{ 即 } E(S - ES)^2 = 0 \\
+	S - ES = 0 \text{ a.e in } \mathcal{A} \Rightarrow S^2 = (ES)^2 \text{ a.e in } \mathcal{A} \\
+	\text{ 由于每个随机变量是独立的，因此} VarX_n = 0 =\sigma^2$与条件矛盾\\
+	因此$ES > \sigma $
+	\paragraph{5.14}(a)记$\displaystyle \widetilde{U}_i = \sum_{j=1}^{n}a_{ij}X_j = \sum_{j=1}^{n}a_{ij}\sigma_jZ_j + \sum_{j=1}^{n}a_{ij}\mu_j\\
+	\overset{\text{记作}}{=}\sum_{j=1}^{n}\widetilde{a}_{ij}Z_j + \widetilde{\mu}_j \overset{\text{记作}}{=} U_i + \widetilde{\mu}_i\\
+	\text{采用同样的记号 } \widetilde{V}_r = \sum_{j=1}^{n}\widetilde{b}_{rj}Z_j + \widetilde{\mu}_r = V_r + \widetilde{\mu}_r\\
+	则 Cov(\widetilde{U}_i,\widetilde{V}_r) = 0\\
+	\Rightarrow Cov(U_i,V_r) = 0\\
+	\Rightarrow U_i\;,\;V_r\text{ 独立}\\
+	\Rightarrow U_i + \widetilde{\mu}_i \;,\;V_r + \widetilde{\mu}_r \text{ 独立}\\
+	\Rightarrow \widetilde{U}_i,\widetilde{V}_r \text{独立}\\$
+	(b)$\displaystyle Cov(\widetilde{U}_i,\widetilde{V}_r) = Cov(U_i,V_r)\\
+	\because EU_i = 0 \;,\; EV_r = 0\;,\; EZ_j^2 = 1\\
+	\therefore Cov(\widetilde{U}_i,\widetilde{V}_r) = EU_iV_r = E\sum_{j,k}\widetilde{a}_{ij}\widetilde{b}_{rk}Z_jZ_k = \sum_{j=1}^{n}\widetilde{a}_{ij}\widetilde{b}_{rj}Z_j^2 = \sum_{j=1}^{n}\widetilde{a}_{ij}\widetilde{b}_{rj}\\
+	\therefore Cov(\widetilde{U}_i,\widetilde{V}_r) = \sum_{j=1}^{n}a_{ij}b_{rj}\sigma_j^2
+	$
+	\paragraph{5.15}
+	(a)$\displaystyle \bar{X}_{n+1} = \sum_{i=1}^{n+1} = \frac{X_i}{n+1} = \frac{X_{n+1} + \sum_{i=1}^{n}X_i}{n+1} = \frac{X_{n+1}+n\bar{X}_n}{n+1}\\$
+	(b)
+	\begin{flalign*}
+	\begin{split}
+	nS_{n+1}^2  & = \sum_{i=1}^{n+1}(X_i -\bar{X}_{n+1})^2\\
+	& = \sum_{i=1}^{n+1}(X_i - \bar{X}_n + \bar{X}_n - \bar{X}_{n+1})^2 \\
+	& = \sum_{i=1}^{n+1}(X_i - \bar{X}_n)^2 + \sum_{i=1}^{n+1}(\bar{X}_n - \bar{X}_{n+1}) + \sum_{i=1}^{n+1}2(X_i - \bar{X}_n)(\bar{X}_n - \bar{X}_{n+1})\\
+	& = nS_{n}^2 + (X_{n+1} - \bar{X}_n)^2 -(n+1)(\bar{X}_{n+1} - \bar{X}_n)^2
+	\end{split}&
+	\end{flalign*}
+	而$\displaystyle \bar{X}_{n+1} - \bar{X}_n = \frac{X_{n+1}+n\bar{X}_n}{n+1} -\bar{X}_n = \frac{X_{n+1} - \bar{X}_n}{n+1}$\\
+	因此$\displaystyle nS_{n+1}^2 = nS_n^2 + (1 - \frac{1}{n+1})(\bar{X}_n+1 - \bar{X}_n)^2 = nS^2_n + \frac{n}{n+1}(\bar{X}_{n+1} - \bar{X}_n)^2$
+	这两个式子可以用于求与均值或方差相关的一些量关于$n$的递推关系。
+	例如书中的关于Theorem 5.3.1(c) $\displaystyle \frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1}$的证明，便是利用上式并使用数学归纳法证明的。
+	其他还可以利用上面两式来得到关于$\bar{X}_n ,S^2_n$均值与方差的递推关系式，从而给出均值方差通项的另一种算法。
+	\end{document}

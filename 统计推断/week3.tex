@@ -1,0 +1,146 @@
+\documentclass[12pt,a4paper]{ctexart}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{bm}
+\linespread{1.7}
+\begin{document}
+\title{}
+\author{基科32 曾柯又 2013012266}
+\date{}
+\maketitle
+\paragraph{3.45}(a)
+\begin{flalign*}
+\begin{split}
+e^{-at}M_X(t) & =  e^{-at}\int_{-\infty}^{\infty}e^{tx}f(x)\mathrm{d}x\\
+& = \int_{-\infty}^{\infty}e^{t(x-a)}f(x)\mathrm{d}x\\
+& = \int_{a}^{\infty}e^{t(x-a)}f(x)\mathrm{d}x + \int_{-\infty}^{a}e^{t(x-a)}f(x)\mathrm{d}x
+\end{split}&
+\end{flalign*}
+因为$e^{t(x-a)} > 0$ 恒成立，且当 $0 < t < h  \;,\; x \geq a $时, $e^{t(x-a)} \geq 1$ 故有：
+$$e^{-at}M_X(t) \geq \int_{a}^{\infty}f(x)\mathrm{d}x = P(X \geq a)$$
+(b) 因为 $e^{t(x-a)} > 0$ 恒成立，且当 $-h < t < 0  \;,\; x \leq a $时, $e^{t(x-a)} \geq 1$可知：
+\begin{flalign*}
+\begin{split}
+e^{-at}M_X(t) & = \int_{-\infty}e^{t(x-a)}f(x)\mathrm{d}x + \int_{a}^{\infty}e^{t(x-a)}f(x)\mathrm{d}x\\
+& \geq \int_{-\infty}^{a}f(x)\mathrm{d}x\\
+& = P(X \leq a)
+\end{split}&
+\end{flalign*}
+(c)在a中，实际只用到了$x \geq a$时，$e^{t(x-a)} \geq 1$，以及$e^{t(x-a)} \geq 0$恒成立的条件。因此可以猜想当$h(t,X)$满足: $x\geq \;,\; t \geq 0$时$h(t,x) \geq 1$ 且$h(t,x) \geq 0$恒成立时，不等式成立。
+\noindent 证明：
+\begin{flalign*}
+\begin{split}
+Eh(t,X) & = \int_{-\infty}^{\infty}h(t,X)f(x)\mathrm{d}x \geq \int_{0}^{\infty}h(t,x)f(x)\mathrm{d}x \geq \int_{0}^{\infty}f(x)\mathrm{d}x\\
+& = P(X \geq 0)
+\end{split}&
+\end{flalign*}
+\paragraph{3.47}
+显然当$t \leq 0$时，不等式成立，因此只需考虑$t > 0$的情况\\
+先考虑$P(0 \leq Z \leq t)$\\
+因为当$0 \leq z \leq t$时$\frac{tz}{1+t^2} \leq \frac{t^2}{1+t^2} < 1$故：
+\begin{flalign*}
+\begin{split}
+P(0\leq z \leq t) & = \int_{0}^{t}\frac{e^{-\frac{z^2}{2}}}{\sqrt{2\pi}}\mathrm{d}z\\
+& \leq \int_{0}^{t}\frac{tz}{1+t^2}\frac{e^{-\frac{z^2}{2}}}{\sqrt{2\pi}}\mathrm{d}z\\
+& = \frac{1}{\sqrt{2\pi}}\frac{t}{1 + t^2}\left.(-e^{\frac{z^2}{2}})\right|^t_0\\
+& = \frac{1}{\sqrt{2\pi}}\frac{t}{1 + t^2}(1 - e^{-\frac{t^2}{2}})
+\end{split}&
+\end{flalign*}
+而$\displaystyle P(|Z|\geq t) = 1 - P(|Z|\leq t) = 1 - 2P(0 \leq Z \leq t)$\\
+故$\displaystyle P(|Z| \geq t) \geq 1 - \frac{2}{\sqrt{\pi}}\frac{t}{1 + t^2}(1 - e^{-\frac{t^2}{2}})$\\
+又 $\displaystyle \frac{1}{t} + t \geq 2 \ge \sqrt{\frac{2}{\pi}}\Rightarrow\sqrt{\frac{2}{\pi}}\frac{t}{1+t^2}\geq 1$\\
+可得 $\displaystyle P(|Z| \geq t) \geq \sqrt{\frac{2}{\pi}}\frac{t}{1 + t^2}e^{-\frac{t^2}{2}} $
+\paragraph{补1}(a) 设$X_n = o_p(1)\;,\; Y_n = O_p(1) \;,\; \forall \epsilon_0 > 0$ ， 现估计$P(|X_nY_n| \geq \epsilon_0)$\\
+由$O_p(1)$的定义可知$\forall \epsilon > 0 \;,\; \exists M,N \text{使得}P(|Y_n| > M) \leq \epsilon$对任意$n > N$
+\begin{flalign*}
+\begin{split}
+P(|X_nY_n| \geq \epsilon_0) & = P(|X_nY_n| \geq \epsilon_0 , |Y_n| \geq M) + P(|X_nY_n| \geq \epsilon_0 , |Y_n| < M)\\
+& = P(|X_nY_n| \geq \epsilon_0\Big||Y_n| \geq M)P(|Y_n| \geq M) + P(|X_nY_n| \geq \epsilon_0 , |Y_n| < M)\\
+& \leq \epsilon + P(|X_nY_n| \geq \epsilon_0 , |Y_n| < M)\\
+& \leq \epsilon + P(|X_n| > \frac{\epsilon_0}{M})\\
+\end{split}&
+\end{flalign*}
+故可得 $\displaystyle \lim\limits_{n \to \infty} P(|X_nY_n| \geq \epsilon_0) \leq \epsilon$\\
+由$\epsilon$的任意性，可得$\lim\limits_{n \to \infty} P(|X_nY_n| \geq \epsilon_0) = 0$\\
+即 $X_nY_n = o_p(1) \Rightarrow o_p(1)O_p(1) = o_p(1) $ \\
+(b)仍设$\displaystyle X_n = o_p(1)\;,\; Y_n = O_p(1)$容易证明$X_n$也满足$O_p(1)$的性质\\
+又$\displaystyle P(|X_n + Y_n| \geq M) \leq P(|X_n| \geq \frac{M}{2})  + P(|Y_n| \geq \frac{M}{2})\\
+ \forall \epsilon > 0 \; ,\text{由}O_p(1)\text{的定义}\exists M，使得P(|X_n| \geq \frac{M}{2}) \leq \frac{\epsilon}{2} \;,\;  P(|Y_n| \geq \frac{M}{2}) \leq \frac{\epsilon}{2}$ 可得：\\
+$P(|X_n + Y_n| \geq M) \leq \epsilon$
+即$O_p(1)+o_p(1) = O_p(1)$ \\
+(c)首先固定$\epsilon > 0$,由$X_n \xrightarrow{\mathcal{D}} X$,可知$\lim\limits_{n \to \infty}P(X_n < a) = P(X < a) ,\forall a$成立 ,故 $\exists N,\;\text{使得} \forall n > N \; \text{有}  \big|P(|X_n| > a) - P(|X| > a)\big| \leq \frac{\epsilon}{2}$,再取$M_0$ 使得$P(|X| \geq M_0) \leq \frac{\epsilon}{2}$ 可得$\forall n > N \; \text{有} P(|X_n| > M_0) \leq \epsilon$ 即$X_n = O_p(1)$。\\
+(d)先证第一部分：设$\alpha > 0$为任意常数，对任意$n$ 定义：
+\[ U_{n,k} = 
+\begin{cases}
+X_k & |X_k| < \alpha n\\
+0 & |X_k| \geq \alpha n
+\end{cases}
+\quad V_{n,k} = 
+\begin{cases}
+0 & |X_k| < \alpha n\\
+X_k &|X_k| \geq \alpha n
+\end{cases}
+\]
+$\displaystyle k = 1 \dots n ,\text{并定义}\bar{X}_n = \sum_{k = 1}^{n}U_{n,k} , \bar{V}_n = \sum_{k = 1}^{n}V_{n,k} ,\text{且可知}X_n = U_{n,k} +V_{n,k}\\
+Var(\bar{U}_n) = \frac{1}{n}Var(U_{n,1}) \leq \frac{1}{n}E(U_{n,1}^2) = \frac{1}{n}\int_{|x| < \alpha n}|x|^2f(x)\mathrm{d}x \leq \alpha E|X_1|\\
+\text{又}E(\bar{U}_n) = E(U_{n,1}) \rightarrow E(X_1)  = \mu \quad(\text{当}n \to \infty)\\
+E(\bar{U}_n - \mu)^2  = E (\bar{U}_n - EU_{n,1} + EU_{n,1} - \mu)^2\\
+ = E\Big( (\bar{U}_n - EU_{n,1})^2 - 2(\bar{U}_n - EU_{n,1})(EU_{n,1} - \mu) + (EU_{n,1} - \mu)^2\Big)\\
+ = E(\bar{U}_n - EU_{n,1})^2 - (EU_{n,1} - \mu)^2\\
+ \text{故当}n \to \infty \text{时} E(\bar{U}_n - \mu)^2 \to \alpha E|X_1|
+ \text{可知:}\\
+ \lim\limits_{n \to \infty} P(|\bar{U}_n - \mu| \leq \epsilon) \leq \frac{E(\bar{U}_n - \mu)}{\epsilon^2} =  \frac{\alpha E|X_1|}{\epsilon^2}\\
+ \text{另一方面:}\\
+ P(\bar{V}_n \neq 0 ) \leq \sum_{k = 1}^{n}P(V_{n,k} \neq 0) = \sum_{k = 1}^{n}\int_{|x|>\alpha n}f(x)\mathrm{d}x \leq \sum_{k = 1}^{n} \frac{1}{\alpha n}\int_{|x|>\alpha}|x|f(x)\mathrm{d}x\\
+ = \frac{1}{\alpha}\int_{|x|>\alpha n}|x|f(x)\mathrm{d}x\\
+ \text{可知当}n \to \infty \text{时}P(\bar{V}_n \neq 0 )  \to 0
+$
+ \begin{flalign*}
+ \begin{split}
+ \text{而} P(|\bar{X}_n - \mu|\le \epsilon) &
+  = P(|\bar{U}_n+ \bar{V}_n- \mu| \leq \epsilon)\\
+  &\leq P\big(|\bar{U}_n+ \bar{V}_n- \mu| \leq \epsilon,\bar{V}_n = 0\big) + P(\bar{V}_n \neq 0) \\ 
+  &\leq P(|\bar{U}_n - \mu| \leq \epsilon) + P(\bar{V}_n \neq 0)
+ \end{split}&
+ \end{flalign*}\\
+ $\displaystyle \text{有}\lim\limits_{n \to \infty}P(|\bar{X}_n - \mu|\le \epsilon) \leq \frac{\alpha E|X_1|}{\epsilon^2}
+ $\\
+ 由于$\alpha$是任意待定的，故有$\lim\limits_{n \to \infty}P(|\bar{X}_n - \mu|\le \epsilon)  = 0$\\
+ 即$\bar{X}_n - \mu \xrightarrow{\mathcal{P}} 0 $即$\bar{X}_n - \mu = o_p(1)$\\
+ 再证第二部分：记$VarX_i = \sigma^2$ 则 $Var\bar{X}_n = \frac{\sigma^2}{n}$\\
+ 有
+ $\displaystyle P(\sqrt{n}|X_n - \mu| \geq M) \leq \frac{nE|X_n - \mu|^2}{M^2} = \frac{nVar\bar{X}_n}{M^2} = \frac{\sigma^2}{M^2}$\\
+ 故$\forall \epsilon \; \exists M \; \text{使得}P(\sqrt{n}|X_n - \mu| \geq M) \leq \epsilon \Rightarrow \sqrt{n}(X_n - \mu) = O_p(1) $\\
+ 即 $X_n - \mu = O_p(n^{-\frac{1}{2}})$
+\paragraph{补2}
+(a) 记$\bar{X}_n = \frac{1}{n}\sum_{i = 1}^{n}X_i$,首先有$E\bar{X}_n = EX_1 = p$\\
+由Hoeffding 不等式 ：\\
+$P(|\bar{X}_n - p| \geq t) \leq 2\exp(-\frac{2n^2t^2}{\sum_{i=1}^{n}(b_i - a_i)}) $ 对于二项分布$(b_i - a_i) = 1$即有:\\
+$P(|\bar{X}_n - p| \geq t) \leq 2\exp(-2nt^2)$ ，对$n$求和 ，可得：\\
+$\displaystyle \sum_{n =1}^{\infty}P(|\bar{X}_n - p| \geq t) \leq \sum_{n = 1}^{\infty}2\exp(-2nt^2) = 2\frac{e^{-2t^2}}{1 - e^{-2t^2}} < \infty$\\
+由 Borel–Cantelli lemma可知 ：
+$\lim\limits_{n \to \infty}\bar{X}_n \overset{a.s}{=} p$\\
+(b)$\displaystyle P(|\sqrt{\frac{n}{\log n}}(\bar{X}_n - p)| \geq t) = P(|\bar{X}_n - p| \geq \sqrt{\frac{\log n}{n}}t)\\
+ \leq 2\exp(-2\log nt^2) = 2(\frac{1}{n})^{2t^2} \\
+ \lim\limits_{n \to \infty}P(|\sqrt{\frac{n}{\log n}}(\bar{X}_n - p)| \geq t) = 0 \Rightarrow \sqrt{\frac{n}{\log n}}(\bar{X}_n - p) \xrightarrow{\mathcal{P}} 0 $\\
+ 即：
+  $X_n - p$依概率趋于0的速度至少是$o(\sqrt{\frac{\log n}{n}})$\\
+ (3)速度任意快的意义应该是$\displaystyle \forall A_n \text{都有} \frac{Z_n}{A_n} = o_p(1)$,速度的临界值的意义应该是$\displaystyle \exists A_n \; s.t \; \frac{Z_n}{A_n} = O_p(1)$\\
+ 假设有一个速度临界值$A_n$，即有$\displaystyle \frac{Z_n}{A_n} = O_p(1)$,则应满足:\\
+ $\displaystyle \forall \epsilon,\exists M,N \; s.t \; \forall n>N \;,\;P(|\frac{Z_n}{A_n}| > M) \leq \epsilon$\\
+ 将$Z_n = \bar{X}_n - p$带入，可得 $P(|\bar{X}_n - p|^2 > (A_nM)^2) < \epsilon$\\
+ 又由$\displaystyle P(|\bar{X}_n - p|^2 > (A_nM)^2) < \frac{E|\bar{X}_n - p|^2}{(A_nM)^2}$\\
+ 并可以知道$n\bar{X}_n$的分布满足$B(n,p)$，于是$\displaystyle E|\bar{X}_n - p|^2 = Var\bar{X}_n = \frac{p(1-p)}{n}$\\
+ 因此$\displaystyle P(|\bar{X}_n - p|^2 > (A_nM)^2) < \frac{np(1-p)}{(A_nM)^2}$\\
+ 故可以取$\displaystyle A_n = \frac{1}{\sqrt{n}}$，并取$M = \sqrt{\frac{p(1-p)}{\epsilon}}$\\
+ 有 $\displaystyle P(|\sqrt{n}Z_n| > M) \leq \epsilon$。即$\bar{X}_n$收敛到$p$的速度临界值为$O(\frac{1}{\sqrt{n}})$
+ \paragraph{补3}
+ 虽然我知道条件是：
+\begin{enumerate}
+\item $\bm\Theta$ 是紧集。
+\item $U(X, \theta )$ 在所有$\theta \in \bm\Theta$ 处，对几乎处处的$x$连续,并且对所有$\theta \in \bm\Theta$是关于$x$的可测函数。
+\item 存在一个函数$d(x)$满足$Ed(X) < \infty$ 并且：\\
+$|f(x.\theta)| \leq d(x) \forall \theta \in \bm\Theta$
+\end{enumerate}
+但是证不出来。。。
+\end{document}

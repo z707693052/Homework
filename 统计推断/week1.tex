@@ -1,0 +1,228 @@
+\documentclass[12pt,a4paper]{ctexart}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\linespread{1.7}
+\begin{document}
+\author{曾柯又  2013012266 基32}
+\paragraph{2.17} (a) $\displaystyle \int_{0}^{m}f(x)\mathrm{d}x = m^3 = \frac{1}{2} \Rightarrow  m = (\frac{1}{2})^{\frac{1}{3}}$ \\
+(b) $f(-x) = f(x)$ 因此 $\displaystyle \int_{-\infty}^{0}f(x)\mathrm{d}x = \int_{0}^{\infty}f(x)\mathrm{d}x = \frac{1}{2}$ 因此 $m = 0$.
+
+\paragraph{2.18}$\displaystyle E|x-a| = \int_{-\infty}^{\infty}|x-a|f(x)\mathrm{d}x = \int_{0}^{\infty}(x-a)f(x)\mathrm{d}x + \int_{-\infty}^{0}(a-x)f(x)\mathrm{d}x$
+\begin{equation*}
+\begin{split}
+ E|x-a| - E|x-m| 
+& = 2\int_{a}^{m}xf(x)\mathrm{d}x + \int_{-\infty}^{a}af(x)\mathrm{d}x - \int_{a}^{\infty}af(x)\mathrm{d}x\\
+& = 2\int_{a}^{m}xf\mathrm{d}x+a \left (1 - 2\int_{a}^{\infty}f(x)\mathrm{d}x \right )\\
+& = 2\int_{a}^{m}xf\mathrm{d}x + a\left (\int_{m}^{\infty}f(x)\mathrm{d}x - 2\int_{a}^{\infty}f(x)\mathrm{d}x \right )\\
+& = 2\int_{a}^{m}(m-a)f(x)\mathrm{d}x \quad or \quad 2\int_{m}^{a}(a-m)f(x)\mathrm{d}x
+\end{split}
+\end{equation*}
+因为 $\displaystyle\int_{a}^{m}(m-a)f(x)\mathrm{d}x \geq 0 $\\
+所以 $\displaystyle E|x -a| - E|x -m| \geq 0 \Rightarrow E|x-a| \geq E|x-m|$ \\
+即 $\displaystyle \min_{a}E|x-a| = E|x-m|.$
+\paragraph{2.27}(a) $f(x) = \frac{1}{\sqrt{2\pi}}e^{-{x^2}/2}$\\
+(b) \[
+ f(x) =
+  \begin{cases}
+   \frac{1}{\pi}\sin^2(x) & \text{if } x \in [-\pi,\pi] \\
+   0       & \text{others}
+  \end{cases}
+\]
+(c)假众数在$b$处 且$b\neq a$,不妨假设$a<b$ ,由题意可知，对$a<x<b , f(a)<f(x)<f(b)$, 因为a是对称点，所以存在点$x' < a$ 满足 $a - x' =x -a$,有 $f(x') = f(x)$此时，$f(x') > f(a)$ 且$x' < a < b$与$b$是$f(x)$ 的众数矛盾。故$a = b$，即$a$是$f(x)$的众数。\\
+(d) $ x = 0$
+\paragraph{3.13}(a)$\displaystyle P \left( X=x|\lambda \right) = \frac{e^{-\lambda}\lambda^x}{x!} \quad 并且 \quad P(X = 0) = e^{-\lambda}$ \\ 
+所以$\displaystyle \quad P\left(X \ge 0 \right) = 1 - e^{-\lambda}\\
+P(X_T = x) = \frac{e^{-\lambda}}{1-e^{-\lambda}}\frac{\lambda^x}{x!}$\\
+所以 $\displaystyle EX_T = \sum_{x=1}^{\infty}xP(X_T = x) = \frac{\lambda e^{-\lambda}}{1-e^{-\lambda}}\sum_{x=1}^{\infty}\frac{\lambda^{x-1}}{(x-1)!} = \frac{\lambda}{1-e^{-\lambda}}$
+\begin{flalign*}
+\begin{split}
+Var X_T 
+& = EX_T^2 - (EX_T)^2\\
+&=\sum_{x=1}^{\infty}x^2\frac{e^{-\lambda}\lambda^x}{(1-e^{-\lambda})x!} - (EX_T)^2 \\
+& = \frac{\lambda(\lambda + 1)}{1-e^{-\lambda}} - \left(\frac{\lambda}{1-e^{-\lambda}}\right)^2\\
+& = \frac{\lambda}{1-e^{-\lambda}}(1 - \frac{\lambda e^{-\lambda}}{1 - e^{-\lambda}})
+\end{split}&
+\end{flalign*}
+(b) 
+$\displaystyle P(X = x) = {r+x-1 \choose x}p^r(1-p)^x \;
+,\; P(X > 0) = 1 - P(X = 0) = 1 - p^r\\
+P(X_T = x) = {r+x-1 \choose x}\frac{p^r}{1-p^r}(1-p)^x\\
+EX_T = \sum_{x=1}^{\infty}x{r+x-1 \choose x}\frac{p^r}{1-p^r}(1-p)^x = \frac{EX}{1-p^r} = r\frac{1-p}{p(1-p^r)}$ 
+\begin{flalign*}
+\begin{split}
+Var X_T 
+& = EX_T^2 - (EX_T)^2 =  \frac{EX^2}{1-p^r} -(EX_T)^2 \\
+& = \frac{VarX + (EX)^2}{1-p^r} - (EX_T)^2 \\
+& = \frac{r(1 - p)+ r^2(1-p)^2}{p^2(1-p^r)} - [\frac{r(1 - p)}{p(1-p^r)}]^2
+\end{split}&
+\end{flalign*}
+\paragraph{3.24}(a)
+$\displaystyle f(x) = \frac{1}{\beta}e^{-x/\beta} \quad, \quad Y = X^{1/ \gamma} = g(X) \quad , \quad  g^{-1}(y) = y^\gamma\\
+f_Y(y) = f_X(g^{-1}(y))\frac{\mathrm{d}}{\mathrm{d}y}g^{-1}(y) = \frac{1}{\beta}e^{-y^\gamma/\beta} \gamma y^{\gamma - 1}$
+\begin{flalign*}
+\begin{split}
+EY 
+& = \int_{0}^{\infty}\frac{\gamma}{\beta}y^\gamma e^{-y^\gamma /\beta}\mathrm{d}y = \int_{0}^{\infty}ye^{-y^\gamma/\beta}\mathrm{d}(y^\gamma/\beta)\\
+& = \int_{0}^{\infty}(\beta t)^{1/\gamma}e^{-t}\mathrm{d}t = \beta^{1/\gamma}\Gamma(1 + \frac{1}{\gamma})\\
+& = \frac{\beta^{1/\gamma}}{\gamma}\Gamma(\frac{1}{\gamma})\\
+\end{split}&
+\end{flalign*}
+\begin{flalign*}
+\begin{split}
+VarY 
+& = EY^2 - (EY)^2\\
+& = \int_{0}^{\infty}y^2e^{-y^\gamma/\beta}\mathrm{d}(\frac{y^\gamma}{\beta}) - (EY)^2\\
+& = \int_{0}^{\infty}(\beta t)^{2/\gamma}e^{-t}\mathrm{d}t -(EY)^2\\
+& = \beta^{2/\gamma}[\Gamma(\frac{2}{\gamma}+1) - \Gamma^2(\frac{1}{\gamma} + 1)]\\
+\end{split}&
+\end{flalign*}
+(b)$\displaystyle f_X(x) = \frac{1}{\beta}e^{-x/\beta} \quad , \quad Y = (2X/\beta)^\frac{1}{2} = g(x) \quad , \quad g^{-1}(y) = \frac{\beta y^2}2 \\
+f_Y(y) = f_X(g^{-1}(y))\frac{\mathrm{d}}{\mathrm{d}y}g^{-1}(y) = ye^{-y^2/2} \\
+EY  = \int_{0}^{\infty}yf_Y(y)\mathrm{d}y = \int_{0}^{\infty}y^2e^{-\frac{y^2}{2}}\mathrm{d}y
+ = \sqrt{\frac{\pi}{2}}\\
+ VarY = EY^2 - (EY)^2 = \int_{0}^{\infty}y^3e^{\frac{-y^2}{2}}\mathrm{d}y - \frac{\pi}{2}
+ = \int_{0}^{\infty}2te^{-t}\mathrm{d}t -\frac{\pi}{2}\\
+ = 2 - \frac{\pi}{2}
+ $\\
+ (c) $\displaystyle
+ f_X(x) = \frac{1}{\Gamma(a)b^a}x^{a-1}e^{-x/b} \quad , \quad Y = \frac{1}{X} , g^{-1}(y) = \frac{1}{y}\\
+ f_Y(y) = \frac{1}{\Gamma(a)b^ay^{a+1}}e^{-\frac{1}{by}}
+$
+\begin{flalign*}
+\begin{split}
+EY & = \int_{0}^{\infty}yf_Y(y)\mathrm{d}y = \int_{0}^{\infty}\frac{1}{x}\frac{1}{\Gamma(a)b^a}x^{a-1}e^{-x/b}\mathrm{d}x\\
+& = \int_{0}^{\infty}\frac{1}{\Gamma(a)b^a}x^{a-2}e^{-x/b}\mathrm{d}x = \frac{\Gamma(a-1)}{\Gamma(a)b}\\
+& = \frac{1}{(a-1)b}
+\end{split}&
+\end{flalign*}
+\begin{flalign*}
+\begin{split}
+EY^2 & = 
+\int_{0}^{\infty}y^2f_Y(y)\mathrm{d}y  = \int_{0}^{\infty}\frac{1}{x^2\Gamma(a)b^a}x^{a-1}e^{-x/b}\mathrm{d}x \\
+& = \int_{0}^{\infty}\frac{1}{\Gamma(a)b^a}x^{a-3}e^{-x/b}\mathrm{d}x = \frac{\Gamma(a-2)}{\Gamma(a)b^2} \\
+& = \frac{1}{(a-1)(a-2)b^2}
+\end{split}&
+\end{flalign*}
+$VarY = EY^2 - (EY)^2 = \frac{1}{(a-1)^2(a-2)b^2}$\\
+(d)$\displaystyle
+f_X(x) = \frac{x}{\sqrt{\pi \beta}} x^{1/2}e^{-x/\beta} \; , \;  Y = (x/\beta)^{1/2} \; , \; g^{-1}(y) = \beta y^2\\
+f_Y(y) = \frac{4}{\sqrt{\pi}}y^2e^{-y^2}\\
+EY = \frac{2}{\sqrt{\pi}}\int_{0}^{\infty}y^2e^{-y^2}\mathrm{d}(y^2)= \frac{2}{\sqrt{\pi}}\\
+EY^2 = \int_{0}^{\infty}\frac{2}{\sqrt{\pi}}y^3e^{-y^2}\mathrm{d}(y^2) = \int_{0}^{\infty}\frac{2}{\sqrt{\pi}}t^{2/3}e^{-t}\mathrm{d}t = \frac{x}{\sqrt{\pi}}\Gamma(\frac{5}{2}) = \frac{3}{2}\\
+VarY = EY^2 - (EY)^2 = \frac{9}{4} - \frac{4}{\pi}
+$\\
+(e)$\displaystyle
+f_X(x) = e^{-x} \; , \; Y = \alpha - \gamma \log(X) \; , \; g^{-1}(y) = e^{\frac{\alpha-y}{\gamma}}\\
+f_Y(y) = \frac{1}{\gamma}\exp(-e^{\frac{\alpha - y}{\gamma}})e^{\frac{\alpha - y }{\gamma}}\\
+EY = \int_{-\infty}^{\infty}yf_Y(y)\mathrm{d}y = \int_{0}^{\infty}(\alpha - \gamma log(x))e^{-x}\mathrm{d}x = \alpha - \gamma\int_{0}^{\infty}\log(x) e^{-x}\mathrm{d}x\\
+\text{因为} \; \log(x) = \left.\frac{dx^t}{dt} \right|_{t=0} \\
+\int_{0}^{\infty}\log(x)e^{-x}\mathrm{d}x = \left.\frac{\mathrm{d}}{\mathrm{d}t}(\int_{0}^{\infty}x^te^{-x}\mathrm{d}x)\right|_{t = 0} = \left.\Gamma'(t+1)\right|_{t= 0} = \Gamma'(1)\\
+\text{并且} \; \Gamma'(z) = \Gamma(z)\phi(z) \;,\; \phi(1) = -c \,(\text{c 是欧拉常数}) \Rightarrow \Gamma'(1) =-c\\
+EY = \alpha + \gamma c\\
+EY^2 = \int_{-\infty}^{\infty}y^2f_Y(y)\mathrm{d}y = \int_{0}^{\infty}(\alpha - \gamma\log(x))^2e^{-x}\mathrm{d}x\\
+\int_{0}^{\infty}\log^2(x)e^{-x}\mathrm{d}x =2 \left.\frac{d^2}{dt^2}(\int_{0}^{\infty}x^te^{-x}\mathrm{d}x)\right|_{t = 0} = \Gamma''(1)\\
+\Gamma''(z) = \Gamma'(z)\phi(z) + \Gamma(z)\phi'(z)\\
+\phi'(1) = \frac{\pi^2}{6} \Rightarrow \Gamma''(1) = c^2 + \frac{\pi^2}{6} \Rightarrow \\
+EY^2 = \int_{0}^{\infty}(\alpha - \gamma\log(x))^2e^{-x}\mathrm{d}x = \alpha^2 + 2\alpha\gamma c + \gamma^2(c^2 + \frac{\pi^2}{6})(\text{c 是欧拉常数})\\
+Var Y = EY^2 - (EY)^2 = \frac{\gamma^2\pi^2}{6}
+ $
+\paragraph{3.25}
+$\displaystyle
+P(t\leq T \leq t + \delta) = P(t \leq t + \delta) - P(T \leq t) = F_T(t+\delta) - F_T(t)\\
+h_T(t) = \lim_{\delta \to \infty}\frac{F_T(t+\delta) - F_T(t)}{\delta}\frac{1}{F_T(t)} \\
+= \frac{f_T(t)}{1-F_T(t)} = -\log\Big(1 - F_T(t)\Big)
+$
+\paragraph{3.26}
+(a)$\displaystyle
+f_T(t) = \frac{1}{\beta^{-t/\beta}} \quad , F_T(t) = 1 - e^{-t/\beta}\\
+h_T(t) = \frac{1}{\beta}
+$\\
+(b)$\displaystyle
+f_T(t) = \frac{\gamma}{\beta}t^{\gamma - 1}e^{-t^\gamma/\beta}\quad , \quad F_T(t) = \int_{0}^{t}f_T(s)\mathrm{d}s = 1 - e^{-t^\gamma/\beta}\\
+h_T(t) = \frac{\gamma}{\beta}t^{\gamma - 1}
+ $\\
+ (c)$\displaystyle
+ F_T(t) = \frac{1}{1+e^{-(t -\mu)/\beta}} \quad , \quad f_T(t) = F_T'(t) = \frac{e^{-(t - \mu)/\beta}}{\beta(1 + e^{-(t - \mu)/\beta})^2}\\
+ h_T(t) = \frac{1}{\beta(1+e^{-(t-\mu)/\beta})}
+ $
+ \paragraph{3.28}
+ (a) 
+ $\displaystyle
+ f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{\frac{-(x-\mu)^2}{(2\sigma^2)}} = \frac{1}{\sqrt{2\pi}\sigma}e^{\frac{-\mu^2}{2\sigma^2}}e^{\frac{-x^2}{\sigma^2}+\frac{\mu x}{\sigma^2}}\\
+ h(x) = 1 \quad c = \frac{1}{\sqrt{2\pi}\sigma}e^{\frac{-\mu^2}{2\sigma^2}} \quad \omega_1 = \frac{-1}{2\sigma^2} \quad t_1 = x^2 \quad \omega_2 = \frac{\mu}{\sigma^2} \quad t_2 = x
+ $\\
+ (b) 
+ $\displaystyle
+ f(x) = \frac{1}{\Gamma(\alpha)\beta^\alpha}x^{\alpha - 1}e^{-x/\beta} = \frac{1}{\Gamma(\alpha)\beta^\alpha}e^{(\alpha - 1)\log x - x/\beta}\\
+ h(x) = 1 \; , \; c(\alpha,\beta) = \frac{1}{\Gamma(\alpha)\beta^\alpha} \; , \; \omega_1 = \alpha -1 \;,\; t_1 = \log x \;,\; \omega_2 = -\frac{1}{\beta} \;,\; t_2 = x\\
+ $
+ (c)$\displaystyle
+ f(x) = \frac{1}{B(\alpha,\beta)}x^{\alpha - 1}(1 - x)^{\beta - 1} = \frac{1}{B(\alpha,\beta)}e^{(\alpha - 1)\log x + (\beta - 1)\log(1- x)}\\
+ h(x) = 1 \;,\; c(\alpha,\beta) = \frac{1}{B(\alpha,\beta)} \;,\; \omega_1 = \alpha - 1  \;,\; t_1 = \log x  \;,\;  \omega_2 = \beta - 1  \;,\;  \\t_2 = \log(1- x)
+ $\\
+ (d)$\displaystyle
+ f(x) = \frac{e^{-\lambda}\lambda^x}{x!} = \frac{e^{-\lambda}}{x!}e^{\lambda\log x}\\
+ h(x) = \frac{1}{x!}  \;,\; c(\lambda) = e^{-\lambda} \;,\; \omega_1 = \lambda  \;,\;  t_1 = \log x
+ $\\
+ (e)$\displaystyle
+ f(x) = {r+x-1 、\choose x}p^t(1-p)^x = {r+x-1 \choose x}p^re^{(1-p)\log x}\\
+ h(x) = 1 {r+x -1 \choose x}  \;,\; c(p) = p^r \;,\; \omega_1 = 1- p  \;,\; t_1 = \log x
+ $
+ \paragraph{3.41}
+ (a)$\displaystyle f(x|\mu) = \frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{(x-\mu)^2}{2\sigma^2}x)\\
+ \text{设}f_1(x)=f(x|\mu_1) \; , \; f_2(x) = f(x|\mu_2) \;,\; \text{且} \mu_1 < \mu_2\\
+ F_1(x) = \int_{-\infty}^{x}f_1(t)\mathrm{d}t \quad , \quad F_2(x) = \int_{-\infty}^{x}f_2(t)\mathrm{d}t\\
+ \text{因为}  f_2(x) =f_1\big(x - (\mu_2 - \mu_1)\big)  \\
+ \text{所以} F_2(x) = \int_{-\infty}^{x}f_1\big(t - (\mu_2 - \mu_1)\big)\mathrm{d}t = F_1(x) - \int_{x-(\mu_2 - \mu_1)}^{x}f_1(t)\mathrm{d}t\\
+ \text{因为} f_1(t) >0 \;,\; \text{所以} F_2(x) < F_1(x) （\text{对所有的x}）\\
+ \text{即} F(x|\mu) \text{关于$\mu$随机递增}\\
+ $
+ (b)
+ $\displaystyle
+ f(x|\beta) = \frac{1}{\Gamma(\alpha)\beta^\alpha} x^{\alpha -1}e^{-x/\beta} \\
+ \text{仍记}f_1(x)=f(x|\beta_1) \; , \; f_2(x) = f(x|\beta_2) \;,\; \text{且} \beta_1 < \beta_2\\
+  F_1(x) = \int_{-\infty}^{x}f_1(t)\mathrm{d}t \quad , \quad F_2(x) = \int_{-\infty}^{x}f_2(t)\mathrm{d}t\\
+  \text{因为}f_2(t) = \frac{\beta_1}{\beta_2}f_1(\frac{\beta_1}{\beta_2}t) \\
+  \text{所以}F_2(x) = \int_{0}^{x}f_1(\frac{\beta_1}{\beta_2}t)\frac{\beta_1}{\beta_2}\mathrm{d}t = \int_{0}^{\frac{\beta_1}{\beta_2}x}f_1(t)\mathrm{d}t\\
+  \text{而}\frac{\beta_1}{\beta_2}x < x \; , \; f_1(x) > 0 (\text{对} x \neq 0 ， x \neq \infty)\\
+  F_2(x) \leq F_1(x) \text{对所有x} \;,\; F_2(x) < F_1(x) \text{对某些x}\\
+  \text{即}f(x|\beta) \text{关于$\beta$随机递增}
+ $
+ \paragraph{3.42}(a)设标准函数为$f_0(x)$\\
+ $\displaystyle f_1(x) = f_0(x - \mu_1) \quad f_2(x) = f_0(x - \mu_2)  \; ,\; mu_1 < \mu_2\\
+ F_2(x) = \int_{0}^{x}f_2(t)\mathrm{d}t = \int_{0}^{x}f_1\big(t - (\mu_2 - \mu_1)\big)\mathrm{d}t = F_1(x) - \int_{x-(\mu_2 - \mu_1)}^{x}f_1(t)\mathrm{d}t \\
+ \text{因为} f_1(t) \geq 0 (\text{对所有x}) \;,\; \text{且}f_1(t) \ge 0 (\text{对某些x})\\
+  F_2(x) \leq F_1(x) (\text{对所有x}) \;,\; \text{且}F_2(x) \le F_1(x) (\text{对某些x})\\
+  f_0(x)\text{的位置函数族关于位置随机递增}\\
+ $
+ (b)设标准函数为$f_0(x)\;,\; x \in [0,\infty)$\\
+ $\displaystyle
+ f_1(x) = \frac{1}{\sigma_1}f_0(\frac{x}{\sigma_1}) \quad f_2(x) = \frac{1}{\sigma_2}f_0(\frac{x}{\sigma_2}) \;,\; \sigma_2 > \sigma_1\\
+ F2(x) = \int_{0}^{x}\frac{\sigma_1}{\sigma_2}f_1(\frac{\sigma_1}{\sigma_2}t)\mathrm{d}t = \int_{0}^{\frac{\sigma_1x}{\sigma_2}}f_1(t)\mathrm{d}t
+ = F_1(x)  - \int_{\frac{\sigma_1x}{\sigma_2}}^{x}f_1(t)\mathrm{d}t\\
+ \text{因为} f_1(t) \geq 0 (\text{对所有x}) \;,\; \text{且}f_1(t) \ge 0 (\text{对某些x})\\
+ F_2(x) \leq F_1(x) (\text{对所有x}) \;,\; \text{且}F_2(x) \le F_1(x) (\text{对某些x})\\
+ f_0(x)\text{的尺度函数族关于尺度随机递增}\\
+  $
+ \begin{proof}[Proof of Theorem 3.4.2]
+  $\displaystyle (1)\text{首先}\int f(x|\theta)\mathrm{d}x = 1 \;\text{并且有} $
+  \begin{flalign*}
+  \begin{split}
+  \frac{\partial}{\partial \theta_j}f(x|\theta) 
+  & =  h(x)\frac{\partial c(\theta)}{\partial \theta_j}\exp(\sum_{i}\omega_it_i)+h(x)c(\theta)\exp(\sum_{i}\omega_it_i)\Big(\sum_{i}\frac{\partial \omega_it_i}{\partial \theta_j}\Big)\\  
+  & = \frac{\partial\log c(\theta)}{\partial \theta_j}f(x|\theta) + f(x|\theta)\Big(\sum_{i}\frac{\partial \omega_it_i}{\partial \theta_j}\Big)
+  \end{split}&
+  \end{flalign*} 
+  将上式两边积分$\Rightarrow$\\
+  $\displaystyle\frac{\partial\log c(\theta)}{\partial \theta_j} + \int f(x|\theta)\Big(\sum_{i}\frac{\partial \omega_it_i}{\partial \theta_j}\Big)\mathrm{d}x = 0 \Rightarrow \\
+  E\Big(\sum_{i}\frac{\partial \omega_it_i}{\partial \theta_j}\Big) = -\frac{\partial}{\partial \theta_j}\log c(\theta)\\$
+  
+  
+  \noindent (2)$\displaystyle
+   \frac{\partial^2}{\partial \theta_j^2}\log c(\theta)  = -\int\Big[f(x|\theta)(\sum_{i}\frac{\partial \omega_it_i}{\partial \theta_j})^2 + f(x|\theta)(\frac{\partial^2\omega_it_i}{\partial \theta_j^2}) - f(x|\theta)\Big(\frac{\partial}{\partial \theta_j}\log c(\theta)\Big)^2\Big]\mathrm{d}x\\ 
+   = - E\Big(\sum_{i}\frac{\partial \omega_it_i}{\partial \theta_j}\Big)^2 - E\Big(\frac{\partial^2\omega_it_i}{\partial \theta_j^2}\Big) + \Big(\frac{\partial}{\partial \theta_j}\log c(\theta)\Big)^2 \Rightarrow\\
+   Var\Big(\sum_{i}\frac{\partial \omega_it_i}{\partial \theta_j}\Big) = E\Big(\sum_{i}\frac{\partial \omega_it_i}{\partial \theta_j}\Big)^2 - \Big(E\sum_{i}\frac{\partial \omega_it_i}{\partial \theta_j}\Big)^2 \\
+   = E\Big(\sum_{i}\frac{\partial \omega_it_i}{\partial \theta_j}\Big)^2 - \frac{\partial^2}{\partial \theta_j^2}\log c(\theta)
+  $
+ \end{proof}
+\end{document}

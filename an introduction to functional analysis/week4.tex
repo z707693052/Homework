@@ -1,0 +1,35 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\linespread{1.8}
+\begin{document}
+\paragraph{1}
+(1) $\displaystyle d(f,g) = \sum_{n=1}^{\infty}2^{-n}|<f-g,x_n>| = \sum_{n=1}^{\infty}2^{-n}|<g-f,x_n>| = d(g,f)$\\
+(2) $\displaystyle d(f,f) = 0\\
+\text{when} \; d(f,g) = 0 \;,\; <f-g,x_n> = 0 \text{ for all } x_n\\
+$
+Due to the definition of $x_n$ ,$\forall x \in B \; \exists \{x_{n_k}\} \; s.t \; x_{n_k} \to x$ \\
+we have $<f-g ,x_{n_k}> \to <f-g,x>$ , and from the continuity of inner product,we have $<f-g,x> = 0$ .which means $f - g = 0 $\\
+(3) $$\because |<f-g,x_n>| = |<f -h,x_n> +<h - g ,x_n>| \leq |<f - h,x_n>| + |<h - g ,x_n>|$$
+we have $d(f,g) \leq d(f,h) + d(g,h)$\\
+(4) $<(f + h) -(g+h) ,x_n> = <f-g,x_n>$ ,so $d(f+h,g+h) = d(f,g)$\\
+from those points all above, we can conclude that $d(f,g) $ is an inner product in E.
+\paragraph{2}
+$\forall \epsilon > 0$ define $U_\epsilon = (-\epsilon,\epsilon)$\\
+then the set define by $ \phi^{-1}_x(U_\epsilon)$ is a week* neighborhood of zero in E*.\\
+define $\displaystyle  S^*_\epsilon = \bigcup_{n \geq 1}\phi^{-1}_{x_n}(U_\epsilon) $ 
+then $\displaystyle  \forall f \in S^*_\epsilon \; |\phi_{x_n}(f)| < \epsilon  \Rightarrow |<f,x_n>| < \epsilon$\\
+$\therefore d(f,0) < \sum_{n =1}^{\infty}2^{-n}\epsilon = \epsilon$\\
+$\therefore f \in S_\epsilon \Rightarrow S^*_\epsilon \subset B^*\cap S_\epsilon$\\
+\paragraph{3}
+S* is a weak* neighborhood of zero in E*, then $\exists x \in E , \text{ and } U \text{ a neighborhood of 0 in } \mathbb{R} \\ s.t \; S^* = \phi^{-1}_x(U)$\\
+$\because U $ is a neighborhood of zero\\
+$\displaystyle \therefore \exists \epsilon > 0 \; s.t \; U_\epsilon = \Big\{x \in \mathbb{R} \big| |x| < \epsilon \Big\} \subset U$\\
+$\displaystyle \forall f \in S(\epsilon) = \Big\{ f \in E^* \big| d(f,0)< \epsilon)\Big\}\\
+\sum_{n = 1}^{\infty}2^{-n}|<f,x_n>| < \epsilon \Rightarrow 2^{-n}|<f,x_n>| \text{ for all n}\\
+\text{we can find a }\{x_{n_k}\} \; s.t \; x_{n_k} \to x\\
+\text{define }S = \bigcup_{\substack{k \geq 1}}S(\frac{\epsilon}{x^{n_k}})\\
+\text{then }\forall f \in S \quad 2^{-n_k}|<f,x_{n_k}>| < \frac{\epsilon}{2^{n_k}} \Rightarrow |<f,x_{n_k}>| < \epsilon \text{ for all }n_k\\
+\text{so we have }<f,x> < \epsilon \Rightarrow |f(x)| < \epsilon\\
+\therefore f(x) \in U_{\epsilon} \subset U \Rightarrow f \in \phi^{-1}_x(U) \Rightarrow S \subset S^*
+$
+\end{document}

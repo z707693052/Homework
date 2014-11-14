@@ -1,0 +1,167 @@
+\documentclass[10pt,a4paper]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\linespread{2}
+\begin{document}
+\title{}
+\author{基科32 曾柯又 2013012266}
+\date{}
+\maketitle
+\paragraph{5.23}
+$\displaystyle f_U(u) = I(u \in [0,1]) \quad F_U(u) = u \; (0 \leq u \leq 1)\\
+f(z|X = x) = \frac{x!}{(x-1)!}f_U(z)(1 - F_U(z))^{x-1} = x(1-z)^{x-1} \; (0\leq z\leq1)
+$
+\begin{flalign*}
+\begin{split}
+f_Z(z) & = \sum_{x=1}^{\infty}f(z|X=x)P(X = x)\\
+& = \sum_{x=1}^{\infty}x(1-z)^{x-1}\frac{c}{x!} \\
+& = \sum_{x = 1}^{\infty}\frac{c(1-z)^{x-1}}{(x-1)!}\\
+& = ce^{1-z} = \frac{e^{1-z}}{e-1} \; (0 \leq z \leq1)
+\end{split}&
+\end{flalign*}
+\paragraph{5.24}
+\begin{flalign*}
+\begin{split}	 
+f_{(\frac{X_{(1)}}{X_{(n)}},X_{(n)})}(t_1,t_2) &
+= f_{(X_{(1)},X_{(n)})}(t_1t_2,t_2)\Bigg|\frac{\partial(X_{(1)}/X_{(n)},X_{(n)})}{\partial(X_{(1)},X_{(n)})}\Bigg|^{-1}\\
+&= \frac{n!}{1!1!(n-2)!}f_X(t_1t_2)f_X(t_2)(F_X(t_2) - F_X(t_1t_2))^{n-2}t_2\\
+&= \frac{n(n-1)}{\theta^2}(\frac{t_2}{\theta} - \frac{t_1t_2}{\theta})^{n-2}t^2\\
+&= \frac{n(n-1)}{\theta^n}t_2^{n-1}(1-t_1)^{n-2} \quad t_1 \in (0,1) \; t_2 \in (0,\theta)
+\end{split}&
+\end{flalign*}
+由此易判断$\frac{X_{(1)}}{X_{(n)}}\text{ 与 }X_{(n)}$独立。
+\paragraph{5.25}
+$\displaystyle
+\\
+f_{(\frac{X_{(1)}}{X_{(2)}},\dots,\frac{X_{(n-1)}}{X_{(n)}},X_{(n)})}(t_1,\dots,t_n)\\
+ = f_{(X_{(1)},\dots,X_{(n)})}(t_1\cdots t_n,t_2\cdots t_n,\dots,t_n)\Bigg|\frac{\partial(\frac{X_{(1)}}{X_{(2)}},\dots,\frac{X_{(n-1)}}{X_{(n)}},X_{(n)})}{\partial(X_{(1)},\dots,X_{(n)})}\Bigg|^{-1}\\
+ = n!(\frac{a}{\theta^a})^nt_1^{a-1}t_2^{2(a-1)}t_n^{n(a-1)}
+ \begin{vmatrix}
+ \frac{1}{X_{(2)}} & -\frac{X_{(1)}}{X_{(2)}^2} & 0 & \cdots\\
+ 0 & \frac{1}{X_{(3)}} & -\frac{X_{(2)}}{X_{(3)}^2} & \cdots \\
+ 0 & 0 & \ddots & \vdots \\
+ 0 & 0 & \cdots & 1
+ \end{vmatrix}^{-1}\\
+ = n!(\frac{a}{\theta^a})^nt_1^{a-1}t_2^{2a-1}\cdots t_n^{na-1}\\
+t_i \in (0,1) \;i = 1,\dots,n-1 \; t_n \in (0,\theta)$\\
+该式表明$\frac{X_{(1)}}{X_{(2)}},\dots,\frac{X_{(n-1)}}{X_{(n)}},X_{(n)}$互为独立变量
+\begin{flalign*}
+\begin{split}
+f_{X_{(n)}} & = \frac{n!}{(n-1)!}f_X(t_n)F_X(t_n)^{n-1}\\
+& = n\frac{a}{\theta^a}t_n^{a-1}(\frac{t_n^a}{\theta^a})^{n-1}\\
+& = \frac{na}{\theta^{na}}t_n^{na-1} \quad t_n \in (0,\theta)
+\end{split}&
+\end{flalign*}
+对任意$k$
+\begin{flalign*}
+\begin{split}
+f_{\frac{X_{(k)}}{X_{(k+1)}}}(t_k) & = \int\cdots\int f(t_1,\dots,t_n)\mathrm{d}t_1\cdots\mathrm{d}t_{k-1}\mathrm{d}t_{k+1}\dots\mathrm{d}t_n\\
+& = \frac{t_k^{ka-1}}{\int_{0}^{1}t_k^{ka-1}\mathrm{d}t_k} \\
+& = kat_k^{ka-1}
+\end{split}&
+\end{flalign*}
+\paragraph{5.26}(a)
+每个样本在$u$之前的概率$F_X(u)$,在$u,v$之间的概率为$F_X(v) - F_X(u)$,在$v$之后的概率为$1-F_X(v)$,因此$(U,V,n-U-V)$服从尝试次数为$n$,元概率为$(F_X(u),F_X(v)-F_X(u),1 - F_X(v))$的多项分布,即\\
+$\displaystyle f_{(U,V,n-U-V)}(n_1,n_2,n_3) = \frac{n!}{n_1!n_2!n_3!}F_X(u)^{n_1}[F_X(v) - F_X(u)]^{n_2}[1-F_X(v)]^{n_3}$\\
+且$n_1 + n_2 + n_3 = n$\\
+(b)
+\begin{flalign*}
+\begin{split}
+F_{(X_{(i)},X_{(j)})}(u,v) & = P(U \geq i , U+V \geq j)\\
+& = P(i \leq U \leq j,U + V \geq j) + P(U \geq j)\\
+& = \sum_{k = i}^{j-1}\sum_{m = j-k}^{n-k}P(U=k,V=m) + P(U\geq j)\\
+& = \sum_{k = i}^{j-1}\sum_{m = j-k}^{n-k}\frac{n!}{k!m!(n - k - m)!}F_X(u)^{k}[F_X(v) - F_X(u)]^{m}\\
+ & \times[1-F_X(v)]^{n-k-m} + P(U \geq j)
+\end{split}&
+\end{flalign*}
+(c)为方便起见，记$p_1 = F_X(u) , p_2 = F_X(v) - F_X(u) , p_3 = 1-F_X(v)$
+\begin{flalign*}
+\begin{split}
+f_{(X_{(i)},X_{(j)})}(u,v) & = \frac{\partial^2F(u,v)}{\partial u\partial v} \\
+& =  \frac{\partial^2}{\partial u\partial v}\sum_{k = i}^{j-1}\sum_{m = j-k}^{n-k}\frac{n!}{k!m!(n - k - m)!}p_1^{k}p_2^{m}p_3^{n-k-m}\\
+& = \frac{\partial}{\partial u}\sum_{k = i}^{j - 1}\frac{n!}{k!}f_X(v)p_1^k\Big(\sum_{m = j -k}^{n-k}\frac{1}{(m-1)!(n-k-m)!}p_2^{m-1}p_3^{n-k-m} \\
+& - \sum_{m = j - k}^{n-k - 1}\frac{1}{m!(n-k-m-1)}p_2^mp_3^{n-k-m-1}\Big)
+\end{split}&
+\end{flalign*}
+括号里的部分可化为\\
+$\displaystyle
+\frac{1}{(j-k-1)!(n -j)!}p_2^{j-k-1}p_3^{n-j} + \sum_{m = j - k +1}^{n-k}\frac{1}{(m-1)!(n-k-m)!}p_2^{m-1}p_3^{n-k-m} \\
+- \sum_{m = j -k}^{n-k - 1}\frac{1}{m!(n-k-m-1)}p_2^mp_3^{n-k-m-1}\\
+= \frac{1}{(j-k-1)!(n -j)!}p_2^{j-k-1}p_3^{n-j}
+$
+于是
+\begin{flalign*}
+\begin{split}
+f_{(X_{(i)},X_{(j)})}(u,v) & = \sum_{k =i}^{j-1}\frac{\partial}{\partial u}p_1^kf_X(v)\frac{n!p_2^{j-k-1}p_3^{n-j}}{(j-k-1)!(n -j)!}\\
+& = \frac{n!f_X(v)f_X(u)}{(n-j)!}p_3^{n-j}\Big(\sum_{k =i}^{j-1}\frac{p_1^{k-1}p_2^{j-k-1}}{(k-1)!(j-k-1)!} \\
+& - \sum_{k =i}^{j-2}\frac{p_1^kp_2^{j-k-2}}{k!(j-k-2)!}\Big)
+\end{split}&
+\end{flalign*}
+括号里的部分为
+$\displaystyle \frac{p_1^{i-1}p_2^{j-i-1}}{(i-1)!(j-i-1)!} + \sum_{k =i}^{j-2}\frac{p_1^kp_2^{j-k-2}}{k!(j-k-2)!} - \sum_{k =i}^{j-2}\frac{p_1^kp_2^{j-k-2}}{k!(j-k-2)!}\\
+ = \frac{p_1^{i-1}p_2^{j-i-1}}{(i-1)!(j-i-1)!}
+$\\
+最后得到\\
+$\displaystyle f_{(X_{(i)},X_{(j)})}(u,v) = \frac{n!}{(n-j)!(i-1)!(j-i-1)!}f_X(v)f_X(u)p_1^{i-1}p_2^{j-i-1}p_3^{n-j}$
+\paragraph{5.27}
+(a)$\displaystyle
+f_{X_{(i)}|X_{(j)}}(u,v) = \frac{f_{(X_{(i)},X_{(j)})}(u,v)}{f_{X_{(j)}}(v)}\\
+\text{对于}i < j \\
+f_{X_{(i)}|X_{(j)}}(u,v) = \frac{(j-1)!}{(i-1)!(j-i-1)!}f_X(u)\frac{F_X(u)^{i-1}[F_X(v) - F_X(u)]^{j-i-1}}{F_X(v)^{j-1}}\\
+(u < v)\\
+\text{对于}i > j\\
+f_{(X_{(i)},X_{(j)})}(u,v) = \frac{n!}{(j-1)!(n-i)!(i-j-1)!}f_X(u)f_X(v)F_X(v)^{j-1}\\
+\times[F_X(u)-F_X(v)]^{i-j-1}[1-F_X(u)]^{n-i}\\
+\text{可得}\\
+f_{X_{(i)}|X_{(j)}}(u,v) = \frac{(n-j)!}{(i-j-1)!(n-i)!}\frac{[F_X(u)-F_X(v)]^{i-j-1}[1-F_X(u)]^{n-i}}{[1-F_X(v)]^{n-j}}\\
+(v < u)\\
+$
+(b) 由Example 5.4.7\\
+$\displaystyle 
+f_{R,V}(r,v) = \frac{n(n-1)r^{n-2}}{a^n},\quad 0 < r < a,\quad r/2 < v < a - r/2\\
+f_R(r) = \frac{n(n-1)r^{n-2}(a-r)}{a^n},\quad 0 < r < a\\
+f_{V|R}(v,r) = \frac{f_{R,V}(r,v) }{f_R(r)} = \frac{1}{a - r},\quad  r/2 < v < a − r/2
+$
+ \paragraph{5.28}
+ (a)通过直观的办法，容易看出\\
+ $\displaystyle
+ f_{(X_{(i_1)},\dots,X_{(i_l)})}(x_1,\cdots,x_l) \\
+  = \frac{n!}{(i_1-1)!(i_2-i_1-1)!\dots(n-i_l)!}f_X(x_1) \cdots f_X(x_l)\\
+  \times F_X(x_1)^{i_1-1}[F_X(x_2) - F_X(x_1)]^{i_2-i_1-1} \cdots [1 - F_X(x_l)]^{n-i_l}\\
+ \text{且要求 } x_1 < x_2 < \cdots < x_l\\
+ $
+ cdf为上式的积分,为:\\
+ $\displaystyle
+ F_{(X_{(i_1)},\dots,X_{(i_l)})}(x_1,\cdots,x_l) = \int_{-\infty}^{x_1}\int_{x_1}^{x_2}\cdots\int_{x_n}^{\infty}f_{(X_{(i_1)},\dots,X_{(i_l)})}(u_1,\cdots,u_l)\mathrm{d}u_1\cdots\mathrm{d}u_l
+ $\\
+(b)
+由于无法讨论大小关系，先将$(i_1,i_2,\dots,i_l,j_1,j_2,\dots,j_m)$排序，得到$(k_1,k_2,\dots,k_{l+m})$,并可由(a)得到分别关于角标$k,j$的联合分布,
+\begin{flalign*}
+\begin{split}
+ f_{X_{(i_1)},\dots,X_{(i_l)}|X_{(j_1)},\dots,X_{(j_m)}}&(u_{i_1},\cdots,u_{i_l},u_{j_1},\dots ,u_{j_m}) \\
+ & = \frac{f_{(X_{(k_1)},\dots,X_{(k_{l+m})})}(u_{k_1},\cdots,u_{k_{m+l}})}{f_{(X_{(j_1)},\dots,X_{(j_m)})}(u_{j_1},\cdots,u_{j_m})}
+\end{split}&
+\end{flalign*}
+\paragraph{课上作业}
+设$X \sim \chi^2_{n} ,\; Y \sim \chi^2_{m},\; Z = X + cY$,则:\\
+$\displaystyle
+f_Z(z) = \int_{0}^{z/c}f_X(z - cy)f_Y(y)\mathrm{d}y\\
+\text{设 }t = \frac{yc}{z} \text{则} y = \frac{tz}{c}\\
+f_Z(z) = \int_{0}^{1}\frac{(z - tz)^{\frac{n}{2} - 1}(\frac{tz}{c})^{\frac{m}{2} - 1}e^{\frac{tz - z - tz/c}{2}}}{\Gamma(\frac{m}{2})\Gamma(\frac{n}{2})2^{\frac{m + n }{2}}}\mathrm{d}t\\
+\text{记 }p = \frac{m + n}{2}\\
+f_Z(z) = \frac{z^{p - 1}e^{-\frac{z}{2}}}{\Gamma(\frac{m}{2})\Gamma(\frac{n}{2})2^pc^{\frac{m}{2}}}\int_{0}^{1}(1 - t)^{\frac{n}{2} - 1}t^{\frac{m}{2} - 1}e^{\frac{tz}{2}(1 - \frac{1}{c})}\mathrm{d}t\\
+\text{将}e^{\frac{tz}{2}(1 - \frac{1}{c})}\text{展开，得:}\\
+e^{\frac{tz}{2}(1 - \frac{1}{c})} = \sum_{k = 0}^{\infty}\frac{t^k(\frac{z}{2})^k}{k!}(1 - \frac{1}{c})^k
+$
+\begin{flalign*}
+\begin{split}
+\therefore  \int_{0}^{1}&(1 - t)^{\frac{n}{2} - 1}t^{\frac{m}{2} - 1}e^{\frac{tz}{2}(1 - \frac{1}{c})}\mathrm{d}t\\
+& = \sum_{k = 0}^{\infty}\frac{t^k(\frac{z}{2})^k}{k!}(1 - \frac{1}{c})^k\int_{0}^{1}(1 - t)^{\frac{n}{2} - 1}t^{\frac{m}{2} + k - 1}\mathrm{d}t\\
+& = \sum_{k = 0}^{\infty}\frac{t^k(\frac{z}{2})^k}{k!}(1 - \frac{1}{c})^kB(\frac{m}{2} + k,\frac{n}{2})\\
+\end{split}&
+\end{flalign*}
+{\large
+$\displaystyle
+f_Z(z) = \sum_{k = 0}^{\infty}\frac{\Gamma(\frac{m}{2} + k)e^{-\frac{z}{2}}z^{p + k - 1}(1 - \frac{1}{c})^{k}}{\Gamma(\frac{m}{2})\Gamma(p + k -1)2^{p + k -1}k!c^{\frac{m}{2}}}
+$
+}
+\end{document}

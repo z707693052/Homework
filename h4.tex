@@ -1,0 +1,40 @@
+\documentclass[a4paper]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\begin{document}
+\title{}
+\author{基科32 曾柯又 2013012266}
+\date{}
+\maketitle
+\paragraph{1}作长除法
+\newdimen\digitwidth
+\settowidth\digitwidth{0}
+\def~{\hspace{\digitwidth}}
+\def\divrule#1#2{ %
+\noalign{\moveright#1\digitwidth%
+\vbox{\hrule width#2\digitwidth}}}
+110101\,
+\begin{tabular}[b]{@{}r@{}}
+1101010110 \\ \hline
+\big) \begin{tabular}[t]{@{}l@{}}
+101000110100000\\
+110101\\ \divrule{0}{7}
+~111011\\
+~110101\\ \divrule{1}{8}
+~~0111010\\
+~~~110101\\ \divrule{3}{8}
+~~~~0111110\\
+~~~~~110101 \\ \divrule{5}{8}
+~~~~~~0101100\\
+~~~~~~~110101\\ \divrule{7}{7}
+~~~~~~~0110010\\
+~~~~~~~~110101\\ \divrule{9}{6}
+~~~~~~~~~001110\\
+~~~~~~~~~000000\\ \divrule{9}{6}
+~~~~~~~~~~~1110
+\end{tabular}
+\end{tabular}\\
+得到余数1110,因此发CRC校验码为101000110101110。
+\paragraph{2}
+通过计算可以得到1010001101的汉明码是00110101001101\\
+如果接收到的汉明码是00100100001101,可计算得4,8位校验码出错，因此12位出错，应变为0,则得原始数据比特列为1010000101
+\end{document}

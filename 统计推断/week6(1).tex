@@ -1,0 +1,49 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\linespread{1.8}
+\CTEXsetup[indent={0pt}]{subparagraph}
+\newcommand{\normal}[2]{\frac{1}{\sqrt{2\pi}#2}e^{-(x - #1)^2/(2#2^2)}}
+\newcommand{\norm}[1]{\frac{1}{\sqrt{2\pi}#1}e^{-x^2/(2#1^2)}}
+\newcommand{\norms}[0]{\frac{1}{\sqrt{2\pi}}e^{-x^2/2}}
+\begin{document}
+\title{}
+\author{基科32 曾柯又 2013012266}
+\date{}
+\maketitle
+\paragraph{5.42}
+\subparagraph{(a)}$\displaystyle
+P(X_{(n)} \leq 1 - \epsilon)
+= P(X_i \leq 1 - \epsilon) 
+= \big(P(X_i \leq 1 - \epsilon)\big)^n\\
+\because
+P(X_i \leq \epsilon) = \int_{0}^{1 - \epsilon}\frac{1}{B(1,\beta)}(1 - x)^{\beta - 1}\mathrm{d}x = \int_{\epsilon}^{1}\beta
+x^{\beta - 1}\mathrm{d}x = 1 - \epsilon^{\beta}\\
+\therefore
+P(X_{(n)} \leq 1 - \epsilon) = (1 - \epsilon^\beta)^n\\
+\text{令 }\epsilon = \frac{t}{n^{1/\beta}}\\
+\text{有 }P(1 - X_{(n)} \geq \frac{t}{n^{1/\beta}}) = (1 - \frac{t^\beta}{n})^n \\
+\lim\limits_{n \to \infty}P(n^{1/\beta}(1 - X_{(n)})\geq t) = e^{-t^\beta}\\
+\text{即 }\lim\limits_{n \to \infty}P(n^{1/\beta}(1 - X_{(n)})\leq t) = 1 -  e^{-t^\beta}$
+\subparagraph{(b)}$
+\displaystyle
+P(X_{(n)} \leq \epsilon) = \big(P(X_i \leq \epsilon)\big)^n\\
+\text{而}P(X_i \leq \epsilon) = \int_{0}^{\epsilon}e^{-x}\mathrm{d}x = 1 - e^{-\epsilon}\\
+\text{取}\epsilon = \mathrm{ln}(\frac{n}{t})\\
+P(X_{(n)} \leq \mathrm{ln}(\frac{n}{t})) = (1 - \frac{t}{n})^n\\
+\lim\limits_{n \to \infty}P(X_{(n)} - \mathrm{ln}n \leq \mathrm{ln}(\frac{1}{t})) = e^{-t}\\
+\lim\limits_{n \to \infty}P(X_{(n)} - \mathrm{ln}n \leq t) = \exp(-e^{-t})
+$
+\paragraph{5.43}
+\subparagraph{(a)}
+$\displaystyle
+P(|Y_n - \mu| \geq \epsilon) = P(|\sqrt{n}(Y_n - \mu)|\geq \sqrt{n}\epsilon)\\
+\forall \delta,\; \exists M,\; \text{使得} \big(1 - \int_{-M}^{M}\norm{\sigma}\mathrm{d}x\big) < \delta\\
+\text{而 }\forall M ,\;\exists N \text{ 使得 }\forall n > N\;\sqrt{n}\epsilon > M\\
+\text{可得} \lim\limits_{n \to \infty}P(|\sqrt{n}(Y_n - \mu)|\geq \sqrt{n}\epsilon) \leq \lim\limits_{n \to \infty}P(|\sqrt{n}(Y_n - \mu)|\geq M) \leq \delta\\
+\text{由}\delta \text{的任意性}
+\lim\limits_{n \to \infty}P(|(Y_n - \mu)|\geq \epsilon) = 0
+$
+\subparagraph{(b)}
+由slutsky定理
+$\sqrt{n}g'(\theta)(Y_n - \theta) \overset{\mathcal{D}}{\to} g'(\theta)X, \;\text{其中 } X \sim \mathrm{n}(0,1),\text{对式子 }\sqrt{n}(g(Y_n) - g(\theta)) = \sqrt{n}g'(\theta)(Y_n - \theta) ,\;\text{可以得到}\sqrt{n}(g(Y_n) - g(\theta)) \overset{\mathcal{D}}{\to} g'(\theta)X \sim \mathrm{n}(0,\sigma^2[g'(\theta)]^2)$,
+\end{document}
