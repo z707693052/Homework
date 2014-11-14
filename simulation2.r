@@ -1,4 +1,4 @@
-f <- function(x){                    #define the pdf f
+f <- function(x){                    # define the pdf f
   if (0 <= x && x< 0.5){
     y = 4*x/3
   }
@@ -16,7 +16,7 @@ f <- function(x){                    #define the pdf f
   y
 }
 f = Vectorize(f)                         
-FF <- function(x){                     #define the cdf
+FF <- function(x){                     # define the cdf
   if (0 <= x && x< 0.5){
     y = 2*x^2/3
   }
@@ -38,45 +38,57 @@ FF <- function(x){                     #define the cdf
 }
 FF = Vectorize(FF)
 
-invF <- function(x){                     #define the invers cdf
+invF <- function(x){                     # define the invers cdf
   if (0 <= x && x< 1/6){
-    y <- sqrt(3*y/2)
+    y <- sqrt(3*x/2)
   }
   else if (1/6 <= x && x< 1/3){
-    y <- 1 - sqrt((1 - 3*y)/2)
+    y <- 1 - sqrt((1 - 3*x)/2)
   }
   else if (1/3 <= x && x< 2/3){
-    y <- 1  sqrt(y - 1)/2
+    y <- 1 + sqrt(3*x - 1)/2
   }
   else if (2/3 <= x && x<= 1){
-    y <- 2 + sqrt(3*(1 - y))/2
+    y <- 2 - sqrt(3*(1 - x))/2
   }
   y
 }
 invF = Vectorize(invF)
-plot(invF,0,1)
 
-integrate(function(x) f(x)*x, 0, 2)              #solve Q2
-integrate(function(x) f(x)*(x - 7/6)^2, 0, 2)
+plot(f,0,2)
+plot(FF,0,1)
 
-U = runif(2000)
+mu = integrate(function(x) f(x)*x, 0, 2)              # solve Q2
+sigma = integrate(function(x) f(x)*(x - 7/6)^2, 0, 2)
+
+
+U = runif(1000)                                  # Direct metho
 X1 = invF(U)
 mu1 <- mean(X1)
 plot(f, 0, 2)
-hist(X1,breaks = seq(0,2,0.02),freq = FALSE ,add = TRUE)
-
-i <- 0
-X2 <- c()
-while (TRUE){                      #Accept-Reject
-  x <- runif(1,0,2)
-  y <- runif(1,0,4/3)
-  if (y < f(x) ){
-    X2[i] <- x
-    i <- i + 1
-  }
-  if (i == 2000)
-    break
-}
+hist(X1,breaks = 50,freq = FALSE ,add = TRUE)
+                                    
+X2 <- runif(2800,0,2)                 # Accept-Reject
+Y <- runif(2800,0,4/3)
+X2 <- X2[Y < f(X2)]
+X2 <- X2[1:1000]
 mu2 <- mean(X2)
 plot(f, 0, 2)
-hist(X2,breaks = seq(0,2,0.02),freq = FALSE ,add = TRUE)
+hist(X2,breaks = 50,freq = FALSE ,add = TRUE)
+
+print("wait...")
+
+#repeat Direct method£¬using Vectorize and the apply function to speed up.
+# using proc.time to record the time consumption
+# stime <- proc.time()
+# X1_mat <- matrix(invF(runif(1000*2000)),nrow = 2000 , ncol = 1000)  
+# Mu1 = apply(X1_mat,1,mean)
+# proct1 <- proc.time() - stime
+
+#repeat Accept-Reject method,
+X2 <- runif(2700*2000,0,2) 
+Y <- runif(2700*2000,0,4/3)
+X2 <- X2[Y < f(X2)]
+X2 <- X2[1:1000*2000]
+X2_mat <- matrix(X2,nrow = 2000 , ncol = 1000)  
+Mu2 = apply(X2_mat,1,mean)
