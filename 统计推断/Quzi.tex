@@ -1,0 +1,138 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\linespread{1.5}
+\CTEXsetup[indent={0pt}]{subparagraph}
+\newcommand{\normal}[2]{\frac{1}{\sqrt{2\pi}#2}e^{-(x - #1)^2/(2#2^2)}}
+\newcommand{\norm}[1]{\frac{1}{\sqrt{2\pi}#1}e^{-x^2/(2#1^2)}}
+\newcommand{\norms}[0]{\frac{1}{\sqrt{2\pi}}e^{-x^2/2}}
+\newcommand{\dconverge}[0]{\overset{\mathcal{D}}{\to}}
+\newcommand{\pconverge}[0]{\overset{\mathcal{P}}{\to}}
+\title{第一次检测}
+\author{基科32 曾柯又 2013012266}
+\date{\vspace{-5ex}}
+\begin{document}
+\abovedisplayskip=5pt
+\belowdisplayskip=5pt
+\abovedisplayshortskip=0pt
+\belowdisplayshortskip=0pt
+\maketitle
+\paragraph{1}
+可令$r_n = n$\\
+由中心极限定理$\sqrt{n}(\hat{\mu_n} - \mu) \overset{d}{\to} n(0,\sigma^2)$\\
+设\(g(x) = \cos(x)\),有\( g'(0) = 0 \; g''(0) = -1\)\\
+由二阶delta方法\[ n(\cos(\hat{\mu_n}) - \cos(\mu) ) \overset{d}{\to} -\frac{\sigma^2}{2}\chi^2_1 \]
+即收敛到非退化随机变量
+ \paragraph{2}
+(a)先求出\(X_{(n+1)} , X_{(2n)}\)的联合概率分布，为简化记号，记\(U = X_{(n+1)},\;V = X_{(2n)}\),有:
+ \[ f_{U,V}(u,v) = \frac{(2n + 1)!}{n!(2n - 2)!}f_X(u)f_X(v)F_X^n(u)[F_X(v) - F_X(u)]^{n - 2}[1 - F_X(v)]\]
+ \(F_X(u) = \frac{1}{\theta},\;F_X(u) = \frac{u}{\theta}\quad 0 \leq u \leq v \leq \theta\)  可得：
+ \begin{equation*}
+\begin{split}
+f_{U,V}(u,v) & = \frac{(2n + 1)!}{n!(2n - 2)!}(\frac{1}{\theta})^2(\frac{u}{\theta})^n(\frac{v - u}{\theta})^{n - 2}(1 -\frac{v}{\theta} )\\
+& = \frac{(2n + 1)!}{n!(2n - 2)!\theta^{2n + 1}}u^n(v - u)^{n - 2}(\theta - v)  \qquad 0 \leq u \leq v \leq \theta 
+\end{split}
+ \end{equation*}
+ 设 \(S =  V + U ,\; T = V - U\) , 则：
+ \begin{equation*}
+ \begin{split}
+ f_{S,T}(s,t) & = f_{U,V}(\frac{s - t}{2},\frac{s + t}{2})\Big|\frac{\partial(u,v)}{\partial(s,t)}\Big|\\
+ & = \frac{(2n + 1)!}{n!(n-2)!\theta^{2n + 1}}(\frac{s - t}{2})^nt^{n - 2}(\theta - \frac{s + t}{2})\times\frac{1}{2}
+ \end{split}
+ \end{equation*}
+ $s,t$的取值范围为： 
+\(s \in [0, \theta]\) 时，\( t \in [0,s]\) ; \(s \in [\theta, 2\theta]\) 时，\( t \in [0,2\theta - s]\) ,因此，当\(s \in [0, \theta]\) 时：
+\begin{equation*}
+\begin{split}
+f_S(s) & = \int_{0}^{s}f_{S,T}(s,t)\mathrm{d}t \\
+&= \int_{0}^{s}\frac{(2n + 1)!s^{2n - 1}}{n!(n-2)!\theta^{2n + 2}2^{n + 1}}(1 - \frac{t}{s})^n(\frac{t}{s})^{n - 2}(\frac{2\theta}{s} - 1 -  \frac{t}{s})\mathrm{d}t\\
+& = \int_{0}^{1}\frac{(2n + 1)!s^{2n}}{n!(n-2)!\theta^{2n + 1}2^{n + 2}}(1 - t)^nt^{n - 2}(\frac{2\theta}{s} - 1 -  t)\mathrm{d}t\\
+& = \frac{(2n + 1)}{2^{n + 2}\theta}(4n(\frac{s}{\theta})^{2n - 1} - (3n - 1)(\frac{s}{\theta})^{2n})
+\end{split}
+\end{equation*}
+当\(s \in [\theta, 2\theta]\) 时：
+\begin{equation*}
+\begin{split}
+f_S(s) & = \int_{0}^{2\theta - s}f_{S,T}(s,t)\mathrm{d}t \\
+& = ...
+\end{split}
+\end{equation*}
+好像没有初等表达式
+\paragraph{3}
+可取\(r_n = \sqrt{n} ,\; \phi(x) = 2\arcsin(\sqrt{x})\)\\
+由中心极限定理:
+\[ \sqrt{n}(\hat{p_n} - p) \overset{d}{\to} n(0,p(1 - p))\]
+而$\phi'(p) = \sqrt{\frac{1}{p(1 - p)}}$,且$p \in (0 , 1)$,故$\phi'(p) \neq 0 $由delta方法：
+\[ \sqrt{n}(\phi(\hat{p_n}) - \phi(p)) \overset{d}{\to} n(0,1)\]
+\paragraph{4}
+$\displaystyle
+P(n(1 - X_{(n)}) \leq t)  = P(X_{(n)} > 1 - \frac{t}{n}) = 1 - P(X_{(n)} < 1 - \frac{t}{n})\\$
+而$\displaystyle P(X_{(n)} < 1 - \frac{t}{n}) = \prod_{\substack{i = 1}}^{\substack{n}} P(X_i < 1 - \frac{t}{n}) = (1 - \frac{t}{n})^n $\\
+故$\displaystyle P(n(1 - X_{(n)}) \leq t) = 1 - (1 - \frac{t}{n})^n $ \\
+ \(\Rightarrow \lim\limits_{n\to \infty}P(n(1 - X_{(n)}) \leq t) = 1 - e^{-t}\)\\
+ 即为指数分布 $\displaystyle n(1 - X_{(n)}) \overset{d}{\to} X, \quad f_X(x) = e^{-x}$
+ \paragraph{5}
+ 由中心极限定理 
+ \[ \sqrt{n}(\bar{X_n} - \mu) \overset{d}{\to} n(0,\sigma^2)\]
+ 记\(g(x) = x^2 ,\;g'(\mu) = 2 \mu,\; g''(\mu) = 2\)\\
+ 若\( \mu \neq 0\),由delta方法:
+ \[ \sqrt{n}((\bar{X_n})^2 - \mu^2) \overset{d}{\to} n(0,4\sigma^2\mu^2)\]
+ 即可取\(c_n = \sqrt{n},\;A = \mu^2\)\\
+ 若\(\mu = 0\),由二阶delta方法:
+ \[n((\bar{X_n})^2 - \mu^2) \overset{d}{\to} \sigma^2\chi^2_1\]
+ 即取\(c_n = n ,\; A = \mu^2\)
+ \paragraph{6}(a)第一部分
+ \(\sqrt{n}(\bar{X_n} - \mu) - \frac{1}{\sqrt{n}}\sum_{i = 1}^{n}(X_i - \mu) = 0\)\\
+ 而\begin{flalign*}
+ \begin{split}
+  \sqrt{n}&(S_n^2 -\sigma^2) - \frac{1}{\sqrt{n}}\sum_{i = 1}^{n}[(X_i - \mu)^2 - \sigma^2]\\
+&  = \sqrt{n}(S_n^2 - \sigma^2) - \frac{1}{\sqrt{n}}\sum_{i = 1}^{n}[(X_i - \bar{X_n} + \bar{X_n} - \mu)^2 - \sigma^2]\\
+ &  = -\sqrt{n}(\bar{X_n} - \mu)^2
+ \end{split}
+  \end{flalign*}
+  而\(\sqrt{n}(\bar{X_n} - \mu) \overset{p}{\to} n(0,1)\)，由连续映射定理:\[n(\bar{X_n} - \mu)^2 \overset{p}{\to} \chi_1^2\]故：\[\sqrt{n}(\bar{X_n} - \mu)^2 \overset{p}{\to}  0\]
+  因此\[\sqrt{n}\begin{pmatrix}
+  \bar{X_n} - \mu\\
+  S_n^2 - \sigma^2
+  \end{pmatrix} - \frac{1}{\sqrt{n}}\sum_{i = 1}^{n}\begin{pmatrix}
+  X_i - \mu\\
+  (X_i - \mu)^2 - \sigma^2
+  \end{pmatrix} \overset{p}{\to} 0 \]
+  即 \[\sqrt{n}\begin{pmatrix}
+    \bar{X_n} - \mu\\
+    S_n^2 - \sigma^2
+    \end{pmatrix} = \frac{1}{\sqrt{n}}\sum_{i = 1}^{n}\begin{pmatrix}
+    X_i - \mu\\
+    (X_i - \mu)^2 - \sigma^2
+    \end{pmatrix} + o_p(1)\]
+    (b)记\(\mathcal{X}_i =\begin{pmatrix}
+        X_i - \mu\\
+        (X_i - \mu)^2 - \sigma^2
+        \end{pmatrix} \) ,有\(E\mathcal{X}_i = 0,\;\mathrm{cov}(\mathcal{X}_i) = \boldsymbol{\Sigma}\),经过计算可得协方差矩阵\(\boldsymbol{\Sigma}\)
+        \[ \begin{pmatrix}
+        E(X_i - \mu)^2 & E(X_i - \mu)((X_i - \mu)^2 - \sigma^2)\\
+        E(X_i - \mu)((X_i - \mu)^2 - \sigma^2) & E((X_i - \mu)^2 - \sigma^2)^2
+        \end{pmatrix} = \begin{pmatrix}
+        \sigma^2 & \sigma^3\gamma_1\\
+        \sigma^3\gamma_1 & \sigma^4(\gamma_2 + 2)
+        \end{pmatrix}\]
+        因此\[\sqrt{n}(\bar{\mathcal{X}_n}) \overset{d}{\to} \mathcal{N}_2(0,\boldsymbol{\Sigma})\]
+        由slusky定理\[\sqrt{n}\begin{pmatrix}
+            \bar{X_n} - \mu\\
+            S_n^2 - \sigma^2
+            \end{pmatrix} \overset{d}{\to} \mathcal{N}_2(0,\boldsymbol{\Sigma})\]
+        (c)记\(\boldsymbol{Y_n} = \begin{pmatrix}
+                    \bar{X_n} \\
+                    S_n^2
+                    \end{pmatrix} ，\; \boldsymbol{\theta} = \begin{pmatrix}
+                                        \mu \\
+                                        \sigma^2
+                                        \end{pmatrix}\),则
+                                        \[ \sqrt{n}(\boldsymbol{Y_n} -\boldsymbol{\theta}) \overset{d}{\to}\mathcal{N}_2(0,\boldsymbol{\Sigma}) \]
+            设函数\(\displaystyle g(x_1,x_2) = \frac{x_1}{\sqrt{x_2}}, \quad g'(\mu,\sigma^2) = (
+            \frac{1}{\sigma},  -\frac{\mu}{2\sigma^3}
+            ) ,\quad = g'^{T}\boldsymbol{\Sigma}g' =1 - \frac{\mu\gamma_1}{\sigma} + (\frac{\mu}{2\sigma})^2(\gamma_2 + 2) \),则由多元函数的delta方法可得
+            \[\sqrt{n}(g(\boldsymbol{Y_n}) - g(\boldsymbol{\theta}) ) \overset{d}{\to} n(0,\tau^2)\]
+            即\[ \sqrt{n}(\frac{\bar{X_n}}{S_n} - \frac{\mu}{\sigma}) \overset{d}{\to} n(0,\tau^2) \]
+            其中 \( \tau^2 = 1 - \frac{\mu\gamma_1}{\sigma} + (\frac{\mu}{2\sigma})^2(\gamma_2 + 2) \)
+            
+\end{document}
