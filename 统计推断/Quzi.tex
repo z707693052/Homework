@@ -9,19 +9,19 @@
 \newcommand{\pconverge}[0]{\overset{\mathcal{P}}{\to}}
 \title{第一次检测}
 \author{基科32 曾柯又 2013012266}
-\date{\vspace{-5ex}}
 \begin{document}
 \abovedisplayskip=5pt
 \belowdisplayskip=5pt
 \abovedisplayshortskip=0pt
 \belowdisplayshortskip=0pt
 \maketitle
+我承诺我将独立完成本次开卷测验
 \paragraph{1}
 可令$r_n = n$\\
 由中心极限定理$\sqrt{n}(\hat{\mu_n} - \mu) \overset{d}{\to} n(0,\sigma^2)$\\
 设\(g(x) = \cos(x)\),有\( g'(0) = 0 \; g''(0) = -1\)\\
 由二阶delta方法\[ n(\cos(\hat{\mu_n}) - \cos(\mu) ) \overset{d}{\to} -\frac{\sigma^2}{2}\chi^2_1 \]
-即收敛到非退化随机变量
+满足要求
  \paragraph{2}
 (a)先求出\(X_{(n+1)} , X_{(2n)}\)的联合概率分布，为简化记号，记\(U = X_{(n+1)},\;V = X_{(2n)}\),有:
  \[ f_{U,V}(u,v) = \frac{(2n + 1)!}{n!(2n - 2)!}f_X(u)f_X(v)F_X^n(u)[F_X(v) - F_X(u)]^{n - 2}[1 - F_X(v)]\]
@@ -53,16 +53,19 @@ f_S(s) & = \int_{0}^{s}f_{S,T}(s,t)\mathrm{d}t \\
 \begin{equation*}
 \begin{split}
 f_S(s) & = \int_{0}^{2\theta - s}f_{S,T}(s,t)\mathrm{d}t \\
-& = ...
+& = \int_{0}^{s'}\frac{(2n + 1)!}{2^{n + 2}n!(n - 2)!\theta^{2n + 1}}(2\theta - s' -t)^nt^{n - 2}(s' - t)\mathrm{d}t \quad (s' = 2\theta - s)\\
+& = \int_{0}^{1}\frac{(2n + 1)!}{2^{n + 2}n!(n - 2)!\theta^{2n + 1}s'^{2n}}(\frac{2\theta}{s'} - 1 -t)^nt^{n - 2}(1 - t)\mathrm{d}t\\
+& = \frac{(2n + 1)!}{2^{n + 2}n!(n - 2)!\theta^{2n + 1}s'^{2n}}\sum_{k = 0}^{n}{n \choose k}(-1)^k(\frac{2\theta}{s'} - 1)^{n - k}\frac{1}{(n + k - 1)(n + k)}\\
+& = \frac{(2n + 1)!}{2^{n + 2}(n - 2)!\theta^{2n + 1}}\sum_{k = 0}^{n}(-1)^k\frac{s^{n - k}}{(2\theta - s)^{3n - k}k!(n - k)!(n + k - 1)(n + k)}
 \end{split}
 \end{equation*}
-好像没有初等表达式
 \paragraph{3}
 可取\(r_n = \sqrt{n} ,\; \phi(x) = 2\arcsin(\sqrt{x})\)\\
 由中心极限定理:
 \[ \sqrt{n}(\hat{p_n} - p) \overset{d}{\to} n(0,p(1 - p))\]
-而$\phi'(p) = \sqrt{\frac{1}{p(1 - p)}}$,且$p \in (0 , 1)$,故$\phi'(p) \neq 0 $由delta方法：
+而$\phi'(p) = \sqrt{\frac{1}{p(1 - p)}}$,且$p \in (0 , 1)$,故\(\phi'(p)^2\times p(1 - p) = 1\) 由delta方法：
 \[ \sqrt{n}(\phi(\hat{p_n}) - \phi(p)) \overset{d}{\to} n(0,1)\]
+满足要求
 \paragraph{4}
 $\displaystyle
 P(n(1 - X_{(n)}) \leq t)  = P(X_{(n)} > 1 - \frac{t}{n}) = 1 - P(X_{(n)} < 1 - \frac{t}{n})\\$
@@ -89,7 +92,8 @@ P(n(1 - X_{(n)}) \leq t)  = P(X_{(n)} > 1 - \frac{t}{n}) = 1 - P(X_{(n)} < 1 - \
  &  = -\sqrt{n}(\bar{X_n} - \mu)^2
  \end{split}
   \end{flalign*}
-  而\(\sqrt{n}(\bar{X_n} - \mu) \overset{p}{\to} n(0,1)\)，由连续映射定理:\[n(\bar{X_n} - \mu)^2 \overset{p}{\to} \chi_1^2\]故：\[\sqrt{n}(\bar{X_n} - \mu)^2 \overset{p}{\to}  0\]
+  而\(\displaystyle \frac{\sqrt{n}(\bar{X_n} - \mu)}{\sigma} \overset{d}{\to} n(0,1)\)，由连续映射定理:\[\frac{n(\bar{X_n} - \mu)^2}{\sigma^2} \overset{d}{\to} \chi_1^2\]故：\[\sqrt{n}(\bar{X_n} - \mu)^2 \overset{d}{\to}  0\]
+  即\[\sqrt{n}(\bar{X_n} - \mu)^2 \overset{p}{\to}  0\]
   因此\[\sqrt{n}\begin{pmatrix}
   \bar{X_n} - \mu\\
   S_n^2 - \sigma^2
@@ -116,6 +120,10 @@ P(n(1 - X_{(n)}) \leq t)  = P(X_{(n)} > 1 - \frac{t}{n}) = 1 - P(X_{(n)} < 1 - \
         \sigma^3\gamma_1 & \sigma^4(\gamma_2 + 2)
         \end{pmatrix}\]
         因此\[\sqrt{n}(\bar{\mathcal{X}_n}) \overset{d}{\to} \mathcal{N}_2(0,\boldsymbol{\Sigma})\]
+        而\[\sqrt{n}\begin{pmatrix}
+                    \bar{X_n} - \mu\\
+                    S_n^2 - \sigma^2
+                    \end{pmatrix} = \sqrt{n}(\bar{\mathcal{X}_n}) + o_p(1)\]
         由slusky定理\[\sqrt{n}\begin{pmatrix}
             \bar{X_n} - \mu\\
             S_n^2 - \sigma^2
@@ -130,7 +138,7 @@ P(n(1 - X_{(n)}) \leq t)  = P(X_{(n)} > 1 - \frac{t}{n}) = 1 - P(X_{(n)} < 1 - \
                                         \[ \sqrt{n}(\boldsymbol{Y_n} -\boldsymbol{\theta}) \overset{d}{\to}\mathcal{N}_2(0,\boldsymbol{\Sigma}) \]
             设函数\(\displaystyle g(x_1,x_2) = \frac{x_1}{\sqrt{x_2}}, \quad g'(\mu,\sigma^2) = (
             \frac{1}{\sigma},  -\frac{\mu}{2\sigma^3}
-            ) ,\quad = g'^{T}\boldsymbol{\Sigma}g' =1 - \frac{\mu\gamma_1}{\sigma} + (\frac{\mu}{2\sigma})^2(\gamma_2 + 2) \),则由多元函数的delta方法可得
+            ) ,\quad  g'^{T}\boldsymbol{\Sigma}g' =1 - \frac{\mu\gamma_1}{\sigma} + (\frac{\mu}{2\sigma})^2(\gamma_2 + 2) \),则由多元函数的delta方法可得
             \[\sqrt{n}(g(\boldsymbol{Y_n}) - g(\boldsymbol{\theta}) ) \overset{d}{\to} n(0,\tau^2)\]
             即\[ \sqrt{n}(\frac{\bar{X_n}}{S_n} - \frac{\mu}{\sigma}) \overset{d}{\to} n(0,\tau^2) \]
             其中 \( \tau^2 = 1 - \frac{\mu\gamma_1}{\sigma} + (\frac{\mu}{2\sigma})^2(\gamma_2 + 2) \)
