@@ -20,6 +20,58 @@
 \abovedisplayshortskip=0pt
 \belowdisplayshortskip=0pt
 \maketitle
+\paragraph{5.61}
+\subparagraph{(a)}\(\displaystyle
+f_Y(y) = \frac{1}{B(a,b)}y^{a - 1}(1 - y)^{b - 1} \quad 0 \leq  y \leq 1\\
+f_V(y) = \frac{1}{B([a],[b])}y^{[a] - 1}(1 - y)^{[b] - 1}\\
+\frac{f_Y(y)}{f_V(y)} = \frac{B(a,b)}{B([a],[b])}y^{a - [a]}(1 - y)^{b - [b]} \quad 0 \leq  y \leq 1\\
+\because a - [a] \in [0,1) ,\quad b - [b] \in [0,1)\\
+\therefore y^{a - [a]} ,\; (1 - y)^{b - [b]}\in [0,1]\\
+\)
+即 \(\displaystyle M = sup\frac{f_Y(y)}{f_V(y)}\) 有界。
+\subparagraph{(b)}这小问题目有问题，仅当V的参数\(b'\)大于\(b\)，或者\(a'\)等于\(a\)时，M才为有限值。如果将V的参数改为([a],b + 1)则\\
+\(\displaystyle f_Y(y) = \frac{1}{\Gamma(a)b^a}y^{a - 1}e^{-\frac{y}{b}}\\
+f_V(y) = \frac{1}{\Gamma([a])b^{[a]}}y^{[a] - 1}e^{-\frac{y}{b + 1}}\\
+\frac{f_Y(y)}{f_V(y)} = \frac{\Gamma([a])(b + 1)^{[a]}}{\Gamma(a)b^a}y^{a - [a]}e^{-y(\frac{1}{b} - \frac{1}{b + 1})}\)
+\subparagraph{(c)}
+若将V的参数换成\([a] + 1\)， (a)，(b)中\(y\)对应的指数\(a - [a] - 1\)变为负，于是当\(y \to 0\) 时，\(\frac{f_Y(y)}{f_V(y)}\to \infty \)，即M 会变为无穷大。
+\subparagraph{(d)}
+如果仅仅是为了使\(EN\)最小，显然当V,Y的分布一样时，M最小为1。但是考虑到问题的实际背景，即为了通过简单的容易产生的随机数来产生复杂的随机数。而由前面的例题可以知道，可以用均匀分布随机变量较容易的产生出两个参数都为整数的Beta分布以及\(\alpha\)参数为整数的Gamma分布。因此在寻求使\(EN\)最小的参数时，应当将范围限制在上述允许的条件内。
+
+对Beta分布，设V的参数为\((a',b')\)，则\\
+\(\frac{f_Y(y)}{f_V(y)} = \frac{B(a,b)}{B(a',b')}y^{a - a'}(1 - y)^{b - b'}\)\\
+记\(\alpha = a - a',\; \beta = b - b'\)，可知当\(y = \frac{\alpha}{\alpha + \beta}\)时，有最大值\\
+\(M = \frac{B(a,b)}{B(a',b')}(\frac{\alpha}{\alpha + \beta})^{\alpha}(\frac{\beta}{\alpha + \beta})^{\beta}\)\\
+通过计算可以知道，\(\alpha , \beta\)越小时，M越小。而为使\(a',\;b'\)都为整数，因此应当取\(a' = [a],\; b' = [b]\)
+
+对Gamma分布，设V的参数为\((a',b')\),则\\
+\(
+\displaystyle
+\frac{f_Y(y)}{f_V(y)} = \frac{\Gamma(a')(b')^{a'}}{\Gamma(a)b^a}y^{a - a'}e^{-y(\frac{1}{b} - \frac{1}{b'})}\)
+记\(\alpha = a - a' ,\; \frac{1}{\beta} = \frac{1}{b} - \frac{1}{b'}\)，则可以知道当\(y = \alpha\beta\)时，取得最大值\( M = \frac{\Gamma(a')(b')^{a'}}{\Gamma(a)b^a}(\alpha\beta)^{\alpha}e^{-\alpha}\),为求得该式的最小值。对\(a'\)来说，\(a'\)越小，对应的极小值越小，因此
+应当取\(a' = [a]\),但是对于\(b'\),无法解析的给出取最小对应的值，只有具体情况数值求解。
+\paragraph{5.64}
+(a)记\(A = suppf = suppg \),则
+\begin{flalign*}
+\begin{split}
+E\Big(\frac{1}{m}\sum_{i = 1}^{m}\frac{f(Y_i)}{g(Y_i)}h(Y_i)\Big) & = E\frac{f(Y_i)}{g(Y_i)}h(Y_i)\\
+& = \int_{A}\frac{f(y)}{g(y)}h(y)g(y)\mathrm{d}y\\
+& = \int_{A}f(y)h(y)\mathrm{d}y\\
+& = Eh(X)
+\end{split}&
+\end{flalign*}
+(b)记\(\displaystyle T_i = \frac{f(Y_i)}{g(Y_i)}h(Y_i)\)\\
+\(
+\displaystyle
+E|T_i| = \int_{A}|\frac{f(y)}{g(y)}|h(y)g(y)\dd y = E|h(X)|
+\)
+由大数定律 :
+\(\displaystyle \frac{1}{m}\sum_{i = 1}^{m}T_i \overset{p}{\to} ET_i = Eh(X)\)\\
+(c)记\(\displaystyle A_i = \frac{f(Y_i)}{g(Y_i)} ,B_i = \frac{f(Y_i)}{g(Y_i)}h(Y_i)\\
+EA_i = 1 ,\;E|A_i| = 1 \text{ 由大数定律 } \bar{A}_m \overset{p}{\to} 1\\
+EB_i = h(X) ,\; E|B_i| < \infty \text{ 由大数定律 } \bar{B}_m \overset{p}{\to} Eh(X)\)\\
+因此\(\displaystyle \frac{\bar{B}_m}{\bar{A}_m} \overset{p}{\to} \frac{Eh(X)}{1} = Eh(X) \)，即\(\displaystyle \sum_{i = 1}^{m}\frac{f(Y_i)/g(Y_i)}{\sum_{j = 1}^{m}f(Y_j)/g(Y_j)}h(Y_i) \overset{p}{\to} Eh(X) \)
+(c)当h是常数时，\(Eh(X) = h\),(c)给出的估计就为\(h = Eh(X)\),而(b)给出的估计量为\(\displaystyle Eh(X)\frac{1}{m}\sum_{i = 1}^{m}\frac{f(Y_i)}{g(Y_i)}\)，因此在这个特殊情况下，(c)给出的估计量比(b)中公式更好。	
 \paragraph{模拟作业}
 \subparagraph{[1]}
 由\(\displaystyle \int_{0}^{2}g(x)\mathrm{d}x = \frac{3}{2}\)故令\(K = \frac{2}{3}\)，此时\(f(x) = Kg(x)\)为密度函数
@@ -45,5 +97,13 @@
 {\centering \includegraphics[scale = 0.5]{Rdirect} \includegraphics[scale=0.5]{Raccept}}
 \subparagraph{[5]}
 两种方法各重复2000次：
-由于每次重复的步骤都是一样的，我并没有写成循环，而是直接产生\(1000\times2000\)组数据，再分成2000组，分组求平均，这样与循环2000次是一样的，速度也要快一点，
+由于每次重复的步骤都是一样的，我没有写成循环，而是直接产生\(1000\times2000\)组数据，再分成2000组，分组求平均，这样与循环2000次是一样的，速度也要快一点。
+由大数定律，这2000个值近似服从正态分布，即\(\displaystyle \frac{\sqrt{1000}(\hat{\mu} - \mu)}{\sigma} \sim n(0,1)\),可以做图来验证这一点，即这两千个数的直方图应当和正态分布密度函数相合。\\
+两种方法得到的图像如下\\
+{\centering \includegraphics[scale = 0.5]{norm1} \includegraphics[scale=0.5]{norm2}}\\
+两种方法得到的样本均值与方差为：\\
+Direct method : \(\bar{\hat{\mu_1}}=1.16631 ,\;S^2_1 = 2.57\times10^{-4}\)\\
+Accept Reject : \(\bar{\hat{\mu_2}}=1.16673 ,\;S^2_2 = 2.56\times10^{-4}\)\\
+\subparagraph{[6]}
+\indent 记时两种算法运行时间：都产生2000组平均值，直接方法用时30.401s，接受拒绝法用时75.579s，因此直接方法明显节约了很多时间。但这和问题的特殊性有关，因为cdf的反函数可以显示表达，在大多数情况下，cdf并不能直接表达，而获取反函数需要解方程，而且这个方程一般会涉及积分，因此方程的求解会异常耗时。所以在反函数不能直接表达的时候，接受拒绝法要可行。
 \end{document}
