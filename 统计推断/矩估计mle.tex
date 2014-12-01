@@ -1,0 +1,198 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\linespread{1.9}
+\CTEXsetup[indent={0pt}]{subparagraph}
+\newcommand{\normal}[2]{\frac{1}{\sqrt{2\pi}#2}e^{-(x - #1)^2/(2#2^2)}}
+\newcommand{\norm}[1]{\frac{1}{\sqrt{2\pi}#1}e^{-x^2/(2#1^2)}}
+\newcommand{\norms}[0]{\frac{1}{\sqrt{2\pi}}e^{-x^2/2}}
+\newcommand{\dconverge}[0]{\overset{\mathcal{D}}{\to}}
+\newcommand{\pconverge}[0]{\overset{\mathcal{P}}{\to}}
+\newcommand{\bx}[0]{\mathbf{x}}
+\title{\vspace{-5ex}}
+\author{基科32 曾柯又 2013012266}
+\date{\vspace{-5ex}}
+\begin{document}
+\abovedisplayskip=5pt
+\belowdisplayskip=5pt
+\abovedisplayshortskip=0pt
+\belowdisplayshortskip=0pt
+\maketitle
+\paragraph{7.1}
+当 \(x = 0 \quad \hat{\theta} = 1\\
+x = 1 \quad \hat{\theta} = 1\\
+x = 2 \quad \hat{\theta} = 2 \text{或} 3 \\
+x = 3 \quad \hat{\theta} = 3\\
+x  = 4 \quad \hat{\theta} = 3
+\)
+\paragraph{7.3}
+因为\(\log x\)是严格单调的，且由\(L(\theta|\mathbf{x})\)的定义可知其大于零，因此\[L(\theta_1|\mathbf{x}) > L(\theta_2|\mathbf{x}) \Leftrightarrow \log L(\theta_1| \mathbf{x}) > \log L(\theta_2 | \mathbf{x})\]
+即\[\forall \theta \neq \theta_0 \quad L(\theta|\mathbf{x}) < L(\theta_0|\mathbf{x}) \Leftrightarrow \forall \theta \neq \theta_0 \quad \log L(\theta|\mathbf{x}) < \log L(\theta_0|\mathbf{x}) \]
+\paragraph{7.10}
+\subparagraph{(a)} \(\displaystyle f(x|\alpha,\beta) = \alpha\frac{x^{\alpha}}{\beta^{\alpha}}I(0 \leq x \leq \beta)\)\\
+因此\begin{flalign*}
+\begin{split}
+f(\mathbf{x}|\alpha,\beta) & = (\frac{\alpha}{\beta})^n(\prod_{i = 1}^{n}x_i)^{\alpha - 1}\prod_{i = 1}^{n}I(0 \leq x_i \leq \beta)\\
+& = (\frac{\alpha}{\beta})^n(\prod_{i = 1}^{n}x_i)^{\alpha - 1}I(x_{(n)} < \beta)I(x_{(1)} > 0 )
+\end{split}
+\end{flalign*}
+记\(\displaystyle t_1 = \prod_{i = 1}^{n}x_i\quad t_2 = x_{(n)}\quad f(\mathbf{x}|\alpha,\beta) = (\frac{\alpha}{\beta})^nt_1^{\alpha - 1}I(t_2 < \beta)I(x_{(1)} > 0 )\)\\
+由因子分解定理\(T(\mathbf{X}) = (t_1,t_2)\),为一个充分统计量。
+\subparagraph{(b)}
+ 记函数\(g(\alpha,\beta) = (\frac{\alpha}{\beta^{\alpha}})^nt_1^{\alpha - 1}I(t_2 \leq \beta)\)
+ 首先对任意\(\alpha\),易看出\(\beta\)越小，\(g\)越大，而\(\beta\)小于\(t_2\)时变为0,因此\(\hat{\beta} = t_2\)\\
+ 而对\(\displaystyle g(\alpha,\hat{\beta})= \frac{1}{\hat{\beta}^n}\alpha^n(\frac{t_1}{\hat{\beta}^n})^{\alpha - 1}\)\\
+ \(\displaystyle
+ \frac{\partial}{\partial \alpha}\log g(\alpha,\hat{\beta}) = \frac{n}{\alpha} + \log (\frac{t_1}{\hat{\beta}}^n)\\
+ \because t_1 < t_2^n = \hat{\beta}^n \; \Rightarrow \; \frac{t_1}{\hat{\beta}^n} < 1 \\
+ \text{且} \frac{n}{\alpha} + \log (\frac{t_1}{\hat{\beta}})^n \text{随} \alpha \text{单减,故对应极值为极大值 } \\
+ \therefore \hat{\alpha} = \frac{n}{\log (\frac{\hat{\beta}^n}{t_1})} = \frac{n}{\log (\frac{t_2^n}{t_1})}\)
+\subparagraph{(c)} \(\displaystyle n = 14\quad x_{(n)} = 25 \text{ 即 } \hat{\beta} = 25\\
+ \hat{\alpha} = \frac{n}{n\log x_{(n)} - \log t_1} = \frac{1}{\log x_{(n)} - \frac{1}{n}\sum_{i = 1}^{n}\log x_i} \approx 12.595
+\)
+\paragraph{7.11}
+\subparagraph{(a)}
+\(L(\theta|\mathbf{x}) = \theta^n(\prod_{i = 1}^{n}x_i)^{\theta - 1} \)
+记 \(\displaystyle t = \prod_{i = 1}^{n}x_i \\
+ L(\theta|\mathbf{x}) = \theta^nt^{\theta - 1}\\
+\frac{\partial \log L}{\partial \theta} = \frac{n}{\theta} + \log t\\
+\because t < 1 \text{ 且 } \frac{n}{\theta} + \log t \text{单调递减, 故极值为极大值，因此 }\hat{\theta} = \frac{n}{\log (\frac{1}{t})} \)\\
+容易证明 
+\(\displaystyle - \log X_i \sim Exp(\frac{1}{\theta}) \quad \text{故 } -\sum_{i = 1}^{n}\log X_i \sim Gamma(n,\frac{1}{\theta})\\
+\text{因此 }\frac{\hat{\theta}}{n} \sim \frac{1}{x^2}\frac{\theta^n}{(n - 1)!}(\frac{1}{x})^{n - 1}e^{- \frac{\theta}{x}}\\
+E\frac{\hat{\theta}}{n} = \frac{\theta}{n - 1} \\
+ Var \frac{\hat{\theta}}{n} = E\Big(\frac{\hat{\theta}}{n}\Big)^2 - \Big(E\frac{\hat{\theta}}{n}\Big)^2 = \frac{\theta^2}{(n - 1)(n - 2)} - \frac{\theta^2}{(n - 1)^2} = \frac{\theta^2}{(n - 1)^2(n - 2)}\\
+ \text{可得} Var \hat{\theta} = \frac{n^2\theta^2}{(n - 1)^2(n - 2)} \Rightarrow \; n \to \infty \text{ 时 }   Var \hat{\theta} \to 0 \)
+ \subparagraph{(b)}
+ \(\displaystyle EX_i = \frac{\theta}{\theta + 1} \Rightarrow \frac{1}{n}\sum_{i = 1}^{n}X_i = \frac{\tilde{\theta}}{\tilde{\theta} + 1} \\ 
+ \tilde{\theta} = \frac{\bar{x}}{1 - \bar{x}}\)
+ 因为\(\displaystyle X_i \leq 1 \; \Rightarrow \bar{x} \leq 1 \\
+ \text{又 } P(\bar{x} = 1) = 0， 因此 \tilde{\theta} = \frac{\bar{x}}{1 - \bar{x}} > 0\)
+\paragraph{7.12}
+\subparagraph{(a)} \(EX = \theta\)
+用矩估计的方法可得
+\(\tilde{\theta} = \frac{1}{n}\sum_{i = 1}^{n}X_i\)\\
+用MLE估计:\\
+\(L(\theta|\bx) = \theta^{\sum_{i = 1}^{n}x_i}(1 - \theta)^{n - \sum_{i = 1}^{n}x_i}\)\\
+记\(t = \frac{1}{n}\sum_{i = 1}^{n}x_i\)\\
+则\(L(\theta|\bx) = (\theta^t(1 - \theta)^{1 - t})^n\)\\
+\(\displaystyle \Rightarrow \frac{1}{n}\frac{\partial L(\theta|\bx)}{\partial \theta} = \frac{t}{\theta} - \frac{1 - t}{1 - \theta}\)\\
+该式随\(\theta\)单减,于是\(L(\theta|\bx)\)在\(\theta = t\) 时取得极大值。但是考虑到\(\theta < \frac{1 }{2}\),故当\(t > \frac{1}{2} \)时\(L(\theta|\bx)\)在区间\([0,\frac{1}{2}]\)上单调递增,\(\theta\)只能取\(\frac{1}{2}\)，\(L(\theta|\bx)\)最大，因此\\
+\(\hat{\theta} = \begin{cases}
+\frac{1}{2} & t > \frac{1}{2}\\
+t & t \leq \frac{1}{2}
+\end{cases}\)
+\subparagraph{(b)}
+对于矩估计\(\tilde{\theta} = \frac{1}{n}\sum_{i = 1}^{n}X_i\),而\(\sum_{i = 1}^{n}X_i \sim B(n,\theta)\),因此\\
+\(E\tilde{\theta} = \frac{1}{n}\times n\theta = \theta\)\\
+\(\displaystyle MSE(\tilde{\theta}) = Var\tilde{\theta} = \frac{1}{n^2}Var\sum_{i = 1}^{n}X_i = \frac{\theta(1 - \theta)}{n}\)\\
+对于MLE估计：
+\begin{flalign*}
+\begin{split}
+MSE(\hat{\theta})& = E(\hat{\theta} - \theta)^2 \\
+& = \sum_{k = 1}^{n}(\hat{\theta} - \theta)^2{n \choose k}\theta^k(1 - \theta)^{1 - k}\\
+& = \sum_{k = 1}^{[\frac{n}{2}]}(\frac{k}{n} - \theta)^2{n \choose k}\theta^k(1 - \theta)^{n - k}
++ \sum_{k = [\frac{n}{2}] + 1}^{n}(\frac{1}{2} - \theta)^2{n \choose k}\theta^k(1 - \theta)^{n - k}
+\end{split}&
+\end{flalign*}
+\subparagraph{(c)}
+\(MSE(\tilde{\theta}) = \sum_{k = 1}^{n}(\frac{k}{n} - \theta)^2{n \choose k}\theta^k(1 - \theta)^{n - k}
+\)
+因此
+\begin{flalign*}
+\begin{split}
+MSE(\tilde{\theta})& - MSE(\hat{\theta}) = \\
+& \sum_{k = [\frac{n}{2}] + 1}^{n}\big((\frac{k}{n} - \theta)^2 - (\frac{1}{2} - \theta)^2\big){n \choose k}\theta^k(1 - \theta)^{n - k}\\
+& = \sum_{k = [\frac{n}{2}] + 1}^{n}(\frac{k}{n} + \frac{1}{2} - 2\theta)(\frac{k}{n} - \frac{1}{2}){n \choose k}\theta^k(1 - \theta)^{n - k}
+\end{split}
+\end{flalign*}
+\(\displaystyle \because \theta < \frac{1}{2} , \; \frac{k}{n} > \frac{1}{2} \\
+ \therefore MSE(\tilde{\theta}) - MSE(\hat{\theta}) > 0\)\\
+ 即最似然估计更好
+\paragraph{7.13}
+\(L(\theta|\bx) = \frac{1}{2}e^{-\sum_{i = 1}^{n}|x_i - \theta|}\)\\
+对于\(L' = \sum_{i = 1}^{n}|x_i - \theta| = \sum_{i = 1}^{n}|x_{(i)} - \theta|\)\\
+易知\(|x_{(i)} - \theta| + |x_{(j)} - \theta| \geq |x_{(i)} - x_{(j)}|\),仅当\(\theta \text{在} x_{(i)}， \; x_{(j)}\)之间等号成立\\
+因此当\(n\)为奇数时，容易知道当\(\displaystyle \hat{\theta} = m = x_{(\frac{n + 1}{2})}\)时，\(L'\)取得最小，对应\(L\)取得最大
+当\(n\)为奇数时，有\(\displaystyle \hat{\theta} \in (x_{(\frac{n }{2})}, x_{(\frac{n}{2} + 1)}) \)时,\(L'\)取得最小，对应\(L\)取得极大值。
+\paragraph{7.14}
+\begin{flalign*}
+\begin{split}
+P(Z < z,W = 1) & = P(X \leq z,X \leq Y)\\
+& = \int_{0}^{z}\mathrm{d}x\int_{x}^{\infty}\mathrm{d}y \frac{1}{\lambda\mu}e^{-(\frac{x}{\lambda} + \frac{y}{\mu
+})}\\
+& = \int_{0}^{z}\mathrm{d}x \frac{1}{\lambda}e^{-\frac{x}{\lambda}-\frac{x}{\mu}}\\
+& = \frac{1}{1 + \frac{\lambda}{\mu}}(1 - e^{-(\frac{1}{\lambda}+\frac{1}{\mu})z})
+\end{split}&
+\end{flalign*}
+同理\(\displaystyle P(Z < z , W = 0) = \frac{1}{1 + \frac{\mu}{\lambda}}(1 - e^{-(\frac{1}{\lambda}+\frac{1}{\mu})z})\\
+f_{Z,W}(z,1) = \frac{\partial}{\partial z}P(Z < z,W = 1) = \frac{1}{\lambda}e^{-(\frac{1}{\lambda}+\frac{1}{\mu})z}\\
+f_{Z,W}(z,0) = \frac{\partial}{\partial z}P(Z < z,W = 0) =\frac{1}{\mu}e^{-(\frac{1}{\lambda}+\frac{1}{\mu})z}\\
+f_{Z,W}(z,w) = (\frac{1}{\lambda}e^{-(\frac{1}{\lambda}+\frac{1}{\mu})z})^w(\frac{1}{\mu}e^{-(\frac{1}{\lambda}+\frac{1}{\mu})z})^{1 - w} = (\frac{1}{\lambda})^w(\frac{1}{\mu})^{1 - w}e^{-(\frac{1}{\lambda}+\frac{1}{\mu})z}
+\Rightarrow\\
+L(\lambda,\mu|(\mathbf{z},\mathbf{w})) = (\frac{1}{\lambda})^{\sum_{i = 1}^{n}w_i}(\frac{1}{\mu})^{n - \sum_{i = 1}^{n}w_i}e^{-(\frac{1}{\lambda}+\frac{1}{\mu})\sum_{i = 1}^{n}z_i}\)\\
+记 \(t_1 = \sum_{i = 1}^{n}w_i ,\; t_2 = \sum_{i = 1}^{n}z_i,\;\theta_1 = \frac{1}{\lambda} ,\;\theta_2 = \frac{1}{\mu}\)\\
+则\(\displaystyle L(\lambda,\mu|(\mathbf{z},\mathbf{w})) = (\theta_1)^{t_1}(\theta_2)^{n - t_1}e^{-(\theta_1 + \theta_2)t_2}\\
+\log L = t_1\log\theta_1 + (n - t_1)\log \theta_2 -(\theta_1 + \theta_2)t_2\\
+\frac{\partial\log L}{\partial \theta_1} = \frac{t_1}{\theta_1} - t_2\\
+\frac{\partial\log L}{\partial \theta_2} = \frac{n - t_1}{\theta_2} - t_2
+\)
+且两个偏倒数都随\(\theta_1 , \; \theta_2\)单点递减，因此对应极值为极大值，即:\\
+\(\displaystyle \theta_1 = \frac{t_1}{t_2} \; \theta_2 = \frac{n - t_1}{t_2}\\
+\Rightarrow \hat{\lambda} = \frac{\sum_{i = 1}^{n}z_i}{\sum_{i = 1}^{n}w_i}\quad \hat{\mu} = \frac{\sum_{i = 1}^{n}z_i}{n - \sum_{i = 1}^{n}w_i}\)
+\paragraph{7.18}
+\subparagraph{(a)}
+为简化记号，设\(\mathbf{Z} = (X,Y) ,\mathbf{z} = (x,y) ,\mathbf{\mu_Z} = (\mu_X , \mu_Y)\)\\
+ 则\(x,y\)的分布为 \[f_\mathbf{Z}(\mathbf{z}) = \frac{1}{2\pi\sqrt{|\Sigma|}}e^{-\frac{1}{2}((\mathbf{z - \mu_Z})\Sigma^{-1}\mathbf{(z - \mu_Z)}^{T})}\]
+ 其中协方差矩阵为：\(\begin{bmatrix}
+ \sigma_X^2 & \rho\sigma_X\sigma_Y\\
+ \rho\sigma_X\sigma_Y & \sigma_Y^2
+ \end{bmatrix}\)\\
+ 对\(y\)积分可以得到\(x\)的分布 \(\displaystyle f_X(x) = \frac{1}{\sqrt{2\pi}\sigma_X}e^{-\frac{(x - \mu_X)^2}{\sigma_X^2}}\)\\
+ 于是 \(EX = \mu_X ,\;EX^2 = VarX + (EX)^2 = \sigma_X^2 + \mu_X^2\\
+ \Rightarrow \tilde{\mu}_X = \bar{x} ,\; \tilde{\mu}_X + \tilde{\sigma}_X^2 = \bar{x^2}\\
+ \Rightarrow \tilde{\sigma}_X^2 = \bar{x^2} - \bar{x}^2 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^2\)\\
+ 同理对于\(y\),有：\\
+ \(\tilde{\mu}_Y = \bar{y},\; \tilde{\sigma}_Y^2= \frac{1}{n}\sum_{i = 1}^{n}(y_i - \bar{y})^2\)\\
+ 而\(\displaystyle \rho = \frac{Cov(X,Y)}{\sqrt{VarX\, Var Y}} = \frac{EXY - EXEY}{\sqrt{VarX\,VarY}}\),得到:\\
+ \(\displaystyle EXY = \sigma_X\sigma_Y\rho + \mu_X\mu_Y\\
+ \Rightarrow \tilde{\rho}\tilde{\sigma}_X\tilde{\sigma}_Y + \tilde{\mu}_X\tilde{\mu}_Y = \frac{1}{n}\sum_{i = 1}^{n}x_iy_i = \frac{1}{n}\sum_{i = 1}^{n}(x - \bar{x})(y - \bar{y}) + \bar{x}\bar{y}\\
+ \Rightarrow \tilde{\rho} = \frac{\frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\tilde{\sigma}_X\tilde{\sigma}_Y}\)
+ \subparagraph{(b)}
+ 不采用书中的办法，由于\(\Sigma\)是半正定对称矩阵,于是存在一个正交矩阵\(A\)可将其对角化,即\(\displaystyle A\Sigma A^T = \begin{pmatrix}
+ \sigma^2_u & 0\\
+ 0& \sigma^2_v
+ \end{pmatrix}\)\\
+ 记\(\displaystyle \mathbf{w} = (u, v) = \mathbf{z}A^T , \;\mathbf{\mu_w} = (\mu_u,\mu_v)= \mathbf{\mu_Z}A^T\)
+ 于是pdf可写为 \begin{flalign*}
+ \begin{split}
+ f_\mathbf{Z}(\mathbf{z}) & = \frac{1}{2\pi\sqrt{|\Sigma|}}e^{-\frac{1}{2}((\mathbf{w - \mu_w})A\Sigma^{-1}A^T\mathbf{(w - \mu_w)}^{T})} \\
+ &= \frac{1}{2\pi\sqrt{|\Sigma|}}e^{-\frac{1}{2}((\mathbf{w - \mu_w})(A\Sigma A^T)^{-1}\mathbf{(w - \mu_w)}^{T})}\\
+ & = \frac{1}{2\pi\sqrt{|\Sigma|}}e^{-\frac{1}{2}(\frac{(u - \mu_u)^2}{\sigma_u^2} + \frac{(v - \mu_v)^2}{\sigma_v^2})}\\
+ \end{split}&
+ \end{flalign*}
+ 一系列样本值\((x_i,y_i)\)，对应着一系列的\((u_i,v_i)\),似然函数:
+ \begin{flalign*}
+ \begin{split}
+ L & = \prod_{i = 1}^{n}\frac{1}{2\pi\sqrt{|\Sigma|}}e^{-\frac{1}{2}(\frac{(u_i - \mu_u)^2}{\sigma_u^2} + \frac{(v_i - \mu_v)^2}{\sigma_v^2})}\\
+ & = (\frac{1}{2\pi\sqrt{|\Sigma|}})^ne^{-\frac{1}{2}\sum_{i = 1}^{n}(\frac{(u_i - \mu_u)^2}{\sigma_u^2} + \frac{(v_i - \mu_v)^2}{\sigma_v^2})}\\
+ & = (\frac{1}{2\pi\sqrt{|\Sigma|}})^ne^{-\frac{1}{2}\sum_{i = 1}^{n}(\frac{(u_i - \bar{u})^2}{\sigma_u^2} + \frac{(v_i - \bar{v})^2}{\sigma_v^2} + \frac{(\bar{u} - \mu_u)^2}{\sigma_u^2} + \frac{(\bar{v} - \mu_v)^2}{\sigma_v^2})}\\
+ & =  (\frac{1}{2\pi\sqrt{|\Sigma|}})^ne^{-\frac{n}{2}(\bar{\mathbf{z}} - \mu_{\mathbf{z}})\Sigma^{-1}(\bar{\mathbf{z}} - \mu_{\mathbf{z}})^T}\exp(-\frac{1}{2}\sum_{i = 1}^{n}tr(\begin{pmatrix}
+ \frac{1}{\sigma_u^2} & 0\\
+ 0& \frac{1}{\sigma_v^2}
+ \end{pmatrix}
+ (\mathbf{w}_i - \bar{\mathbf{w}})^T(\mathbf{w}_i - \bar{\mathbf{w}})
+ )\\
+ &  =  (\frac{1}{2\pi\sqrt{|\Sigma|}})^ne^{-\frac{n}{2}(\bar{\mathbf{z}} - \mu_{\mathbf{z}})\Sigma^{-1}(\bar{\mathbf{z}} - \mu_{\mathbf{z}})^T}\exp(-\frac{1}{2}\sum_{i = 1}^{n}tr(\Sigma^{-1}(\mathbf{z}_i - \bar{\mathbf{z}})^T(\mathbf{z}_i - \bar{\mathbf{z}}))
+ \end{split}&
+ \end{flalign*}
+ 设\(\mathbf{S} = \sum_{i = 1}^{n}(\mathbf{z}_i - \bar{\mathbf{z}})^T(\mathbf{z}_i - \bar{\mathbf{z}})\)\\
+ 有\[L = (\frac{1}{2\pi\sqrt{|\Sigma|}})^ne^{-\frac{n}{2}(\bar{\mathbf{z}} - \mu_{\mathbf{z}})\Sigma^{-1}(\bar{\mathbf{z}} - \mu_{\mathbf{z}})^T}\exp(-\frac{1}{2}tr(\Sigma^{-1}\mathbf{S}))\]
+ 考虑到协方差矩阵的性质，对指数上第一项\( (\bar{\mathbf{z}} - \mu_{\mathbf{z}})\Sigma^{-1}(\bar{\mathbf{z}} - \mu_{\mathbf{z}})^T \),仅当\(\hat{\mu}_{\mathbf{Z}} = \bar{\mathbf{z}}\)时取得0，对应\(L\)为极大。\\
+ 再考虑\(\displaystyle L' = (\frac{1}{\sqrt{|\Sigma|}})^n\exp(-\frac{1}{2}tr(\Sigma^{-1}\mathbf{S}))\\
+ \log L' = -\frac{n}{2}\log |\Sigma| - \frac{1}{2}tr(\Sigma^{-1}\mathbf{S}) = \frac{n}{2}\log |\Sigma^{-1}| - \frac{1}{2}tr(\Sigma^{-1}\mathbf{S})\\
+ \text{对} \Sigma^{-1}\text{的每一分量求导，结果写为矩阵形式，有}\\
+ \frac{\partial}{\partial \Sigma^{- 1}}\log L' = \frac{n}{2}\Sigma - \frac{1}{2}\mathbf{S}\\
+ \text{该方程只有一个解，表明极值只有一个，并且 }|\Sigma| \to \infty\text{时} L' \to 0,\text{而当 } \Sigma = \frac{1}{n}\mathbf{S}\text{时，}L'\text{为正}，\text{故该极值为极大值}
+ \text{因此 } \hat{\Sigma} = \frac{1}{n}\mathbf{S}\)\\
+ 若将矩阵写为分量形式即与(a)问中得到的结果相同。
+\end{document}
