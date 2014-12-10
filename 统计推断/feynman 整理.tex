@@ -1,0 +1,42 @@
+\documentclass[11pt,a4paper,nocap]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\CTEXsetup[indent={0pt}]{section}
+\title{Feynman 11月4日整理}
+\author{整理人 ：  曾柯又}
+\date{\vspace{-5ex}}
+\linespread{1.5}
+\newcommand{\ket}[1]{\left|#1\right>}
+\newcommand{\bra}[1]{\left<#1\right|}
+\newcommand{\braket}[2]{\left<#1|#2\right>}
+\begin{document}
+\maketitle
+\section{两粒子态}
+\subsection{数学表示}
+最简单的两粒子态可以写为直积（张量积）的形式：\[\left|a\right>_1\left|b\right>_2 = \left|a\right>\left|b\right> = \left|a\right>\otimes\left|b\right> \]
+解释为：粒子1 处于态\(\left|a\right>\)上且粒子2处于态\(\left|b\right>\)上的态。
+
+两粒子可以构成的基础态：\(\left|+\right>\left|+\right>，\left|+\right>\left|-\right>，\left|-\right>\left|+\right>，\left|-\right>\left|-\right>\)。
+由线性叠加原理，这些基础态的任意线性组合都是物理上允许的态。例如\(\frac{1}{\sqrt{2}}(\left|+\right>\left|+\right> + \left|-\right>\left|-\right>)\)但是注意此时不能再称粒子一处于某态，粒子二处于某态。
+\subsection{内积定义}
+记\(\left|\phi_a\right> = \left|a_1\right>\left|a_2\right>,\;\left|\phi_b\right> = \ket{b_1}\ket{b_2}\),则\(\braket{\phi_a}{\phi_b} = \braket{a_1}{b_1}\braket{a_2}{b_2}\)。
+这个内积依然解释为，对于\(\left|\phi_b\right>\)的两粒子态，测得\(\left|\phi_a\right>\)的概率幅。
+\subsection{纠缠态}
+\subsubsection{纠缠态的定义}
+在仅限与纯态的情况，当两粒子的态能够写成下列形式：\(\ket{\psi} = \ket{a}\ket{b}\),则为非纠缠的，若不能则为纠缠态。
+\subsubsection{最大纠缠态}
+数学表示\[\ket{\phi^\pm} = \frac{1}{\sqrt{2}}(\ket{++} \pm \ket{--})\]
+\[\ket{\psi^\pm} = \frac{1}{\sqrt{2}}(\ket{+-} \pm \ket{-+})\]
+由前面定义的内积，这四个态是正交归一的，因此可以作基础态和测量基。\\
+\subsubsection{纠缠态与通信}
+纠缠态的特有属性：关联。以态\(\ket{\phi^+} = \frac{1}{\sqrt{2}}(\ket{++} + \ket{--})\)为例：A,B两个粒子可相隔很远。若一端（A端）得\(\ket{+}\)，则另一端也为\(\ket{+}\),若A端\(\ket{-}\)，B则端也是
+\(\ket{-}\)
+
+这样貌似就可以实现超光速通信了？实则非也。
+首先回答什么是通信，如果你给别人打电话，不管你说什么，别人始终在放我的滑板鞋，这显然不是通信。。。囧Orz。
+而对纠缠态系统\(\ket{\phi^+}\)来说,1粒子没有测量时，对于粒子2而言，其密度矩阵为\(I/2\) 而对粒子一，无论做何种测量，只要没有把测量结果传到粒子2端，则粒子2的密度矩阵仍然为\(I/2\)。
+
+也就是说在没有经典通信的情况下，1粒子端的任何测量都不会对2粒子端的测量产生影响。也就相当于洗脑循环我的滑板鞋了，这当然就不会有任何信息的传递。
+\subsection{Bell测量}
+\end{document}

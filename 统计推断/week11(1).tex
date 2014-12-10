@@ -1,0 +1,118 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps}
+\graphicspath{{/home/cengq/Pictures/}}
+\linespread{1.9}
+\CTEXsetup[indent={0pt}]{subparagraph}
+\newcommand{\normal}[2]{\frac{1}{\sqrt{2\pi}#2}e^{-(x - #1)^2/(2#2^2)}}
+\newcommand{\norm}[1]{\frac{1}{\sqrt{2\pi}#1}e^{-x^2/(2#1^2)}}
+\newcommand{\norms}[0]{\frac{1}{\sqrt{2\pi}}e^{-x^2/2}}
+\newcommand{\dconverge}[0]{\overset{\mathcal{D}}{\to}}
+\newcommand{\pconverge}[0]{\overset{\mathcal{P}}{\to}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\title{\vspace{-5ex}}
+\author{基科32 曾柯又 2013012266}
+\date{\vspace{-5ex}}
+\begin{document}
+\abovedisplayskip=5pt
+\belowdisplayskip=5pt
+\abovedisplayshortskip=0pt
+\belowdisplayshortskip=0pt
+\maketitle
+\paragraph{7.44}
+先证明\(\bar{X}^2 - \frac{1}{n}\)是一个无偏估计\\
+\(\displaystyle \because\; \bar{X} \sim n(\theta,\frac{1}{n})\\
+\therefore \;\sqrt{n}(\bar{X} - \theta)\sim(0,1) \Rightarrow n(\bar{X} - \theta)^2 \sim \chi^2_1\\
+\therefore nE(\bar{X} - \theta)^2 = nE(\bar{X}^2 - \theta^2) = 1\\
+\therefore E(\bar{X}^2 - \frac{1}{n}) = \theta^2\)
+由指数分布族的性质可知\(\bar{X}\)是\(\theta\)的完全统计量，且由前面的例子可知\(\bar{X}\)是充分统计量，因此\(\bar{X}^2 - \frac{1}{n}\)是\(\theta\)的最佳无偏估计。
+\begin{flalign*}
+\begin{split}
+Var(\bar{X}^2 - \frac{1}{n}) & = E(\bar{X}^2 - \frac{1}{n} - \theta^2)^2\\
+& = E[( \bar{X} - \theta) (\bar{X} + \theta) - \frac{1}{n}]^2\\
+& = E(\bar{X} + \theta)^2(\bar{X} - \theta)^2 - \frac{2}{n}E(\bar{X} - \theta)(\bar{X} + \theta) + \frac{1}{n^2}\\
+& = \frac{1}{n}E[2(\bar{X} + \theta)(\bar{X} - \theta) + (\bar{X} + \theta)^2] - \frac{2}{n^2} + \frac{1}{n^2}\\
+& = \frac{1}{n}(\frac{2}{n} + E(\bar{X}^2 + 2\bar{X}\theta + \theta^2)) - \frac{2}{n^2} + \frac{1}{n^2}\\
+& = \frac{1}{n}(4\theta^2 + \frac{3}{n}) - \frac{2}{n^2} + \frac{1}{n^2}\\
+& = \frac{4\theta^2}{n} + \frac{2}{n^2}
+\end{split}&
+\end{flalign*}
+而由Cramer-Rao不等式给出的下界为:
+\begin{flalign*}
+\begin{split}
+\frac{(2\theta)^2}{-nE(\frac{\partial^2}{\partial \theta^2}\log f)}
+ & = \frac{(2\theta)^2}{-nE[\frac{\partial^2}{\partial \theta^2}(-\frac{1}{2}\log(2\pi) - \frac{1}{2}(x - \theta)^2)]}\\
+ & = \frac{4\theta^2}{n}
+\end{split}&
+\end{flalign*}
+即\(Var(\bar{X} - \frac{1}{n^2}) > \frac{4\theta^2}{n}\)
+\paragraph{7.45}
+\subparagraph{(a)}
+\begin{flalign*}
+\begin{split}
+MSE(aS^2) & = E(aS^2 - \sigma^2)^2\\
+& = E(a(S^2 - \sigma^2) + (a -1)\sigma^2)^2\\
+& = E[a^2(S^2 - \sigma^2)^2 + (a - 1)^2\sigma^4 + 2a(S^2 - \sigma^2)(a - 1)\sigma^2]\\
+& = a^2VarS^2 + (a - 1)^2\sigma^2
+\end{split}&
+\end{flalign*}
+\subparagraph{(b)}
+首先容易证明\(\displaystyle S^2 = \frac{1}{2n(n - 1)}\sum_{i = 1}^{n}\sum_{j = 1}^{n}(X_i - X_j)^2\)\\
+记\(Z_ i  = X_i - \mu ,\; \text{有} EZ_i = 0 , \;EZ_i^2 = \sigma^2,\; EZ_i^4 = \kappa\)\\
+有\(\displaystyle S^2 = \frac{1}{2n(n - 1)}\sum_{i = 1}^{n}\sum_{j = 1}^{n}(Z_i - Z_j)^2\)\\
+\(\displaystyle S^4 = (\frac{1}{2n(n - 1)})^2\sum_{i = 1}^{n}\sum_{j = 1}^{n}\sum_{k = 1}^{n}\sum_{l = 1}^{n}(Z_i -Z_j)^2(Z_k - Z_l)^2\)\\
+根据\(i,j,k,l\)的不同取值，平均值不同，先分情况讨论\\
+有\(n(n - 1)(n - 2)(n - 3)\)对满足\(i,j,k,l\)互不相同\\
+\(E(Z_1 - Z_2)^2(Z_3-Z_4)^2 = (2\sigma^2)^2 = 4\sigma^4\)\\
+有\(2n(n - 1)\)对满足\(i \neq j \text{ 且 } i = k ,\;j = l\text{或} i = l ,\;j = k\)\\
+\(E(Z_1 - Z_2)^4 = E(Z_1^4 - 4Z_1^3Z_2 + 6Z_1^2Z_2^2 - 4Z_1Z_2^3 + Z_2^4) = 2\kappa + 6\sigma^4\)\\
+有\(4n(n - 1)(n - 2)\)对满足\(i,j,k,l\)中仅有一对相等且\(i \neq j,\; k \neq l\)\\
+\(E(Z_1 - Z_2)^2(Z_1 - Z_3)^2 = E(Z_1^2 + Z_2^2 - 2Z_1Z_2)(Z_1^2 + Z_3^2 - 2Z_1Z_3) = \kappa + 3\sigma^4\)\\
+因此\begin{flalign*}
+\begin{split}
+ES^4 & = \left[\frac{1}{2n(n - 1)}\right]^2[4n(n - 1)(n - 2)(n - 3)\sigma^4 + 2n(n - 1))(2\kappa + 6\sigma^4) \\
+& + 4n(n - 1)(n - 2)(\kappa + 3\sigma^4)]\\
+& = \left[\frac{1}{2n(n - 1)}\right]^2\left[4n(n - 1)^2\kappa + 4\sigma^4n(n - 1)(n^2 - 2n + 3)\right]
+\end{split}&
+\end{flalign*}
+\begin{flalign*}
+\begin{split}
+VarS^2 &= ES^4 - (ES^2)^2\\
+& = \frac{\kappa}{n} + \frac{n^2 - 2n + 3}{n(n - 1)}\sigma^4 - \sigma^4\\
+& = \frac{\kappa}{n} + \frac{(3 - n)}{n(n - 1)}\sigma^4\\
+& = \frac{1}{n}(\kappa - \frac{n - 3}{n - 1}\sigma^4)
+\end{split}
+\end{flalign*}
+\subparagraph{(c)}
+若\(X \sim n(\mu,\sigma^2)\)
+\begin{flalign*}
+\begin{split}
+E(X - \mu)^4 & = E(X - \mu)^3(X - \mu)\\
+& = \sigma^2E3(X - \mu)^2\\
+& = 3\sigma^4
+\end{split}&
+\end{flalign*}
+\(\displaystyle \therefore \kappa = 3\sigma^4 \Rightarrow Var(S^2) = \frac{1}{n}(\kappa - \frac{n - 3}{n - 1}\sigma^4) = \frac{2\sigma^4}{n - 1}\\
+MSE(aS^2) = a^2VarS^2 + (a - 1)^2\sigma^4 = a^2\frac{2\sigma^4}{n - 1} + (a - 1)^2\sigma^4\\
+\text{对}a\text{求导可得 }a = \frac{n - 1}{n + 1}, \; \text{而该二次函数的极值为极小值，故MSE取极}\\\text{小值对应的}aS^2\text{为}
+\frac{n - 1}{n + 1}S^2\\
+\)
+\subparagraph{(d)}
+\(\displaystyle MSE(aS^2) = a^2\frac{1}{n}(\kappa - \frac{n - 3}{n - 1}\sigma^4) + (a - 1)^2\sigma^4
+\)
+对\(a\)求导可得\\
+\(\displaystyle a\frac{1}{n}(\frac{\kappa}{\sigma^4} - \frac{n - 3}{n - 1}) + (a - 1) = 0\\
+\Rightarrow a = \frac{n - 1}{(n + 1)+ \frac{(n - 1)(\frac{\kappa}{\sigma^4} - 3)}{n}}
+\)\\
+由于\(\displaystyle Var(S^2) > 0\; \Rightarrow \; Var(S^2) + \sigma^4 > 0\)\\
+a对应二次函数的2次幂系数大于0,故该极值恰对应极小值\\
+书中的公式应该有错
+\subparagraph{(e)}
+若 \(\displaystyle \kappa > 3\sigma^4,\;\frac{(n - 1)(\frac{\kappa}{\sigma^4} - 3)}{n} > 0 \Rightarrow a < \frac{n - 1}{n + 1}\\
+\text{若 } \kappa < 3\sigma^4,\; \frac{(n - 1)(\frac{\kappa}{\sigma^4} - 3)}{n} < 0 \Rightarrow a > \frac{n - 1}{n + 1}\\
+\)
+另一方面\(\displaystyle VarS^2 > 0 \Rightarrow \kappa > \frac{n - 3}{n - 1}\sigma^4\\
+\therefore \frac{(n - 1)(\frac{\kappa}{\sigma^4} - 3)}{n} > -\frac{2}{n - 1} > -2\\
+ a = \frac{n - 1}{(n + 1)+ \frac{(n - 1)(\frac{\kappa}{\sigma^4} - 3)}{n}} <  \frac{n - 1}{(n + 1)+ -2} = 1\)
+\end{document}
