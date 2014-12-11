@@ -2,7 +2,7 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps}
-\graphicspath{{/home/cengq/Pictures/}}
+\graphicspath{c:\\Users\\cengqQ\\Pictures}
 \linespread{1.9}
 \CTEXsetup[indent={0pt}]{subparagraph}
 \newcommand{\normal}[2]{\frac{1}{\sqrt{2\pi}#2}e^{-(x - #1)^2/(2#2^2)}}
@@ -20,89 +20,6 @@
 \abovedisplayshortskip=0pt
 \belowdisplayshortskip=0pt
 \maketitle
-\paragraph{7.46}
-\subparagraph{(a)}
-用矩估计
-\(\displaystyle
-EX =\frac{3}{2}\theta \;\Rightarrow\; \tilde{\theta} = \frac{2}{3}\frac{1}{3}\sum_{i = 1}^{3}X_i = \frac{2}{9}\sum_{i = 1}^{3}X_i\)
-\subparagraph{(b)}
-\begin{flalign*}
-\begin{split}
-L(\theta|\mathbf{x}) & = (\frac{1}{\theta})^(3)\prod_{i=1}^{3}I(\theta \leq x_i \leq 2\theta)\\
-& = (\frac{1}{\theta})^3I(X_{(1)} \geq \theta)I(X_{(3)} \leq 2\theta)
-\end{split}&
-\end{flalign*}
-容易判断，当\(\hat{\theta} = \frac{1}{2}X_{(3)}\)时，\(L(\theta|\mathbf{x})\)取得最大值。\\
-而\(X_{(3)}\)的pdf为:\\
-\(\displaystyle f_{X_{(3)}}(x) = \frac{3!}{2!}\frac{1}{\theta}(\frac{x - \theta}{\theta})^2I(\theta \leq x \leq  2\theta)\\
- E\hat{\theta} = \frac{1}{2}EX_{(3)} = \frac{3}{2}\int_{\theta}^{2\theta}\frac{x(x - \theta)^2}{\theta^3}\mathrm{d}x = \frac{7}{8}\theta\)\\
-故取\(k = \frac{8}{7}\) ,有\(E(k\hat{\theta}) = \theta\)
-\subparagraph{(c)}
-\(f(\mathbf{x}) = L(\theta|\mathbf{x}) = (\frac{1}{\theta})^3I(x_{(1)} \geq \theta)I(x_{(3)} \leq 2\theta)\)
-由因子分解可以知道：
-\(T(X) = (X_{(1)},X_{(3)})\)为一个充分统计量\\
-用Rao-Blackwell定理,可得到一个比\(\tilde{\theta} = \frac{2}{9}\sum_{i = 1}^{3}X_i\)更好的估计量\\
-即\(\phi_{\tilde{\theta}} = E(\tilde{\theta}|T) \)，方差更小\\
-而对MLE的估计量\(\hat{\theta}\), \(\phi_{\hat{\theta}} = E(\hat{\theta}|T) = \hat{\theta}\),不能用Rao-Blackwell定理使其变得更好。
-\subparagraph{(d)}
-\(\tilde{\theta} = \frac{2}{9}\sum_{i = 1}^{3}X_i = \frac{58}{75} = 0.7733\)\\
-\(\hat{\theta} = \frac{1}{2}X_{(3)} = \frac{1}{2}1.33 = 0.665\)
-\paragraph{7.47}
-设圆的半径为r。\\
-n次样本为\(X_i = r + Z_i,\; Z_i\overset{iid}{\sim}n(0,\sigma)\)\\
-即   \(X_i \overset{iid}{\sim} n(r,\sigma^2)\)\\
-对于\(r\),容易证明一个完全充分统计量为\(T(X) = \frac{1}{n}\sum_{i = 1}^{n}X_i\)\\
-而\(\displaystyle T\sim n(r,\frac{\sigma^2}{n})\\
-\text{故} E(T - r)^2 = E(T - r)(T - r) = \frac{\sigma^2}{n} \Rightarrow E(T^2 - \frac{\sigma^2}{n}) = r^2\\
-\text{因此}A = \pi(T^2 - \frac{\sigma^2}{n}) = \pi((\frac{1}{n}\sum_{i = 1}^{n}X_i)^2 - \frac{\sigma^2}{n})\text{为一个}\pi r^2\text{的无偏估计}\)，而\(T\)是完全充分统计量，故统计量\(A\)是面积\(\pi r^2\)的最佳无偏估计
-\paragraph{7.49}
-\subparagraph{(a)}
-\(\displaystyle Y = X_{(1)} ,\; f_X(x) = \frac{1}{\lambda}e^{-x/\lambda} ,\; F_X(x) = 1 - e^{-x/\lambda}\)\\
-易知\(Y\)的pdf为：\(\displaystyle f_Y(y) = \frac{n}{\lambda}e^{-\frac{nx}{\lambda}}\) 即\(Y \sim exp(\frac{\lambda}{n})\)\\
-故\(\displaystyle E(nY) = nEY = \lambda\),nY为一个\(\lambda\)的无偏估计量
-\subparagraph{(b)}
-因为\(X\)属于指数分布族，可知\(T(X) = \frac{1}{n}\sum_{i = 1}^{n}X_i\)是\(\lambda\)的一个完全充分统计量，且\(ET = \lambda\),因此\(T\)为\(\lambda\)的最佳无偏估计。下面通过计算再验证下\\
-\(Var(nY) = n^2Var(Y) = \lambda^2\\
-VarT = \frac{1}{n}\sum_{i = 1}^{n}Var(X_i) = \frac{\lambda^2}{n} < Var(nY)\)\
-\subparagraph{(c)}
-用给出的样本计算可得\(nY = 12\times50.1 = 601.2 ,\; T = 124.825\)\
-\paragraph{7.50}
-\subparagraph{(a)}
-\(\because E\bar{X} = \theta ,\; EcS = \theta \; \therefore E(a\bar{X} + (1 - a)cS) = \theta\)
-\subparagraph{(b)}
-之前已经证明过，对正态分布\(\bar{X} , S^2\)相互独立，因此\(\bar{X} , S\)相互独立。
-\(\displaystyle Var(a\bar{X} + (1 - a)cS) = a^2Var(\bar{X}) + (1 - a)^2Var(cS)\\
-\text{而}Var(\bar{X}) = \frac{\theta^2}{n}\\
-Var(cS) = E(cS)^2 - (EcS)^2 = c^2ES^2 - \theta^2 = (c^2 -1)\theta^2\\
-\text{对a求导 } 2aVar(\bar{X}) - 2(1 - a)Var(cS) = 0 \Rightarrow a = \frac{n(c^2 - 1)}{1 + n(c^2 - 1)}\)\\
-由于是个二次函数，且二次项系数为正，故该极值为极小值。
-\subparagraph{(c)}
-书中的例题已经证明了对正态分布\(n(\mu,\sigma^2),\,\bar{X},S^2\)是参数\(\mu,\,\sigma^2\)的充分统计量，另\(\mu =\theta ,\,\sigma^ = a\theta^2\)，即\(\bar{X},S^2\)是\(\theta\)的充分统计量。\\
-另一方面\(E(\bar{X} - cS)= 0 \; \forall \theta\)成立, 但\(P(\bar{X} - cS = 0) \neq 1\),故\(\bar{X},S^2\)不是\(\theta\)的完全统计量。
-\paragraph{7.51}
-\subparagraph{(a)}
-\begin{flalign*}
-\begin{split}
-E(\theta - T)^2 & = E(a_1(\theta - \bar{X}) + a_2(\theta - cS) + \theta(1 - a_1 - a_2))^2\\
-& = a_1^2E(\bar{X} - \theta)^ + a_2^2E(cS - \theta)^2 + \theta^2(1 - a_1 - a_2)^2\\
-& = a_1^2Var(\bar{X}) + a_2^2Var(cS)^2 + \theta^2(1 - a_1 -a_2)^2\\
-& = a_1^2\frac{\theta^2}{n} + a_2^2(c^2 - 1)\theta^2 + \theta^2(1 - a_1 - a_2)^2 
-\end{split}&
-\end{flalign*}
-由柯西不等式:\\
-\(1 = \left[\sqrt{n}\frac{a_1}{\sqrt{n}} + \frac{1}{\sqrt{c^2 - 1}}\sqrt{c^2 - 1}a_2 + (1 - a_1 - a_2)\right]^2\\
-\leq (n + \frac{1}{c^2 - 1} + 1)(\frac{a_1^2}{n} + (c^2 - 1)a_2 + (1 - a_1 - a_2)^2)\)\\
-等号当且仅当\(\displaystyle \frac{a_1}{\sqrt{n}}/\sqrt{n} = \sqrt{n^2 - 1}a_2/\frac{1}{\sqrt{c^2 - 1}} = 1 - a_1 - a_2\)时成立\\
-此时\(\displaystyle a_1 = \frac{n(c^2 - 1)}{1 + (n + 1(c^2 - 1))}\\
-a_2 = \frac{1}{1 + (n + 1)(c^2 - 1)}\\
-T^* = \frac{n(c^2 - 1)}{1 + (n + 1)(c^2 - 1))}\bar{X} + \frac{1}{1 + (n + 1)(c^2 - 1)}cS \)
-\subparagraph{(b)}
-由前面的不等式\(\displaystyle MSE(T^*) = \frac{\theta^2}{n + \frac{1}{c^2 - 1} + 1}\)
-\subparagraph{(c)}
-\(\displaystyle \because \theta > 0 \\ 
-\therefore T^* < 0 \text{ 时 } (T^{*+} - \theta)^2 < (T^* - \theta)^2\\
-T^* > 0 \text{ 时 } (T^{*+} - \theta)^2 = (T^* - \theta)^2\)\\
-因此\(MSET^{*+} < MSET^*\)
-\subparagraph{(d)}
-\(\theta\)既不是位置参也不是刻度参数。因为找不到这样一个函数\(f(x)\)使得X的pdf \(\displaystyle f(x|\theta) = \frac{1}{\sqrt{2\pi}\theta}\exp(-\frac{(x - \theta)^2}{2\theta^2})\)等于\(f(x - \theta)\)或\(\displaystyle \frac{1}{\theta}f(\frac{x}{\theta})\)
+R中的pnorm函数直接给出了cdf，可以计算得\(\mathrm{C}\approx 1.0001397\),\(f(x)\)的函数图像如下\\
+	\includegraphics[scale = 0.5]{Rplot1}
 \end{document}

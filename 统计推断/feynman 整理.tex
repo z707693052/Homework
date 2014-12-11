@@ -1,8 +1,9 @@
-\documentclass[11pt,a4paper,nocap]{ctexart}
+\documentclass[10pt,a4paper,nocap]{ctexart}
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\CTEXsetup[indent={0pt}]{section}
+\CTEXsetup[titleformat={\large}]{section}
 \title{Feynman 11月4日整理}
 \author{整理人 ：  曾柯又}
 \date{\vspace{-5ex}}
@@ -22,21 +23,54 @@
 \subsection{内积定义}
 记\(\left|\phi_a\right> = \left|a_1\right>\left|a_2\right>,\;\left|\phi_b\right> = \ket{b_1}\ket{b_2}\),则\(\braket{\phi_a}{\phi_b} = \braket{a_1}{b_1}\braket{a_2}{b_2}\)。
 这个内积依然解释为，对于\(\left|\phi_b\right>\)的两粒子态，测得\(\left|\phi_a\right>\)的概率幅。
-\subsection{纠缠态}
-\subsubsection{纠缠态的定义}
+\section{纠缠态}
+\subsection{纠缠态的定义}
 在仅限与纯态的情况，当两粒子的态能够写成下列形式：\(\ket{\psi} = \ket{a}\ket{b}\),则为非纠缠的，若不能则为纠缠态。
-\subsubsection{最大纠缠态}
+\subsection{最大纠缠态}
 数学表示\[\ket{\phi^\pm} = \frac{1}{\sqrt{2}}(\ket{++} \pm \ket{--})\]
 \[\ket{\psi^\pm} = \frac{1}{\sqrt{2}}(\ket{+-} \pm \ket{-+})\]
 由前面定义的内积，这四个态是正交归一的，因此可以作基础态和测量基。\\
-\subsubsection{纠缠态与通信}
+\subsection{纠缠态与通信}
 纠缠态的特有属性：关联。以态\(\ket{\phi^+} = \frac{1}{\sqrt{2}}(\ket{++} + \ket{--})\)为例：A,B两个粒子可相隔很远。若一端（A端）得\(\ket{+}\)，则另一端也为\(\ket{+}\),若A端\(\ket{-}\)，B则端也是
 \(\ket{-}\)
 
-这样貌似就可以实现超光速通信了？实则非也。
-首先回答什么是通信，如果你给别人打电话，不管你说什么，别人始终在放我的滑板鞋，这显然不是通信。。。囧Orz。
-而对纠缠态系统\(\ket{\phi^+}\)来说,1粒子没有测量时，对于粒子2而言，其密度矩阵为\(I/2\) 而对粒子一，无论做何种测量，只要没有把测量结果传到粒子2端，则粒子2的密度矩阵仍然为\(I/2\)。
+注意：纠缠态并不能实现超光速通信。
 
-也就是说在没有经典通信的情况下，1粒子端的任何测量都不会对2粒子端的测量产生影响。也就相当于洗脑循环我的滑板鞋了，这当然就不会有任何信息的传递。
-\subsection{Bell测量}
+解释：首先回答什么是通信，如果你给别人打电话，不管你说什么，别人始终在放我的滑板鞋，这显然不是通信。。。囧Orz。
+而对纠缠态系统\(\ket{\phi^+}\)来说,1粒子没有测量时，对于粒子2而言，其密度矩阵为\(I/2\)。 而对粒子一，无论做何种测量，只要没有把测量结果传到粒子2端，则粒子2的密度矩阵仍然为\(I/2\)。
+
+也就是说在没有经典通信的情况下，1粒子端的任何测量都不会对2粒子端的测量产生影响。也就相当于洗脑循环我的滑板鞋了，这当然就不会有任何信息的传递。更多的关于纠缠态的讨论见ppt7。
+\section{Bell测量}
+Bell测量就是以Bell态为测量基的测量，它是非局域测量或者叫集体测量，不能分解成单个子测量的组合。
+\subsection{CNOT门}
+可以利用CNOT门(control not gate)来实现bell测量。CNOT门的定义为： ，对两粒子体系\(\ket{a}\ket{b}\):\[\mathrm{CNOT}\ket{a}\ket{b} = \ket{a}\ket{a\oplus b}\]
+\(\oplus\)为逻辑异或操作。可以利用CNOT门来实现bell态的测量。
+CNOT门对bell态的作(用+表示1，-表示0)用：
+\begin{equation}
+\begin{split}
+&\mathrm{CNOT}\ket{\phi^+} = (\frac{1}{\sqrt{2}}(\ket{+}+\ket{-}))\ket{-}\\
+&\mathrm{CNOT}\ket{\phi^-} =  (\frac{1}{\sqrt{2}}(\ket{+}-\ket{-}))\ket{-}\\
+&\mathrm{CNOT}\ket{\psi^+} =  (\frac{1}{\sqrt{2}}(\ket{+}+\ket{-}))\ket{+}\\
+& \mathrm{CNOT}\ket{\psi^-} = (\frac{1}{\sqrt{2}}(\ket{+}-\ket{-}))\ket{+}\\
+\end{split}
+\end{equation}
+通过CNOT门之后，将纠缠态转变为了非纠缠态，将Bell基的测量变成了对水平方向和45\textdegree 度以及135\textdegree 的测量。
+\section{纠察态的应用}
+\subsection{Quantum Teleportation}
+可以将一个未知态传输到远方而不传输粒子本身。
+
+一个3粒子态，若能写成：\[\ket{\chi}_{123} = c_1\ket{\psi_1}_{12}\ket{a}_3 + c_2\ket{\psi_2}_{12}\ket{b}_3 + c_3\ket{\psi_3}_{12}\ket{c}_3 + c_4\ket{\psi_4}_{12}\ket{d}_3\]
+且\(\ket{\psi_i}\)正交归一，则以测量基\(\ket{\psi_i}\)观测12，那么测量结果决定了粒子3的状态。
+
+该结论要用到Schmidt decomposition，可以见wiki百科\url{http://en.wikipedia.org/wiki/Schmidt_decomposition}
+
+Quantum Teleportation的具体数学推导见ppt7
+
+注意Quantum Teleportation仍然不能用来做超光速通信。
+\subsection{量子密集编码}
+可用1个粒子来传递2个bit的信息。数学推导见ppt7
+
+鲍亦澄同学的提问：实际上B粒子也要送过去，仍然是用2个粒子传递2bit的信息。
+
+老师的解释:的确实际上是用2粒子传递2bit信息，但是B粒子可以提前传送，可以利用信道闲置的时间提前发送粒子B，这样就可以在通信繁忙的时候利用1个粒子加载2bit的信息。
 \end{document}
