@@ -1,8 +1,7 @@
 \documentclass[11pt,a4paper]{ctexart}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
-\DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps}
-\graphicspath{c:\\Users\\cengqQ\\Pictures}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps,.svg}
 \linespread{1.9}
 \CTEXsetup[indent={0pt}]{subparagraph}
 \newcommand{\normal}[2]{\frac{1}{\sqrt{2\pi}#2}e^{-(x - #1)^2/(2#2^2)}}
@@ -15,11 +14,14 @@
 \author{基科32 曾柯又 2013012266}
 \date{\vspace{-5ex}}
 \begin{document}
+	\graphicspath{{C:/Users/cengqQ/Pictures/}}
 \abovedisplayskip=5pt
 \belowdisplayskip=5pt
 \abovedisplayshortskip=0pt
 \belowdisplayshortskip=0pt
 \maketitle
-R中的pnorm函数直接给出了cdf，可以计算得\(\mathrm{C}\approx 1.0001397\),\(f(x)\)的函数图像如下\\
-	\includegraphics[scale = 0.5]{Rplot1}
+\paragraph{1}
+R中的pnorm函数直接给出了cdf，可以计算得\(\mathrm{C}\approx 1.0001397\),\(f(x)\)的函数图像如下
+\center{\includegraphics[scale = 0.5]{fplot}}
+
 \end{document}
