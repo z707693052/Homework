@@ -2,7 +2,7 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps,.svg}
-\linespread{1.9}
+\linespread{1.5}
 \CTEXsetup[indent={0pt}]{subparagraph}
 \newcommand{\normal}[2]{\frac{1}{\sqrt{2\pi}#2}e^{-(x - #1)^2/(2#2^2)}}
 \newcommand{\norm}[1]{\frac{1}{\sqrt{2\pi}#1}e^{-x^2/(2#1^2)}}
@@ -21,7 +21,10 @@
 \belowdisplayshortskip=0pt
 \maketitle
 \paragraph{1}
-R中的pnorm函数直接给出了cdf，可以计算得\(\mathrm{C}\approx 1.0001397\),\(f(x)\)的函数图像如下
-\center{\includegraphics[scale = 0.5]{fplot}}
-
+R中的pnorm函数直接给出了cdf，可以计算得\(\mathrm{C}\approx 1.0001397\),\(f(x)\)的函数图像如下\\
+{\centering \includegraphics[scale = 0.5]{fplot}}
+\paragraph{2}
+画出图像:
+{\center \includegraphics[scale = 0.4]{f100}\includegraphics[scale = 0.4]{f1000}}
+可以看出抽样结果是正确的
 \end{document}

@@ -1,0 +1,43 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps}
+\graphicspath{{C:/Users/cengqQ/Pictures/}}
+\linespread{1.9}
+\CTEXsetup[indent={0pt}]{subparagraph}
+\newcommand{\normal}[2]{\frac{1}{\sqrt{2\pi}#2}e^{-(x - #1)^2/(2#2^2)}}
+\newcommand{\norm}[1]{\frac{1}{\sqrt{2\pi}#1}e^{-x^2/(2#1^2)}}
+\newcommand{\norms}[0]{\frac{1}{\sqrt{2\pi}}e^{-x^2/2}}
+\newcommand{\dconverge}[0]{\overset{\mathcal{D}}{\to}}
+\newcommand{\pconverge}[0]{\overset{\mathcal{P}}{\to}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\title{\vspace{-5ex}}
+\author{基科32 曾柯又 2013012266}
+\date{\vspace{-5ex}}
+\begin{document}
+\paragraph{7.65}
+\subparagraph{(a)}
+画出函数图像如下:
+	{\center \includegraphics[scale=0.5]{L1}}
+	{\center \includegraphics[scale=0.5]{L2}}
+	{\center \includegraphics[scale=0.5]{L3}}
+	
+	可见随着c的增加，函数图像逐渐由对称变得不对称。
+\subparagraph{(b)}
+\(E(L(\theta, a)|x) = \mathrm{e}^{c\delta}E(\mathrm{e}^{-c\theta}|x) - c(\delta - E(\theta|x)) - 1\)\\
+求导可得\(c\mathrm{e}^{c\delta}E(\mathrm{e}^{-c\theta}|x) -c = 0 \Rightarrow \delta = -\frac{1}{c}\log E(\mathrm{e}^{-c\theta}|x)\) \\
+而\(c\mathrm{e}^{c\delta}E(\mathrm{e}^{-c\theta}|x) -c\)随\(\delta\)的单调递增，故极值为极小值,满足要求，即：\(\delta^{\pi}(x) =-\frac{1}{c}\log E(\mathrm{e}^{-c\theta}|x)\)
+\subparagraph{(c)}
+这里的\(\pi(\theta)\)代表全实轴的均匀分布函数，可先设\(\pi(\theta) = \frac{1}{D}\)最后令\(D \to \infty\)(其实后面的计算与D无关)\\
+\(\displaystyle 
+f(x,\theta) = C\mathrm{e}^{-\sum_{i = 1}^{n}\frac{(x_i - \bar{x})^2}{2\sigma^2}}\mathrm{e}^{-\frac{n(\bar{x} - \theta)^2}{2\sigma^2}} = p(x)\mathrm{e}^{-\frac{n(\bar{x} - \theta)^2}{2\sigma^2}}\\
+m(x) = \int f(x|\theta)\pi(\theta)\mathrm{d}\theta = p(x)\int \mathrm{e}^{-\frac{n(\bar{x} - \theta)^2}{2\sigma^2}}\mathrm{d}\theta\\
+\pi(\theta|x) = \frac{f(x,\theta)}{m(x)} = \frac{\mathrm{e}^{-\frac{n(\bar{x} - \theta)^2}{2\sigma^2}}}{\int\mathrm{e}^{-\frac{n(\bar{x} - \theta)^2}{2\sigma^2}}\mathrm{d}\theta}
+\)\\
+即\(\pi(\theta|x) \sim \mathrm{n}(\bar{x},\frac{\sigma^2}{n})\)
+可以得到\\
+\(\displaystyle E(\theta|x) = \bar{x}\\
+E(\mathrm{e}^{-c\theta}|x) = M_{\theta|x}(-c) = \mathrm{e}^{− c\bar{x}+\frac{\sigma^2c^2}{2n}} 
+\\
+\Rightarrow E(L(θ, \delta)| x) = \frac{\sigma^2c^2}{2n}\)
+\end{document}

@@ -58,11 +58,14 @@ CNOT门对bell态的作(用+表示1，-表示0)用：
 \section{纠察态的应用}
 \subsection{Quantum Teleportation}
 可以将一个未知态传输到远方而不传输粒子本身。
+\subsubsection{ 数学基础}
+对于两粒子态\(\ket{\chi} = \ket{\psi}\ket{a} + \ket{\psi^\perp}\ket{b}\)
+如果\(\ket{\psi} ,\; \ket{\psi^\perp}\)相互正交，则粒子1的测量结果决定粒子2的态。
 
-一个3粒子态，若能写成：\[\ket{\chi}_{123} = c_1\ket{\psi_1}_{12}\ket{a}_3 + c_2\ket{\psi_2}_{12}\ket{b}_3 + c_3\ket{\psi_3}_{12}\ket{c}_3 + c_4\ket{\psi_4}_{12}\ket{d}_3\]
+注：由Schmidt decomposition，可以把上述结论加强,即使\(\ket{a},\ket{b}\)也正交，但这个问题中不需要用到这个结论，\(\ket{\psi} ,\ket{\psi^\perp}\)正交足矣。关于Schmidt decomposition的更多内容可以见wiki百科\url{http://en.wikipedia.org/wiki/Schmidt_decomposition}
+
+进一步对一个3粒子态，若能写成：\[\ket{\chi1}_{123} = c_1\ket{\psi_1}_{12}\ket{a}_3 + c_2\ket{\psi_2}_{12}\ket{b}_3 + c_3\ket{\psi_3}_{12}\ket{c}_3 + c_4\ket{\psi_4}_{12}\ket{d}_3\]
 且\(\ket{\psi_i}\)正交归一，则以测量基\(\ket{\psi_i}\)观测12，那么测量结果决定了粒子3的状态。
-
-该结论要用到Schmidt decomposition，可以见wiki百科\url{http://en.wikipedia.org/wiki/Schmidt_decomposition}
 
 Quantum Teleportation的具体数学推导见ppt7
 
@@ -73,4 +76,9 @@ Quantum Teleportation的具体数学推导见ppt7
 鲍亦澄同学的提问：实际上B粒子也要送过去，仍然是用2个粒子传递2bit的信息。
 
 老师的解释:的确实际上是用2粒子传递2bit信息，但是B粒子可以提前传送，可以利用信道闲置的时间提前发送粒子B，这样就可以在通信繁忙的时候利用1个粒子加载2bit的信息。
-\end{document}
+\section{个人补充}
+ 颜公望同学在这节课上曾问过一个问题，即用贝叶斯观点来解释量子力学中的概率。
+ 
+ 首先解释下贝叶斯观点，概率论里面对概率的解释有两种观点：一种是大家熟知的频率解释，不再讨论。另一种则是贝叶斯学派的主观解释，这种观点认为概率是人的某种主观置信度，即人对某件事情发生的把握程度作为概率。关于贝叶斯概率可以看wiki百科\url{http://zh.wikipedia.org/wiki/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%A6%82%E7%8E%87}
+ 
+ 而有人就将贝叶斯概率应用于量子力学的概率诠释上，就有了Quantum Bayesianism，具体可见wiki\url{http://en.wikipedia.org/wiki/Quantum_Bayesianism}，不过这个问题涉及的更多是哲学问题，对大家现在的学习完全没有帮助，大家有空当科普可以看看。 \end{document}
