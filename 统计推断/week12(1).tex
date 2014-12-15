@@ -1,0 +1,90 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{environ}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps}
+\graphicspath{{/home/cengq/Pictures/}}
+\linespread{1.6}
+\CTEXsetup[indent={0pt}]{subparagraph}
+\newcommand{\normal}[2]{\frac{1}{\sqrt{2\pi}#2}e^{-(x - #1)^2/(2#2^2)}}
+\newcommand{\norm}[1]{\frac{1}{\sqrt{2\pi}#1}e^{-x^2/(2#1^2)}}
+\newcommand{\norms}[0]{\frac{1}{\sqrt{2\pi}}e^{-x^2/2}}
+\newcommand{\dconverge}[0]{\overset{\mathcal{D}}{\to}}
+\newcommand{\pconverge}[0]{\overset{\mathcal{P}}{\to}}
+\newcommand{\dd}[0]{\mathrm{d}}
+\NewEnviron{formula}{ 
+\begin{flalign*} \begin{split}
+\BODY
+\end{split}&\end{flalign*}}
+\title{\vspace{-5ex}}
+\author{基科32 曾柯又 2013012266}
+\date{\vspace{-5ex}}
+\begin{document}
+\abovedisplayskip=5pt
+\belowdisplayskip=5pt
+\abovedisplayshortskip=0pt
+\belowdisplayshortskip=0pt
+\maketitle
+\paragraph{7.53}
+考虑 \(\phi_a = W + aU\)
+\begin{formula}
+\text{则}E_\theta\phi_a &= E_\theta W + aE_\theta U\\
+ & = \tau(\theta)
+\end{formula}
+故\(\forall\; a,\;\phi_a\)为\(\tau(\theta)\)的无偏估计量。
+\begin{formula}
+\text{而}Var_\theta\phi_a & = Var(W + aU)\\
+ &= Var_\theta W + aCov_\theta(W,U) + a^2Var_\theta U
+\end{formula}
+如果存在\(\theta_0\)使得\(Cov_{\theta_0}(W,U) \neq 0\)则可以取\(a\)使得\(aCov_{\theta_0}(W,U) + a^2Var_{\theta_0}(U) < 0\)\\
+即若\(Cov_{\theta_0}(W,U) > 0\)\\
+取\(\displaystyle a \in (-\frac{Cov_{\theta_0}(W,U)}{Var_{\theta_0}W},0)\)\\
+若\(Cov_{\theta_0}(W,U) < 0\)\\
+取\(\displaystyle a \in (0,-\frac{Cov_{\theta_0}(W,U)}{Var_{\theta_0}W})\)\\
+此时\(Var_{\theta_0}\phi_a < Var_{\theta_0}W\),即\(W\) 不为最佳无偏估计
+\paragraph{7.57}
+\subparagraph{(a)}
+\(ET = \times P(\sum_{i = 1}^{n}X_i > X_{n + 1}|p) = h(p)\)
+\subparagraph{(b)}
+\(X_1,\dots X_{n + 1}\)的联合分布为:\\
+\(\displaystyle f(x_1,\cdots,x_{n + 1}) = p^{\sum_{i = 1}^{n + 1}x_i}(1 - p)^{n + 1 - \sum_{i = 1}^{n+1}x_i}\)
+
+由因子分解定理\(\sum_{i = 1}^{n+1}X_i\)为一个充分统计量,且由于伯努力分布为指数分布族且参数空间包含了\(\mathbb{R}\)的开集，故\(T = \sum_{i = 1}^{n+1}X_i\)为完全充分统计量,因此\(\phi(\sum_{i = 1}^{n + 1}X_i) = E(T|\sum_{i = 1}^{n + 1}X_i)\)为最佳无偏估计。
+
+记\(\displaystyle T_2 = \sum_{i = 1}^{n + 1}X_i\\
+P(\sum_{i = 1}^{n}X_i > X_{n + 1} | T_2 = t_2) =\frac{ P(\sum_{i = 1}^{n}X_i > X_{n + 1},T_2 = t_2)}{P(T_2 = t_2)}\\
+T_2 = 0\text{时,显然 } P(\sum_{i = 1}^{n}X_i > X_{n + 1},T_2 = 0) = 0 \\
+\Rightarrow P(\sum_{i = 1}^{n}X_i > X_{n + 1} | T_2 = 0) = 0\\
+T_2 = 1\text{时:   } P(\sum_{i = 1}^{n}X_i > X_{n + 1},T_2 = 1) = (1 - p){n \choose 1}p(1 - p)^{n - 1}\\
+\text{而 } P(T_2 = 1) = {n+1 \choose 1}p(1 - p)^n \\
+\Rightarrow P(\sum_{i = 1}^{n}X_i > X_{n + 1} | T_2 = 1) = \frac{n}{n+1} \\
+T_2 = 2 \text{时} P(\sum_{i = 1}^{n}X_i > X_{n + 1},T_2 = 2) = (1 - p){n \choose 2}p^2(1 - p)^{n - 2}\\
+\text{而} P(T_2 = 2) =  {n+1 \choose 2}p^2(1 - p)^{n - 1}\\
+\Rightarrow   P(\sum_{i = 1}^{n}X_i > X_{n + 1} | T_2 = 2) = \frac{n - 1}{n + 1}\\
+T_2 > 2\text{时，容易看出}P(\sum_{i = 1}^{n}X_i > X_{n + 1} | T_2 ) \equiv 1
+\)\\
+因此\(\displaystyle \phi(T_2) = \begin{cases}
+0 & T_2 = 0\\
+\frac{n}{n+1}& T_2 = 1\\
+\frac{n - 1}{n +1} & T_2 = 2\\
+1 & T_2 > 2
+\end{cases}\)
+为最佳无偏估计
+\paragraph{7.58}
+\subparagraph{(a)}
+\(L(\theta|x) = (\frac{\theta}{2})^{|x|}(1 - \theta)^{1 - |x|}\\
+\log L = |x|\log(\frac{\theta}{2}) + (1 - |x|)\log (1 - \theta)\\
+\text{由} \frac{\partial}{\partial \theta}(\log L) = \frac{|x|}{\theta} - \frac{1 - |x|}{1 - \theta} = 0 \\
+\Rightarrow \theta = |x|\\
+\text{且}\frac{|x|}{\theta} - \frac{1 - |x|}{1 - \theta}\text{单调递减,故极值为极大值}\\
+\text{因此 } \hat{\theta} = |x| \text{为极大似然估计}
+\)
+\subparagraph{(b)}
+\(ET(X) = 2P(X = 1) = \theta\)\
+\subparagraph{(c)}
+由因子分解，\(|x|\)是\(\theta\)的充分统计量,考虑\(\phi(|x|) = E(T\big||x|) \)\\
+\(\phi(0) = E(T|x = 0) = 0\\
+\phi(1) = E(T\big||x| = 1) = 2P(x = 1\big||x| = 1) = 2\frac{P(x = 1)}{|x| = 1} = 2\frac{(\frac{\theta}{2})}{2\frac{\theta}{2}} = 1
+\)
+即\(\phi(|x|) = |x|\)是一个更好的\(\theta\)的无偏估计量
+\end{document}
