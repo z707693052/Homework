@@ -2,6 +2,7 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 \usepackage{environ}
+\usepackage{multirow}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps}
 \graphicspath{{C:/Users/cengqQ/Pictures/}}
 \linespread{1.5}
@@ -19,12 +20,13 @@
 	\CTEXsetup[titleformat={\large}]{section}
 	\CTEXsetup[nameformat = {\Large\bfseries}]{part}
 	\CTEXsetup[titleformat = {\Large\bfseries}]{part}
+	\CTEXsetup[titleformat = {\normalsize }]{subsection}
 	\part{基础实验部分}
 	\section{实验目的}
 	\subparagraph{(1)}根据已知波长的谱线，利用正入射，斜入射法测量光栅的光栅常量。
 	\subparagraph{(2)}用已知波长的He-Ne光谱作参考，测量氢原子较强可见光谱线的波长，计算氢的里德伯常量。
 	\section{实验原理}
-	\subsection{平面光栅的衍射}
+		\subsection{平面光栅的衍射}
 	平面反射光栅是刻有一系列等间距平行划痕的反射平面镜，设光栅常量为$ d $，则可以得到出射光束相干涉出现极大值的条件为：\[d(\sin\theta_{rk} - \sin\theta_i) = d(\sin(\phi_n - \phi_{rk}) - \sin(\phi_n - \phi_i))= K\lambda,\; K = 0,\pm1,\pm2 \cdots\]
 	
 	 式中，\(\phi_n\)为光栅表面方位角，\(\theta_i = \phi
@@ -38,5 +40,90 @@
 		 
 		 利用上述两式，测得不同级次下已知波长谱线的衍射角，即可求得光栅的光栅常量\(d\)。
 		\section{巴尔末公式与里德伯常量}
-		巴尔末纤细4条可见光谱线的经验公式可以写为，
+		巴尔末线系4条可见光谱线的经验公式可以写为：\(\displaystyle \lambda_0 = R_H^{-1}\left(\frac{1}{2^2} - \frac{1}{N^2}\right)\),式中\(\lambda_0\)是真空波长，\(R_H\)是氢的里德伯常量。又由波尔的量子论可得：\[\lambda_0 = R_{\infty}^{-1}(1 + \frac{m_e}{m_p})(\frac{1}{2^2} - \frac{1}{N^2})^{-1}\]
+		上式中，\(R_\infty\)是里德伯常量，\(m_e\)为电子质量，\(m_p\)为质子质量，在考虑到空气折射率的影响后，可由下式计算\(R_\infty\)：
+		\[R_\infty \approx (1.00028\lambda)^{-1}(1 + \frac{m_e}{m_p})\left(\frac{1}{2^2} - \frac{1}{N^2}\right)\]
+		
+		在实验中，测定氦氖谱线和氢的谱线的衍射方位角，利用已知氦氖谱线波长，求得一次回归方程：\[\phi =b_0 + b_1\lambda\]
+		或二次回归方程\[\phi = b_0 + b_1\lambda + b_2\lambda^2\]
+		
+		将氢的衍射角\(\phi_H\)带入回归方程，即可求得氢红线谱线波长\(\lambda_H\)，进而可以求得里德伯常量。
+		\section{实验数据及处理}
+		\subsection{正入射法}\begin{center}
+			
+		\begin{tabular}{ |c |c| c| c| c| }\hline
+		 \multicolumn{2}{|c|}{} & K = 1	& K = 2	& K = 3\\ \hline
+		蓝紫&\(\phi_1/\textdegree\) & 7.52  & 15.15  & 23.08 \\ \cline{2-5}
+		\(\lambda = 435.83\) &\(\phi_2/\textdegree\) &  7.52 & 15.15 & 23.08\\ \hline 
+		 \multicolumn{2}{|c|}{\(d = \frac{K\lambda}{\sin\phi}\)} &3331.6621& 3335.2599& 3334.8421\\ \hline
+		黄绿&\(\phi_1/\textdegree\) &  9.43 & 19.13 & 29.44 \\ \cline{2-5}
+		 \(\lambda = 546.07\)& \(\phi_2/\textdegree\) & 9.43 & 19.13 & 29.44 \\ \hline
+		 \multicolumn{2}{|c|}{\(d = \frac{K\lambda}{\sin\phi}\)} & 3331.7287 & 3333.4535 & 3332.8302\\ \hline
+		 \end{tabular}\\
+		\end{center}
+		平均值为:
+		\[\bar{d} = 3333.296125 \mathrm{nm} = 3.333296 \times10^{-6} \mathrm{m}\]
+		\subsection{斜入射法}
+		以\(15\textdegree\)斜入射
+	\begin{center}
+			\begin{tabular}{ |c |c| c| c| c| }\hline
+			 \multicolumn{2}{|c|}{} & K = 1	& K = 2	& K = 3\\ \hline
+			蓝紫&\(\phi_1/\textdegree\) & -7.3583	& 0.15 & -7.625  \\ \cline{2-5}
+		\(\lambda = 435.83\) &\(\phi_2/\textdegree\) &-7.3583 & 0.15 & 7.625 \\ \hline 
+		\multicolumn{2}{|c|}{\(d\)} & 3333.4443 & 3334.1106 & 3339.6259 \\ \hline
+		黄绿&\(\phi_1/\textdegree\) & -5.4583	& 3.925 & 13.425  \\ \cline{2-5}
+		 \(\lambda = 546.07\)& \(\phi_2/\textdegree\) &-5.4583 & 3.925 & 13.425 \\ \hline 
+		\multicolumn{2}{|c|}{\(d\)} & 3335.8544 & 3337.1258 & 3336.5351 \\ \hline
+		\end{tabular}\\
+	\end{center}
+		平均值为：
+			\[\bar{d} = 3336.1160 \mathrm{nm} = 3.336116 \times10^{-6} \mathrm{m}\]
+	\subsection{ 不同级次谱线测量的误差讨论}
+			正入射情况下：\[d = \frac{K\lambda}{\sin\phi}\]
+			可以得到：\[\frac{\Delta d}{d} = \frac{\Delta\phi}{\phi}\]
+			
+			可以看出，测量d时，当\(\Delta\phi\)一定时，\(\phi\)越大，\(\Delta d\)越小，因此测量的级次越高，\(\Delta d\)越小。但是衍射的级次越高，谱线的形变越厉害，并且级次越高，谱线也越难以观察，因此需要综合考虑。
+	\subsection{比较法测里德伯常量}
+	\begin{center}
+		\begin{tabular}{|c|c|c|}\hline
+			\(\lambda/nm\)	& \(\lambda^2/nm\) & \(\phi/\textdegree\)	\\ \hline
+			638.2992 & 407425.8687 & 184.95	\\ \hline
+			640.2246 & 409887.5384 & 185.0917 \\ \hline
+			650.6528 & 423349.0661 & 185.8083 \\ \hline
+			653.2882 & 426785.4723 & 185.9917 \\ \hline
+			659.8953 & 435461.807 &	186.4417 \\ \hline
+			667.815	 & 445976.8742 & 186.9917 \\ \hline
+			671.743	 & 451238.658 & 187.25 \\ \hline
+	\end{tabular}
+	\end{center}
+	\( \phi_H = 186.2\textdegree \)
+	\subsubsection{一次拟合结果}
+\begin{center}
+		\begin{tabular}{|c|c|c|c|}\hline
+		\(b_0\)& \(s_{b_0}\) & \(b_1\) & \(s_{b_1}\) \\ \hline
+		 141.0527 & 0.1117 & 0.0688  & \(1.7067\times10^{-4}\) \\ \hline
+	\end{tabular}\\
+\end{center}
+	 因变量标准差\(s_\phi =0.00536\textdegree\)\\
+	 可以解出\(\lambda_H = 656.3771nm\)\\
+	 进而求得:\(R_\infty = 1097220.676 \mathrm{m}^{-1}\)
+	 
+\subsubsection{二次拟合结果}
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|} \hline
+		\(b_0\) & \(s_{b_0}\) & \(b_1\) & \(s_{b_1}\) &\(b_2\) & \(s_{b_2}\) \\ \hline
+		130.2325 & 6.4981 & 0.1018 & 0.0198 & \(-2.5253\times10^{-5}\) & \(1.5164\times10^{-5}\)\\ \hline
+	\end{tabular}
+\end{center}
+因变量标准差\(s_\phi = 0.0046\textdegree\)\\
+解出\(\lambda_H = 656.3263\mathrm{nm}\)\\
+进而解得\(R_\infty = 1097305.506\mathrm{m}^{-1}\)
+
+可以发现直线拟合的\(s_\phi\)和二次拟合的\(s_\phi\)相差不大,\(\displaystyle \frac{|s_{\phi1} - s_{\phi2}|}{s_{\phi2}} = 10.56 \%\)，并且结果也相差不大，并且直线拟合更加简便，因此一般用直线拟合就足够了。
+\part{探究性实验部分}
+\section{实验目的}
+我选择的实验是氢原子光谱及其的同位素位移的观测。即利用长焦数码相机成像的方法，计算与测量氢氘混合气体放电管的红光光谱波长差，研究验证氢原子光谱的同位素位移率。
+\section{实验原理}
+光栅衍射的基本原理同前基础实验部分，这里主要补充氢原子光谱的同位素位移率
+\subsection{}
 \end{document}
