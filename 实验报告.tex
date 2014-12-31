@@ -1,12 +1,14 @@
-\documentclass[10pt,a4paper,nocap]{ctexart}
+\documentclass[8pt,a4paper,nocap]{ctexart}
+\usepackage[top=1in, bottom=1in, left=1.25in, right=1.25in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 \usepackage{environ}
 \usepackage{multirow}
-\DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps,.bmp}
 \graphicspath{{C:/Users/cengqQ/Pictures/}}
 \linespread{1.5}
 \newcommand{\dd}[0]{\mathrm{d}}
+\renewcommand\refname{参考文献}
 \NewEnviron{formula}{ 
 \begin{flalign*}\begin{split}
 \BODY
@@ -18,13 +20,17 @@
 	\maketitle
 	\CTEXsetup[format={\centering}]{part}
 	\CTEXsetup[titleformat={\large}]{section}
-	\CTEXsetup[nameformat = {\Large\bfseries}]{part}
+	\CTEXsetup[nameformat = {\large\bfseries}]{part}
 	\CTEXsetup[titleformat = {\Large\bfseries}]{part}
 	\CTEXsetup[titleformat = {\normalsize }]{subsection}
+	 \section{摘要}
+	 本实验围绕光栅衍射这一主题，有目的，有层次的进行了一系列实验。其中包括光栅常量测量的正入射法斜入射法，结合加权平均方法，完成多波长多级次的组合测量。氢原子光谱的观测测量与里德伯常量的计算。在使用了测角仪直接读数后，“小米加步枪”，用积木式组合仪器实现了更高精度的测量，包括使用测微目读数法，数码相机成像法，观测验证了氢的同位素位移，进行了两种方法的对比讨论。另外，数码相机成像法还结合了清华大学发明的提高CCD成像的光束中心位置分辨率的方法，在已有试验数据的基础上，利用更高级的数据处理方法获得了更好的结果，体现了物理方法与数学手段结合的重要性。
+	 \section{关键词}
+	 光栅衍射，氢原子光谱，同位素位移，里德伯常量
 	\part{基础实验部分}
 	\section{实验目的}
-	\subparagraph{(1)}根据已知波长的谱线，利用正入射，斜入射法测量光栅的光栅常量。
-	\subparagraph{(2)}用已知波长的He-Ne光谱作参考，测量氢原子较强可见光谱线的波长，计算氢的里德伯常量。
+	\subparagraph{(1)}加深对光栅衍射原理的理解，根据已知波长的谱线，利用正入射，斜入射法测量光栅的光栅常量。
+	\subparagraph{(2)}用已知波长的He-Ne光谱作参考，测氢原子光谱巴尔末线系中较强的可见光谱线的波长，验证巴尔末公式，计算氢的里德伯常量，深入理解波尔理论模型的实验基础。
 	\section{实验原理}
 		\subsection{平面光栅的衍射}
 	平面反射光栅是刻有一系列等间距平行划痕的反射平面镜，设光栅常量为$ d $，则可以得到出射光束相干涉出现极大值的条件为：\[d(\sin\theta_{rk} - \sin\theta_i) = d(\sin(\phi_n - \phi_{rk}) - \sin(\phi_n - \phi_i))= K\lambda,\; K = 0,\pm1,\pm2 \cdots\]
@@ -59,10 +65,12 @@
 		黄绿&\(\phi_1/\textdegree\) &  9.43 & 19.13 & 29.44 \\ \cline{2-5}
 		 \(\lambda = 546.07\)& \(\phi_2/\textdegree\) & 9.43 & 19.13 & 29.44 \\ \hline
 		 \multicolumn{2}{|c|}{\(d = \frac{K\lambda}{\sin\phi}\)} & 3331.7287 & 3333.4535 & 3332.8302\\ \hline
-		 \end{tabular}\\
+		 \end{tabular}\\ 
+		 {\footnotesize 表【1】正入射法}
 		\end{center}
 		平均值为:
 		\[\bar{d} = 3333.296125 \mathrm{nm} = 3.333296 \times10^{-6} \mathrm{m}\]
+		标准偏差\(s_d = 1.524\) , 不确定度\(\displaystyle U_d = t\frac{s_d}{\sqrt{n}} = 1.6\)
 		\subsection{斜入射法}
 		以\(15\textdegree\)斜入射
 	\begin{center}
@@ -75,55 +83,209 @@
 		 \(\lambda = 546.07\)& \(\phi_2/\textdegree\) &-5.4583 & 3.925 & 13.425 \\ \hline 
 		\multicolumn{2}{|c|}{\(d\)} & 3335.8544 & 3337.1258 & 3336.5351 \\ \hline
 		\end{tabular}\\
+		{\footnotesize 表【2】斜入射法}
 	\end{center}
 		平均值为：
-			\[\bar{d} = 3336.1160 \mathrm{nm} = 3.336116 \times10^{-6} \mathrm{m}\]
+			\[\bar{d} = 3336.1160 \mathrm{nm} = 3.336116 \times10^{-6} \mathrm{m}\]\\
+		标准偏差\(s_d = 2.224\) , 不确定度\(\displaystyle U_d = t\frac{s_d}{\sqrt{n}} = 2.33\)
 	\subsection{ 不同级次谱线测量的误差讨论}
-			正入射情况下：\[d = \frac{K\lambda}{\sin\phi}\]
-			可以得到：\[\frac{\Delta d}{d} = \frac{\Delta\phi}{\phi}\]
+	考虑正入射方位角的不确定度影响的时候，根据书中式（E21.4）光栅常量的不确定度为：
+	\[\frac{U_d}{d} = \frac{\sqrt{2}U_\phi}{\tan\theta_k}\sqrt{1 + \frac{1 - \cos\theta_k}{\cos^2\theta_k}}\]
 			
-			可以看出，测量d时，当\(\Delta\phi\)一定时，\(\phi\)越大，\(\Delta d\)越小，因此测量的级次越高，\(\Delta d\)越小。但是衍射的级次越高，谱线的形变越厉害，并且级次越高，谱线也越难以观察，因此需要综合考虑。
+			根据书中7.4.1表，取\(U_d = 1.06'\)，可以得到的的不确定度随方位角的变化，可以做出\(U_d/d \)随方位角的变化图像如下：
+			\begin{center}
+				\includegraphics[scale= 0.5]{err.jpg}
+				
+				{\footnotesize 图【1】光栅常量不确定度随衍射方位角的变化关系}
+			\end{center}
+
+		可见当\(U_\phi\)一定时，\(\phi\)越大，\(U_d\)越小，因此测量的级次越高，理论上\(U_d\)越小。但是衍射的级次越高，谱线的形变越厉害，并且级次越高，谱线也越难以观察，因此处理数据是不能只用3级衍射，更好的办法是综合各级谱线的测量结果。
+			
+			综合上面的讨论可以知道，不同级次的光栅常量测量是不确定度的不同的测量，因此在处理数据的时候，更加合理的方法是利用加权平均方法计算平均值。
+	\subsection{加权平均法重新计算平均值}
+根据书中p46页“参考伯奇比确定加权平均值的标准差”提供的方法，对正入射实验数据的不同级次测量结果按照标准差进行加权平均，并根据伯奇比计算加权平均的不确定度	
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+			d & 3331.662	& 3335.260 & 3334.842  &  3331.729 & 3333.453 & 3332.830 \\ \hline
+			\(U_d\) & 11.058 & 5.471 & 3.570 & 8.805 & 4.319  & 2.785 \\ \hline
+			\(\omega_i\) & 0.026 & 0.106 & 0.249 & 0.041 & 0.170 & 0.409	 \\ \hline
+		\end{tabular}
+		
+		{\footnotesize  表【3】正入射加权平均数据处理}
+	\end{center}
+	加权平均值\(\bar{d} = \sum \omega_id_i = 3333.6187 \)\\
+	组内符合标准差\(s_{int} = \frac{U_{int}}{2} = 0.890\)\\
+	组外符合标准差\(s_{ext} = \sqrt{\sum\omega_i(d_i - \bar{d})^2/(n - 1)} = 0.482\)\\
+	伯奇比\(R_B = s_{ext}/s_{int} = 0.541 \) ,  临界伯奇比\(R_{B cr} = 1.632\)\\
+	故\(U_{\bar{d}} = U_{int} = 0.776\)
+	
+	用加权平均所得到结果计算出的不确定度明显比直接平均计算出的不确定度小很多。这也体现了加权平均方法是更合理的方法，这也体现了物理与数学方法结合的重要性。
 	\subsection{比较法测里德伯常量}
 	\begin{center}
-		\begin{tabular}{|c|c|c|}\hline
-			\(\lambda/nm\)	& \(\lambda^2/nm\) & \(\phi/\textdegree\)	\\ \hline
-			638.2992 & 407425.8687 & 184.95	\\ \hline
-			640.2246 & 409887.5384 & 185.0917 \\ \hline
-			650.6528 & 423349.0661 & 185.8083 \\ \hline
-			653.2882 & 426785.4723 & 185.9917 \\ \hline
-			659.8953 & 435461.807 &	186.4417 \\ \hline
-			667.815	 & 445976.8742 & 186.9917 \\ \hline
-			671.743	 & 451238.658 & 187.25 \\ \hline
-	\end{tabular}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}\hline
+			\(\lambda/nm\) & 638.2992 & 640.2246 & 650.6528 & 653.2882 & 659.8953 &	667.815	& 671.743	 	\\ \hline
+			\(\phi/\textdegree\) & 184.95  & 185.0917   & 185.8083 & 185.9917  & 186.4417 & 186.9917 & 187.25  \\ \hline
+	\end{tabular}\\
+	{\footnotesize 表【3】衍射方位角与对应波长}
 	\end{center}
-	\( \phi_H = 186.2\textdegree \)
+	\( \phi_H = 186.1833\textdegree \)
 	\subsubsection{一次拟合结果}
 \begin{center}
 		\begin{tabular}{|c|c|c|c|}\hline
 		\(b_0\)& \(s_{b_0}\) & \(b_1\) & \(s_{b_1}\) \\ \hline
 		 141.0527 & 0.1117 & 0.0688  & \(1.7067\times10^{-4}\) \\ \hline
 	\end{tabular}\\
+	{\footnotesize 表【4】测角仪读数法一次拟合结果}
 \end{center}
 	 因变量标准差\(s_\phi =0.00536\textdegree\)\\
-	 可以解出\(\lambda_H = 656.3771nm\)\\
-	 进而求得:\(R_\infty = 1097220.676 \mathrm{m}^{-1}\)
-	 
+	 可以解出\(\lambda_H = 656.1347nm\)\\
+	 波长A类不确定度\(\displaystyle U_{\lambda H} = t\frac{s_\phi}{|b_1|} = 0.19 nm\)\\
+	 求得:\(R_\infty = 1097625.878 \mathrm{m}^{-1}\)\\
+	 对应里德伯常量的相对不确定度\(\displaystyle \frac{U_{R_\infty}}{R_\infty} = \frac{U_{\lambda H}}{\lambda_H} =  0.00029\)
 \subsubsection{二次拟合结果}
 \begin{center}
 	\begin{tabular}{|c|c|c|c|c|c|} \hline
 		\(b_0\) & \(s_{b_0}\) & \(b_1\) & \(s_{b_1}\) &\(b_2\) & \(s_{b_2}\) \\ \hline
 		130.2325 & 6.4981 & 0.1018 & 0.0198 & \(-2.5253\times10^{-5}\) & \(1.5164\times10^{-5}\)\\ \hline
-	\end{tabular}
+	\end{tabular}\\
+		{\footnotesize 表【5】测角仪读数法二次拟合结果}
 \end{center}
 因变量标准差\(s_\phi = 0.0046\textdegree\)\\
-解出\(\lambda_H = 656.3263\mathrm{nm}\)\\
-进而解得\(R_\infty = 1097305.506\mathrm{m}^{-1}\)
+解出\(\lambda_H = 656.0837\mathrm{nm}\)\\
+波长A类不确定度\(\displaystyle U_{\lambda H} = t\frac{s_\phi}{|b_1 + 2b_2\lambda_H|} = 0.164\)\\
+\(\displaystyle R_\infty = 1097711.224 \mathrm{m}^{-1}\)\\
+里德伯常量的相对不确定度\(\displaystyle \frac{U_{R_\infty}}{R_\infty} = \frac{U_{\lambda H}}{\lambda_H} =0.00025\)
 
 可以发现直线拟合的\(s_\phi\)和二次拟合的\(s_\phi\)相差不大,\(\displaystyle \frac{|s_{\phi1} - s_{\phi2}|}{s_{\phi2}} = 10.56 \%\)，并且结果也相差不大，并且直线拟合更加简便，因此一般用直线拟合就足够了。
+
+用分光计测角仪直接读数的方法虽然简单易行，但是最后得到的结果表示测量的准确度并不高，不确定比较大。这是由仪器本身的限制，包括人眼从目镜中观察谱线的误差以及测角仪盘读数的误差所限制的。在不改进实验方法的基础上，很难再将准确度提高，因此，在下面的提高实验中，还会通过不同的测量手段来提高实验精度，并将各种方法做个比较。
 \part{探究性实验部分}
 \section{实验目的}
-我选择的实验是氢原子光谱及其的同位素位移的观测。即利用长焦数码相机成像的方法，计算与测量氢氘混合气体放电管的红光光谱波长差，研究验证氢原子光谱的同位素位移率。
+探究实验的主要任务是是氢原子光谱及其的同位素位移的观测。我主要采取了两种方法，利用长焦物镜和测微目镜组读取目镜读数的办法，以及利用长焦数码相机成像的方法，计算与测量氢氘混合气体放电管的红光光谱波长差，研究验证氢原子光谱的同位素位移率。
 \section{实验原理}
-光栅衍射的基本原理同前基础实验部分，这里主要补充氢原子光谱的同位素位移率
-\subsection{}
+光栅衍射的基本原理同前基础实验部分，这里主要补充氢原子光谱的同位素位移率。
+\subsection{氢原子同位素位移}
+对于同一元素的不同同位素，它们原子核所拥有的中子数不同，引起原子核质量差异和电荷分布的微小差异，从而引起原子光谱波长的微小差别称为“同位素位移”。
+
+通过查阅文献，理论上精确的同位素位移规律必须要由严格的量子力学方程导出，其规则是很复杂的而且难以计算，但是由于这里只考虑氢原子，其核内只有一个电荷的电量，并且在实验仪器所能达到的精度范围内，并不需要最严格的理论计算，于是可以通过引进折合质量，通过巴尔末公式来近似计算，并且对氢这种简单的原子，这样的近似的结果仍然是很精确的。下面给出氢和氘的波长满足的关系。
+
+氢原子核是一个质子，其质量为\(M_H\)，氘核比氢核多一个中子，其质量为\(M_D\)。由巴尔末公式
+\[\frac{1}{\lambda_H} = R_H(\frac{1}{n_1^2} - \frac{1}{n_2^2}) \, ,\quad \frac{1}{\lambda_D} = R_D(\frac{1}{n_1^2} - \frac{1}{n_2^2})\]
+
+其中\(R_H,R_D\)分别为氢和氘的里德伯常量，它们与真空里德伯常量\(R_\infty\)的关系为
+\[\displaystyle R_H = R_\infty\frac{M_H}{M_H + M_e},\;M_D = \frac{M_D}{M_D + M_e}\]
+
+其中\(M_e,\, M_H,\,M_D\)，分别为电子质量，氢原子核质量，氘原子质量。由美国国家标准技术研究所网站上公布的数据:\(M_D/M_e = 3670.4829652\times(1 \pm 4.0\times10^{-10}),\quad M_H/M_e = 1836.15267245\times(1 \pm 4.1\times10^{-10})\),根据这些数据，可以计算出波长差的约定真值如下：
+
+根据这些数据，可以与实验计算得到的作比较。研究验证氢氘同位素的位移规律。另一方面， 还可以由得到的氢氘波长计算里德伯常量的数值，并根据各种方法得到结果，包括其不确定度，比较各种方法的优劣。
+\section{主要实验内容}
+提高实验部分的主要任务是衍射光谱线方位角的测量准确度，基础实验中已经采用了测角仪盘直接读书方法，在此提高实验中，我主要采用了以下两种方法：
+
+方法一：利用实验室的中长焦物镜和测微目镜组成望远镜，读取测微目镜值。
+
+方法二：用数码相机拍摄谱线成像后，再结合实验室提供的“提高CCD成像的光束中心位置分辨率的方法”，用课程所附EXCEL工作表“线阵CCD光斑中心位置细分求解”,提高分辨率。
+
+光栅等实验仪器的调节同基础实验部分。实验中遇到的第一个问题是使氢氘灯与氦氖灯的光线同时进入平行光管，最开始采取的解决办法是将氦氖灯放在氢氘灯后方同时对准平行光管狭缝，由于氦氖灯的光线较强，最后从目镜中仍然能看见其衍射谱线，但是用这种方法观察到的氦氖谱线较弱，最后拍摄的图片中能分辨的氦氖谱线不够多。后面利用实验室提供的反射镜与柱镜改善了这个问题，可以使两个灯的光线通过反射镜在进入柱镜，通过柱镜在同时进入狭缝，此时就能够同时清晰的看见两者的谱线。
+
+先在目镜中观察到谱线，架好数码相机（数码相机已聚焦到无穷远），并撤掉目镜。此时调整数码相机的位置与角度，相机中能观察到合适数目的谱线。再调整相机的光圈，焦距等参数使得始于拍摄，即可拍下照片。
+
+以下是我拍摄的一张光谱图
+\begin{center}
+	\includegraphics[scale = 0.1]{PC200140.jpg}
+	
+	{\footnotesize 图【2】拍摄光谱图}
+\end{center}
+拍摄的参数为：
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}\hline
+	 光圈& 焦距 & 曝光时间& ISO速度 \\ \hline
+	 f/4.5 & 149mm & 15s & ISO-100 \\ \hline
+\end{tabular}\\
+{\footnotesize 表【6】拍摄相机参数}
+\end{center}
+
+再用测微目镜观察谱线并读取不同谱线的位置。可以将两种方法得到的结果进行比较。
+ \section{ 数据处理与分析}
+ \subsection{数码相机成像方法}
+ 利用mathematica处理该图片，提取其中一列的R通道强度值，得到如下的强度分布图\\
+ \begin{center}
+ 	\includegraphics[scale=0.3]{p1.bmp}
+ 	
+ 	{\footnotesize  图【3】谱线R通道强度分布图}
+ \end{center}
+ 
+ 截尾处理后，可以得到如下的强度分布图，再将照片对照附件集中提供的常用HeNe可见光谱参考图与波长表，给出每一个光强峰值对应的波长。
+ \begin{center}
+ 	\includegraphics[scale=0.35]{p2.bmp}
+ 	
+ 	{\footnotesize  图【4】谱线R通道强度分布图（截尾后）}
+ \end{center}
+ 
+ 将数据导入excel，对每一条谱线用提供的Excel表格【单列CCD像素细分程序各像素光强I不等权】，可以得到每一条谱线的中心位置，和波长作回归拟合，结果如下。
+\begin{center}
+	 \begin{tabular}{|c|c|c|c|c|c|}\hline
+ \(X_i\) & 202.5883 & 834.4605 & 1081.8514 & 1656.3674 & 2046.1487\\ \hline
+\(\lambda/\mathrm{nm}\) &  659.8953 & 653.2883 & 650.6528& 644.472 & 640.2246 \\ \hline 
+\(X_i\)  & 2663.8493 & 2933.0873 & 3033.0360 & 3280.3531 &  2221.8478\\ \hline
+\(\lambda/\mathrm{nm}\) & 633.4428 & 630.4789 & 629.377 & 626.6495 &  638.2992\\ \hline 
+ \end{tabular}\\
+{\footnotesize 表【7】像元位置与波长关系表}
+\end{center}
+
+\(X_H = 554.7607,\;X_D = 572.0622\)
+
+以波长为自变量，像元位置为因变量，作直线拟合以及二次拟合，回归结果如下：
+\subsubsection{一次拟合}
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}\hline
+		\(b_1\) & \(s_{b_1}\) & \(b_0\) & \(s_{b_0}\)\\ \hline
+		-92.303 & 0.308	& 61132.003 & 197.080 \\ \hline
+	\end{tabular}\\
+	{\footnotesize 表【8】相机成像方法一次拟合结果表}
+\end{center}
+
+\(s_y = 10.33(\text{像元})\)\\
+回归方程为 \[\hat{X_i} = 61132.003 -92.303\lambda_i \]
+反解出氢和氘的波长 \(\lambda_H = 656.287 \mathrm{nm} ,\; \lambda_D = 656.100\mathrm{nm}\)\\
+波长差为: \(\Delta\lambda = 0.187 \mathrm{nm}\)\\
+波长不确定度的A类分量\(\displaystyle U_\lambda = t\frac{s_y}{|b_1|} = 0.25 \mathrm{nm}\)\\
+由氢氘谱线波长计算的里德伯常量
+
+\subsubsection{二次拟合}
+ \begin{center}
+ 	\begin{tabular}{|c|c|c|c|c|c|}\hline
+ 		\(b_2\) & \(s_{b_2}\) &	\(b_1\) & \(s_{b_1}\) & \(b_0\) & \(s_{b_0}\)\\ \hline
+ 		-0.093 & 0.0077 & 23.806 & 9.859 & 23832.424 & 3167.301 \\ \hline
+ 	\end{tabular}\\
+ 		{\footnotesize 表【9】相机成像方法一次拟合结果表}
+ \end{center}
+ 
+ \(s_y = 2.36 (\text{像元})\)\\
+ 回归方程\[\hat{X_i} = 23832.424 + 23.806\lambda_i -0.093\lambda_i^2\]
+ 反解出氢和氘的波长\(\lambda_H = 656.22 \mathrm{nm},\;\lambda_D = 656.037 \mathrm{nm}\)\\
+ 波长差为\(\Delta\lambda = 0.1826 \mathrm{nm}\)\\
+ 波长不确定度的A类分量\(\displaystyle U_\lambda = t\frac{s_y}{|b_1 + 2b_2\lambda|} = 0.0564 \mathrm{nm}\)\\
+ 由氢氘波长计算的里德伯常量\(R\infty = \)
+ 
+\subsection{测微目镜读数法}
+读数值与对应波长列表如下
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|}\hline
+		\(x_i/mm\) & -0.332 & 0.529 & 4.895 & 6.005 & 8.830 \\ \hline	
+		\(\lambda/nm\) & 638.299 & 640.225 & 650.653 & 653.288 & 659.895 \\ \hline
+	\end{tabular}\\
+{\footnotesize		表【10】测微目镜读数值与对应波长关系}
+\end{center}
+氢与氘的位置： \(x_H = 7.229 mm ,\; \lambda_D = 7.308 mm\)
+
+\subsection{两种方法的对比讨论}
+从两种方法计算所得的标准差可以看出，测微目镜法的误差要大一些。我想这主要是因为人眼的分辨率以及光线太暗造成的读数误差更大。
+\clearpage
+
+\begin{thebibliography}{70}
+
+		\bibitem{}刘丽,等.分光仪测衍射光栅常量的实验设计与数据处理[J].{\it 物 理 实 验 }{\bf2011}。
+		\bibitem{}黄曙江.光斜入射下光栅公式与特性研究[J].{\it 杭州电子工业学院学 报}{\bf2004}。
+		\bibitem{}崔栓锦.氦氖光谱图的绘制及其应用[J].{\it 大学物理实验}{\bf 2002}
+\end{thebibliography}
 \end{document}
